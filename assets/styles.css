@@ -66,18 +66,25 @@ button, input { font: inherit; }
   text-decoration: none;
 }
 .brand:hover { color: #1f1f1f; }
-.brand-mark {
-  width: 22px;
-  height: 22px;
-  display: grid;
-  flex: 0 0 22px;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
+.brand-logo-link {
+  min-height: 56px;
+  padding-block: 0.25rem;
 }
-.brand-mark i:nth-child(1) { background: #f25022; }
-.brand-mark i:nth-child(2) { background: #7fba00; }
-.brand-mark i:nth-child(3) { background: #00a4ef; }
-.brand-mark i:nth-child(4) { background: #ffb900; }
+.brand-logo-crop {
+  position: relative;
+  display: block;
+  width: 150px;
+  height: 38px;
+  overflow: hidden;
+}
+.brand-logo-crop img {
+  position: absolute;
+  top: -34px;
+  left: -28px;
+  width: 212px;
+  max-width: none;
+  height: auto;
+}
 .site-header nav { display: flex; align-items: stretch; align-self: stretch; gap: 1.5rem; }
 .site-header nav a {
   display: inline-flex;
