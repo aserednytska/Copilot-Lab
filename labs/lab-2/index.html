@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A hands-on lab for comparing meeting notes with an existing Excel action register and applying only approved field-level changes.">
+  <title>Lab 2: Meeting Notes to a Controlled Excel Action Register</title>
+  <link rel="stylesheet" href="../../assets/styles.css">
+  <script src="../../assets/script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand" href="../../index.html" aria-label="Microsoft 365 Copilot Workshop Labs home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span>Microsoft 365 Copilot Workshop Labs</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="../../index.html">Home</a>
+        <a class="active" href="../">All labs</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="breadcrumb-shell" aria-label="Breadcrumb">
+    <a href="../../index.html">Home</a><span aria-hidden="true">/</span><a href="../">All labs</a><span aria-hidden="true">/</span><span>Lab 2</span>
+  </div>
+
+  <section class="lab-hero">
+    <div class="wide-shell">
+      <p class="eyebrow">Microsoft 365 Copilot · Lab 2</p>
+      <h1>Meeting Notes to a Controlled Excel Action Register</h1>
+      <p>Compare meeting notes with an existing action register, approve a field-level delta and update only the authorised Excel cells.</p>
+      <div class="hero-meta" aria-label="Lab details summary">
+        <span><strong>Level</strong> 200</span>
+        <span><strong>Duration</strong> 35–45 min</span>
+        <span><strong>Format</strong> Guided hands-on lab</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="workshop-bar">
+    <div class="wide-shell"><strong>Workshop path:</strong> Documents, communication and Excel controls</div>
+  </div>
+
+  <div class="page-shell">
+    <main id="main" class="article">
+      <section id="lab-details">
+        <h2>Lab details</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Level</th><th>Persona</th><th>Duration</th><th>Purpose</th></tr></thead>
+            <tbody><tr><td>200</td><td>Project manager, business analyst, PMO, action owner</td><td>35–45 minutes</td><td>Convert meeting evidence into controlled, auditable updates without overwriting unchanged Excel fields.</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="downloads">
+        <h2>Download the participant files</h2>
+        <p>Download all three files before starting. Keep the original workbook unchanged until the review queues are complete.</p>
+        <ul>
+          <li><a href="downloads/Project_Atlas_UAT_Readiness_Meeting_Notes.docx" download><strong>Project Atlas meeting notes</strong> (.docx)</a> — the authoritative meeting evidence.</li>
+          <li><a href="downloads/Project_Atlas_Field_Level_Action_Register.xlsx" download><strong>Project Atlas action register</strong> (.xlsx)</a> — the working register, review queues, snapshot, audit and validation sheets.</li>
+          <li><a href="downloads/Lab_2_Copilot_Field_Level_Update_Prompt_Card.pdf" download><strong>Copilot prompt card</strong> (.pdf)</a> — copyable prompt sequence and control rules.</li>
+        </ul>
+        <div class="callout note">
+          <div class="callout-label">Synthetic data</div>
+          <p>The case contains no customer, employee or production information. Use only the supplied files during the workshop.</p>
+        </div>
+      </section>
+
+      <section id="core-rule">
+        <h2>The central control rule</h2>
+        <div class="callout important">
+          <div class="callout-label">One confirmed parameter means one changed field</div>
+          <p>For an existing Action ID, change only the field explicitly changed in the meeting. Preserve every other cell exactly as it appears in the current Excel row.</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Meeting evidence</th><th>Correct Excel effect</th><th>Incorrect effect</th></tr></thead>
+            <tbody>
+              <tr><td>“ACT-014 is due 11 September, not 10 September.”</td><td>Change only <strong>Due Date</strong>.</td><td>Regenerate the full ACT-014 row or alter owner, status, dependency, notes or source.</td></tr>
+              <tr><td>“Sofia takes ACT-016 from Mark. The deadline remains 11 September.”</td><td>Change only <strong>Owner</strong>.</td><td>Change the owner and rewrite the confirmed unchanged deadline.</td></tr>
+              <tr><td>Two people state different dates for ACT-021 and no agreement follows.</td><td>Classify <strong>HOLD</strong>; preserve the existing date.</td><td>Select the date that sounds more likely.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="objectives">
+        <h2>Learning objectives</h2>
+        <p>After completing this lab, you will be able to:</p>
+        <ul class="check-list">
+          <li>ground Copilot in the supplied meeting notes and current Excel register;</li>
+          <li>match evidence to an Action ID before proposing an edit;</li>
+          <li>create one comparison row for each explicitly changed field;</li>
+          <li>distinguish updates, additions, confirmations, conflicts, duplicates and general discussion;</li>
+          <li>approve, reject or hold every proposed change before editing;</li>
+          <li>prove that unchanged fields remained identical.</li>
+        </ul>
+      </section>
+
+      <section id="scenario">
+        <h2>Running scenario</h2>
+        <p>Project Atlas is preparing to enter user acceptance testing. The 8 September readiness meeting changes several dates, changes one owner, completes one action, confirms one existing date, introduces two complete new actions and leaves two items unresolved or uncommitted.</p>
+        <p>The workbook begins with eight existing actions, ACT-014 through ACT-021. Your job is not to replace the register with a new interpretation. Your job is to produce a controlled delta against the current register.</p>
+        <div class="callout tip">
+          <div class="callout-label">Expected challenge</div>
+          <p>Several sentences sound like actions, but only evidence with the required confirmed values may become a new row. A confirmation that matches Excel is <strong>NO_CHANGE</strong>, not an update.</p>
+        </div>
+      </section>
+
+      <section id="prerequisites">
+        <h2>Prerequisites</h2>
+        <ul>
+          <li>A work or school account with access to Microsoft Copilot Chat.</li>
+          <li>Microsoft Excel for the web or desktop.</li>
+          <li>The three participant downloads above.</li>
+          <li>Permission to upload or reference the supplied workshop files.</li>
+          <li>Approximately 45 minutes and a working copy of the Excel file.</li>
+        </ul>
+        <div class="callout warning">
+          <div class="callout-label">Capability check</div>
+          <p>Copilot Chat can compare referenced files and prepare the field-level delta. Direct workbook editing depends on the Excel Copilot experience, licence and tenant settings available to you. If edit mode is unavailable, apply the approved changes manually in Excel, one field at a time.</p>
+        </div>
+      </section>
+
+      <section id="exercise-1">
+        <h2>Exercise 1: Inspect and ground both sources</h2>
+        <ol>
+          <li>Open the meeting-notes document and read the chair’s control rule.</li>
+          <li>Open the workbook and review <strong>Instructions</strong>, <strong>Action Register</strong> and <strong>Before Snapshot</strong>.</li>
+          <li>In Microsoft Copilot Chat, turn on Work IQ if your licensed experience provides it.</li>
+          <li>Reference or upload both supplied files.</li>
+          <li>Run the source-check prompt. Stop if Copilot cannot name both files or locate the Action Register sheet.</li>
+        </ol>
+        <div class="prompt-block">
+          <div class="prompt-head"><span>Source check</span><button class="copy-button" type="button">Copy</button></div>
+          <pre><code>Use only the referenced Project Atlas meeting notes and Action Register.
+
+Before analysing them, name both sources and tell me which Excel sheet contains the current master actions.
+
+Confirm the meeting date, the Action ID format and the current values in each matched row. If either source is unavailable, stop and tell me.</code></pre>
+        </div>
+      </section>
+
+      <section id="exercise-2">
+        <h2>Exercise 2: Extract a field-level delta</h2>
+        <p>Ask Copilot to compare the evidence with the existing register. An existing action can produce more than one proposal, but every proposal must name exactly one changed field.</p>
+        <div class="prompt-block">
+          <div class="prompt-head"><span>Field-by-field comparison</span><button class="copy-button" type="button">Copy</button></div>
+          <pre><code>Compare the meeting notes with the existing Action Register field by field.
+
+First, match each relevant statement to an existing Action ID.
+
+For an existing action:
+- Read the complete current Excel row.
+- Identify only fields explicitly changed during the meeting.
+- Create one proposed-change row for each changed field.
+- Include the current Excel value and the proposed meeting value.
+- Preserve every field not explicitly changed.
+- Do not regenerate or replace the complete action row.
+- Do not replace current values with blank, “Not confirmed” or inferred values.
+- If the new value equals the current value, classify it as NO_CHANGE.
+- If information conflicts, classify it as HOLD.
+
+For information that does not match an existing action:
+- Determine whether it is a confirmed new action.
+- Use ADD_ACTION only when the task, owner and required values are sufficiently clear.
+
+Return: Change ID, Action ID, Classification, Field to change, Current value, Proposed value, Exact evidence, Missing or conflicting information, Human decision.</code></pre>
+        </div>
+        <p>Use only these classifications:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Classification</th><th>Meaning</th><th>Workbook effect</th></tr></thead>
+            <tbody>
+              <tr><td><strong>UPDATE_FIELD</strong></td><td>One existing field has an explicit new value.</td><td>One proposed cell change.</td></tr>
+              <tr><td><strong>ADD_ACTION</strong></td><td>A sufficiently complete new commitment.</td><td>Candidate in New Action Queue.</td></tr>
+              <tr><td><strong>NO_CHANGE</strong></td><td>Meeting confirms the value already in Excel.</td><td>No edit.</td></tr>
+              <tr><td><strong>DUPLICATE</strong></td><td>The proposed item is already represented.</td><td>No new row.</td></tr>
+              <tr><td><strong>HOLD</strong></td><td>Required information conflicts or is missing.</td><td>Preserve current data; ask for clarification.</td></tr>
+              <tr><td><strong>NOT_AN_ACTION</strong></td><td>Discussion, suggestion or idea without a commitment.</td><td>No edit and no new row.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="exercise-3">
+        <h2>Exercise 3: Populate the review queues</h2>
+        <ol>
+          <li>Copy each proposed existing-action change into <strong>Field Change Queue</strong>.</li>
+          <li>Use one row per field. If a proposed row contains two changed fields, split it before review.</li>
+          <li>Copy each candidate new action into <strong>New Action Queue</strong>.</li>
+          <li>For every row, record exact evidence and any missing or conflicting information.</li>
+          <li>Do not edit the Action Register yet.</li>
+        </ol>
+        <div class="prompt-block">
+          <div class="prompt-head"><span>Exception review</span><button class="copy-button" type="button">Copy</button></div>
+          <pre><code>Review the proposed queues before any workbook edit.
+
+Flag:
+1. A proposed change whose current value does not match Excel
+2. A field change not supported by exact meeting evidence
+3. A changed owner or deadline inferred rather than confirmed
+4. A conflict that should remain HOLD
+5. A suggestion converted into an action
+6. A proposed full-row replacement for an existing action
+
+Do not edit the workbook. Return only the exceptions and one clarification question for each.</code></pre>
+        </div>
+      </section>
+
+      <section id="exercise-4">
+        <h2>Exercise 4: Apply the human approval gate</h2>
+        <p>Set <strong>Human Decision</strong> independently for every queue row.</p>
+        <ul>
+          <li><strong>Approve</strong> only when the Action ID, exact field, current value, proposed value and evidence all agree.</li>
+          <li><strong>Hold</strong> when required information conflicts or is missing.</li>
+          <li><strong>Reject</strong> confirmations, suggestions, duplicates and unsupported changes.</li>
+        </ul>
+        <div class="callout important">
+          <div class="callout-label">Do not approve a complete replacement row</div>
+          <p>For an existing Action ID, approval belongs to the one proposed field change. It does not approve Copilot to normalise, clean or recreate unrelated cells.</p>
+        </div>
+      </section>
+
+      <section id="exercise-5">
+        <h2>Exercise 5: Update the Action Register</h2>
+        <p>Use Excel edit mode if it is available. Otherwise, make the edits manually. In either path, first display the plan and confirm it before any cell changes.</p>
+        <div class="prompt-block">
+          <div class="prompt-head"><span>Plan, then edit</span><button class="copy-button" type="button">Copy</button></div>
+          <pre><code>Use the approved Field Change Queue and New Action Queue to update the Action Register.
+
+Rules:
+- Apply only rows where Human Decision is Approved.
+- For UPDATE_FIELD, change only the named field in the specified Action ID.
+- Preserve every other cell in that row exactly as it is.
+- For ADD_ACTION, create one complete new row and assign the next sequential Action ID.
+- Do not apply HOLD, DUPLICATE, NO_CHANGE, NOT_AN_ACTION or Rejected rows.
+- Do not rewrite existing rows from memory.
+- Preserve formulas, formatting, validation and table structure.
+
+Before editing, show Action ID, exact field, current value and new value. Wait for confirmation before applying the changes.</code></pre>
+        </div>
+        <ol>
+          <li>Compare Copilot’s plan with the approved queues.</li>
+          <li>Confirm that each existing-action proposal contains only one field.</li>
+          <li>Apply the five approved field changes.</li>
+          <li>Add the two approved new actions with the next sequential IDs.</li>
+          <li>Set <strong>Applied?</strong> to Yes only after the corresponding change is visible in the Action Register.</li>
+        </ol>
+      </section>
+
+      <section id="exercise-6">
+        <h2>Exercise 6: Audit every changed cell</h2>
+        <p>Populate <strong>Before-After Audit</strong>. Every changed cell must map to an approved Change ID or approved new-action candidate.</p>
+        <div class="prompt-block">
+          <div class="prompt-head"><span>Before-and-after audit</span><button class="copy-button" type="button">Copy</button></div>
+          <pre><code>Audit the updated Action Register against the Before Snapshot and approved queues.
+
+List every changed cell. For each changed cell show Action ID, field, previous value, current value and matching approved Change ID.
+
+Flag:
+- Any changed cell without an approved Change ID
+- Any approved change that was not applied
+- Any unchanged field that was accidentally modified
+- Any complete existing row that was replaced
+- Duplicate Action IDs or missing required values
+
+Do not make further edits.</code></pre>
+        </div>
+        <ol>
+          <li>Open <strong>Validation</strong> and review the formula-driven counts.</li>
+          <li>Complete all five final human checks.</li>
+          <li>If a check fails, undo the unapproved edit or restore the original cell from <strong>Before Snapshot</strong>.</li>
+        </ol>
+      </section>
+
+      <section id="success">
+        <h2>Success criteria</h2>
+        <ul class="check-list interactive-checklist">
+          <li><label><input type="checkbox"> 10 actions appear in the final register;</label></li>
+          <li><label><input type="checkbox"> exactly five approved field changes were applied;</label></li>
+          <li><label><input type="checkbox"> exactly two approved new actions were added;</label></li>
+          <li><label><input type="checkbox"> no duplicate Action IDs or missing required fields remain;</label></li>
+          <li><label><input type="checkbox"> every changed cell maps to an approved queue entry;</label></li>
+          <li><label><input type="checkbox"> held, confirmed-unchanged and discussion-only items did not alter the register;</label></li>
+          <li><label><input type="checkbox"> every other field in each changed existing row remained identical.</label></li>
+        </ul>
+      </section>
+
+      <section id="limitations">
+        <h2>Limitations and good practice</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Risk or limitation</th><th>Control</th></tr></thead>
+            <tbody>
+              <tr><td>Copilot may summarise a whole row instead of returning a delta.</td><td>Require one output row per changed field and compare the current value first.</td></tr>
+              <tr><td>Copilot may infer a missing deadline, owner or priority.</td><td>Use HOLD and ask a clarification question; never replace the current value with an inference.</td></tr>
+              <tr><td>Direct editing capability varies by Excel experience, licence and tenant.</td><td>Separate extraction from approval. Apply approved fields manually when edit mode is unavailable.</td></tr>
+              <tr><td>Meeting wording can sound like agreement without creating a commitment.</td><td>Require explicit task, owner and required values for ADD_ACTION.</td></tr>
+              <tr><td>Shared workbooks may change during review.</td><td>Re-check the current Excel value immediately before applying each approved field change.</td></tr>
+              <tr><td>A correct final register can still hide an unsafe process.</td><td>Keep the queues, before snapshot and changed-cell audit as evidence.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="debrief">
+        <h2>Test your understanding</h2>
+        <ol>
+          <li>Why is a confirmed date that already matches Excel classified as NO_CHANGE?</li>
+          <li>Why must the go/no-go date remain unchanged when two dates are stated?</li>
+          <li>Why does a new action need more information than an update to one existing field?</li>
+          <li>What evidence proves that an unchanged owner, status or dependency was preserved?</li>
+          <li>Why is a full-row rewrite unsafe even when the intended deadline is correct?</li>
+        </ol>
+        <div class="callout success">
+          <div class="callout-label">Lab complete</div>
+          <p>You have used a controlled change process: ground, compare, classify, approve, edit and audit. The final control is not only that the new value is correct, but that every unrelated value stayed unchanged.</p>
+        </div>
+      </section>
+
+      <section id="resources">
+        <h2>Microsoft documentation</h2>
+        <ul>
+          <li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/frequently-asked-questions-about-microsoft-365-copilot-chat">Frequently asked questions about Microsoft Copilot Chat</a></li>
+          <li><a href="https://support.microsoft.com/en-us/excel/copilot/get-started-with-copilot-in-excel">Get started with Copilot in Excel</a></li>
+          <li><a href="https://support.microsoft.com/en-us/excel/copilot/copilot-in-excel-data-sources">Copilot in Excel data sources</a></li>
+          <li><a href="https://support.microsoft.com/en-us/excel/copilot/frequently-asked-questions-about-copilot-in-excel">Frequently asked questions about Copilot in Excel</a></li>
+        </ul>
+        <p class="source-note">Product availability and interface labels can change. The lab keeps extraction, human approval and workbook editing as separate stages so the control remains valid across available Copilot experiences.</p>
+      </section>
+    </main>
+
+    <aside class="toc" aria-label="On this page">
+      <p>On this page</p>
+      <nav>
+        <a href="#lab-details">Lab details</a>
+        <a href="#downloads">Downloads</a>
+        <a href="#core-rule">Core rule</a>
+        <a href="#objectives">Learning objectives</a>
+        <a href="#scenario">Running scenario</a>
+        <a href="#prerequisites">Prerequisites</a>
+        <a href="#exercise-1">1. Inspect sources</a>
+        <a href="#exercise-2">2. Extract delta</a>
+        <a href="#exercise-3">3. Review queues</a>
+        <a href="#exercise-4">4. Approve</a>
+        <a href="#exercise-5">5. Update Excel</a>
+        <a href="#exercise-6">6. Audit</a>
+        <a href="#success">Success criteria</a>
+        <a href="#limitations">Limitations</a>
+        <a href="#debrief">Test understanding</a>
+        <a href="#resources">Documentation</a>
+      </nav>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wide-shell">
+      <a href="../">← All labs</a>
+      <span>Verify AI-generated results before use.</span>
+    </div>
+  </footer>
+</body>
+</html>
