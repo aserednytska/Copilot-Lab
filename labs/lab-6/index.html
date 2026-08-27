@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A hands-on Microsoft Copilot lab for building and controlling a decision-ready PowerPoint presentation from contradictory project evidence.">
+  <title>Lab 6: Build a Decision-Ready Steering Committee Presentation</title>
+  <link rel="stylesheet" href="../../assets/styles.css">
+  <script src="../../assets/script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand site-title" href="../" aria-label="Microsoft Copilot Labs">Microsoft Copilot Labs</a>
+      <div class="header-actions">
+        <nav aria-label="Primary navigation"><a class="active" href="../">All labs</a></nav>
+        <a class="datech-corner-logo" href="../" aria-label="DATech — All labs"><span class="brand-logo-crop"><img src="../../assets/datech-logo.jpg" alt="DATech"></span></a>
+      </div>
+    </div>
+  </header>
+
+  <div class="breadcrumb-shell" aria-label="Breadcrumb"><a href="../">All labs</a><span aria-hidden="true">/</span><span>Lab 6</span></div>
+
+  <section class="lab-hero">
+    <div class="wide-shell">
+      <p class="eyebrow">Microsoft 365 Copilot · Lab 6</p>
+      <h1>Build a Decision-Ready Steering Committee Presentation</h1>
+      <p>Turn mixed project evidence into an eight-slide PowerPoint, audit every claim and apply one approved parameter change without rewriting anything else.</p>
+      <div class="hero-meta"><span><strong>Level</strong> 300</span><span><strong>Duration</strong> 65–80 min</span><span><strong>Format</strong> Guided hands-on lab</span></div>
+    </div>
+  </section>
+
+  <div class="workshop-bar"><div class="wide-shell"><strong>Workshop path:</strong> evidence control, PowerPoint creation, source audit, one-field change and speaker notes</div></div>
+
+  <div class="page-shell">
+    <main id="main" class="article">
+      <section id="details">
+        <h2>Lab details</h2>
+        <div class="table-wrap"><table><thead><tr><th>Level</th><th>Persona</th><th>Duration</th><th>Purpose</th></tr></thead><tbody><tr><td>300</td><td>Consultant, business analyst, project manager, product owner</td><td>65–80 minutes</td><td>Create a concise decision deck whose facts, proposals, gaps and changes remain traceable to approved evidence.</td></tr></tbody></table></div>
+      </section>
+
+      <section id="downloads">
+        <h2>Download the complete lab pack</h2>
+        <h3>Participant source files</h3>
+        <ul>
+          <li><a href="downloads/Lab_6_Project_Northstar_Project_Brief.docx" download><strong>Project Northstar Project Brief</strong> (.docx)</a> — baseline scope, value, budget and release gates.</li>
+          <li><a href="downloads/Lab_6_Project_Northstar_Readiness_Tracker.xlsx" download><strong>Project Northstar Readiness Tracker</strong> (.xlsx)</a> — current metrics, risks, actions and financial position.</li>
+          <li><a href="downloads/Lab_6_Project_Northstar_Meeting_Notes.docx" download><strong>Project Northstar Meeting Notes</strong> (.docx)</a> — facts, forecasts, proposals and unsupported statements.</li>
+          <li><a href="downloads/Lab_6_Project_Northstar_Change_Notice_CN-NS-014.pdf" download><strong>Change Notice CN-NS-014</strong> (.pdf)</a> — one approved field change only.</li>
+          <li><a href="downloads/Lab_6_Project_Northstar_Corporate_Template.pptx" download><strong>Project Northstar Corporate Template</strong> (.pptx)</a> — the required presentation theme and layouts.</li>
+          <li><a href="downloads/Lab_6_Project_Northstar_Verified_Decision_Brief.docx" download><strong>Verified Decision Brief</strong> (.docx)</a> — the controlled creation source for the presentation.</li>
+        </ul>
+        <h3>Participant working files</h3>
+        <ul>
+          <li><a href="downloads/Lab_6_Source_to_Slide_Verification.xlsx" download><strong>Source-to-Slide Verification</strong> (.xlsx)</a> — evidence register, contradiction log, slide audit and controlled change log.</li>
+          <li><a href="downloads/Lab_6_Participant_Workbook.pdf" download><strong>Participant Workbook</strong> (.pdf)</a> — the complete exercise flow and response spaces.</li>
+          <li><a href="downloads/Lab_6_PowerPoint_Copilot_Prompt_Card.pdf" download><strong>PowerPoint Copilot Prompt Card</strong> (.pdf)</a> — reusable creation, audit and change-control prompts.</li>
+        </ul>
+        <details><summary><strong>Trainer-only files</strong></summary><ul><li><a href="downloads/Lab_6_TRAINER_ONLY_Demo_and_Answer_Key.pdf" download>Trainer Demo and Answer Key (.pdf)</a></li><li><a href="downloads/Lab_6_TRAINER_ONLY_Expected_Steering_Committee_Deck.pptx" download>Expected Steering Committee Deck (.pptx)</a></li></ul></details>
+        <div class="callout note"><div class="callout-label">Synthetic workshop data</div><p>Project Northstar is fictional. Participants must use the supplied evidence and keep unsupported or missing information visible.</p></div>
+      </section>
+
+      <section id="case">
+        <h2>Case: Project Northstar</h2>
+        <p>A supplier-onboarding pilot is approaching launch. The Steering Committee needs a decision deck, but the source pack contains different dates, incomplete gates, forecasts, proposals and one unsupported financial claim.</p>
+        <div class="table-wrap"><table><thead><tr><th>Evidence</th><th>Current position</th><th>Presentation treatment</th></tr></thead><tbody>
+          <tr><td>UAT</td><td>184 of 200 tests complete; four Severity 1 defects open</td><td>92% complete, but <strong>Not ready</strong> because the gate is no open Severity 1 defects.</td></tr>
+          <tr><td>Security</td><td>Retest booked for 10 September; external access not approved</td><td>Conditional; do not state that security is approved.</td></tr>
+          <tr><td>Migration</td><td>215 of 250 supplier records validated</td><td>86%; final sign-off owner is <strong>Not confirmed</strong>.</td></tr>
+          <tr><td>Training</td><td>36 of 50 users trained</td><td>72%; below the release gate of 45 of 50.</td></tr>
+          <tr><td>Financials</td><td>EUR 240k budget; EUR 252k forecast</td><td>EUR 12k / 5% forecast variance. EUR 35k per week delay cost is unsupported.</td></tr>
+          <tr><td>Recommendation</td><td>Conditional Go was proposed</td><td>Working recommendation only; the committee has not approved it.</td></tr>
+        </tbody></table></div>
+      </section>
+
+      <section id="objectives">
+        <h2>Learning objectives</h2>
+        <ul class="check-list"><li>define a presentation contract before asking Copilot to create slides;</li><li>separate authoritative facts, forecasts, proposals and missing evidence;</li><li>create a deck with standard Copilot in PowerPoint or the optional PowerPoint Agent;</li><li>audit every visible claim, date and number against its source;</li><li>change only one approved parameter and protect all unaffected content;</li><li>improve one weak slide without surrendering design control;</li><li>generate, verify and source speaker notes;</li><li>run the final accessibility and decision-readiness checks.</li></ul>
+      </section>
+
+      <section id="prerequisites">
+        <h2>Prerequisites</h2>
+        <ul><li>PowerPoint for Microsoft 365 and an eligible Microsoft 365 Copilot licence.</li><li>Permission to use Copilot with the supplied files.</li><li>All participant downloads above.</li><li>Excel desktop or Excel for the web for the source-to-slide audit.</li></ul>
+        <div class="callout warning"><div class="callout-label">Capability check</div><p>Copilot controls, file-based creation, Designer and the PowerPoint Agent can vary by licence, tenant policy, application and rollout. A manual fallback is included.</p></div>
+      </section>
+
+      <section id="exercise-1">
+        <h2>Exercise 1: Define the presentation contract</h2>
+        <ol><li>Open the Participant Workbook.</li><li>Record the audience, decision, authoritative source, maximum slides, required tone and prohibited assumptions.</li><li>Confirm the eight-slide structure before creating the deck.</li></ol>
+        <div class="prompt-block"><div class="prompt-head"><span>Presentation contract</span><button class="copy-button" type="button">Copy</button></div><pre><code>I need an eight-slide steering committee presentation.
+Audience: CIO, Finance Director, Operations Director and Programme Sponsor.
+Decision required: approve launch, approve conditional launch or delay.
+Separate confirmed facts from proposals.
+Show unresolved conflicts and use "Not confirmed" when evidence is missing.
+Do not invent owners, dates, values or decisions.
+First propose the slide structure and evidence required for each slide.</code></pre></div>
+      </section>
+
+      <section id="exercise-2">
+        <h2>Exercise 2: Build the evidence and contradiction register</h2>
+        <ol><li>Review the Project Brief, Readiness Tracker, Meeting Notes and Change Notice.</li><li>Record each important claim in the Source-to-Slide Verification workbook.</li><li>Classify it as confirmed fact, forecast, proposal, contradiction, unsupported or not confirmed.</li><li>Do not resolve a conflict merely because one value looks newer or more convenient.</li></ol>
+        <div class="prompt-block"><div class="prompt-head"><span>Evidence-register prompt</span><button class="copy-button" type="button">Copy</button></div><pre><code>Review the attached Project Northstar files. Create an evidence register with:
+- claim or metric;
+- value;
+- effective date;
+- source file and source location;
+- authority and status;
+- conflict;
+- missing information;
+- confidence.
+
+Create a separate contradiction register. Do not select one conflicting value yourself.</code></pre></div>
+        <div class="callout important"><div class="callout-label">Authority rule</div><p>The approved Change Notice overrides only the field it explicitly names: the proposed pilot launch date. It does not approve a decision or change any other field.</p></div>
+      </section>
+
+      <section id="exercise-3">
+        <h2>Exercise 3: Create the draft presentation</h2>
+        <h3>Option A: Standard Copilot in PowerPoint</h3>
+        <ol><li>Open <strong>Project Northstar Corporate Template.pptx</strong>.</li><li>Select <strong>File &gt; Save As</strong> and save a working copy.</li><li>Open Copilot from the PowerPoint ribbon or the Copilot button in the lower-right corner.</li><li>Select <strong>Create presentation from file</strong>.</li><li>Choose <strong>Project Northstar Verified Decision Brief.docx</strong>.</li><li>Add the creation instruction below.</li><li>Review the proposed outline before accepting substantial content.</li><li>Save the result as <strong>Project_Northstar_Steering_Committee_Draft.pptx</strong>.</li></ol>
+        <div class="prompt-block"><div class="prompt-head"><span>Create from the verified brief</span><button class="copy-button" type="button">Copy</button></div><pre><code>Create an eight-slide steering committee presentation from the attached Project Northstar Verified Decision Brief.
+Use the open Northstar corporate template and preserve its theme and layouts.
+Follow the required slide structure.
+Separate confirmed facts, proposals and missing evidence.
+Add concise speaker notes with a [Sources] block on every slide.
+Do not add facts from general knowledge or make the final committee decision.</code></pre></div>
+
+        <h3>Option B: PowerPoint Agent in Microsoft 365 Copilot</h3>
+        <ol><li>Open the Microsoft 365 Copilot app.</li><li>Open <strong>Tools</strong> or <strong>Agents</strong>.</li><li>Select <strong>PowerPoint</strong>.</li><li>Attach the Verified Decision Brief.</li><li>Paste the same presentation contract and creation prompt.</li><li>Create the presentation, then open it in PowerPoint.</li><li>Apply the Northstar template if it was not preserved.</li><li>Continue with the same evidence audit.</li></ol>
+        <div class="callout note"><div class="callout-label">If Option B is missing</div><p>Continue with Option A. The Agent is optional and may not appear in every tenant.</p></div>
+      </section>
+
+      <section id="exercise-4">
+        <h2>Exercise 4: Audit every claim before editing</h2>
+        <ol><li>Open the <strong>Slide Audit</strong> sheet in Source-to-Slide Verification.xlsx.</li><li>Check every visible number, date, status, recommendation and owner.</li><li>Check speaker notes as well as slide text.</li><li>Record Pass, Correct or Not confirmed and the exact correction.</li></ol>
+        <div class="prompt-block"><div class="prompt-head"><span>Evidence-audit prompt</span><button class="copy-button" type="button">Copy</button></div><pre><code>Audit this presentation against the approved source brief.
+For every claim, number, date or recommendation, list:
+- slide number;
+- supporting source;
+- support status;
+- conflict;
+- required correction.
+
+Flag invented numbers, unsupported benefits, assumed decisions and missing conditions.
+Do not modify the presentation.</code></pre></div>
+      </section>
+
+      <section id="exercise-5">
+        <h2>Exercise 5: Change one parameter only</h2>
+        <p>Change Notice CN-NS-014 authorises only this replacement:</p>
+        <div class="table-wrap"><table><thead><tr><th>Field</th><th>Previous value</th><th>Approved value</th></tr></thead><tbody><tr><td>Proposed pilot launch date</td><td>15 September 2026</td><td>29 September 2026</td></tr></tbody></table></div>
+        <h3>Step 1: Locate affected text without changing it</h3>
+        <div class="prompt-block"><div class="prompt-head"><span>One-field impact check</span><button class="copy-button" type="button">Copy</button></div><pre><code>Approved change: Proposed pilot launch date changes from 15 September 2026 to 29 September 2026.
+Identify every affected slide and speaker-note location.
+Return exact current text, proposed replacement and reason.
+Do not modify anything and do not suggest changes to scope, budget, owners, thresholds, risks or recommendation.</code></pre></div>
+        <ol><li>Copy every proposed location into the Controlled Change Log.</li><li>Compare it with the presentation and Change Notice.</li><li>Reject any unrelated wording, layout or content change.</li><li>Approve only the exact locations where the launch date is relevant.</li></ol>
+        <h3>Step 2: Apply only the approved replacements</h3>
+        <div class="prompt-block"><div class="prompt-head"><span>Controlled application prompt</span><button class="copy-button" type="button">Copy</button></div><pre><code>Apply only the approved launch-date replacements in the locations I confirm.
+Replace 15 September 2026 with 29 September 2026.
+Do not rewrite surrounding sentences, change layouts, change other dates, add explanations or reformat the presentation.
+Return a before-and-after change log.</code></pre></div>
+        <div class="callout warning"><div class="callout-label">Safer fallback</div><p>If Copilot proposes a broad rewrite, cancel it and replace the verified date manually. A one-value manual edit is safer than an uncontrolled textbox rewrite.</p></div>
+      </section>
+
+      <section id="exercise-6">
+        <h2>Exercise 6: Improve one weak slide</h2>
+        <ol><li>Select the risks and missing-evidence slide.</li><li>Ask Copilot to propose three structures without modifying the slide: risk heat map, decision table, or risk–evidence–mitigation matrix.</li><li>Compare what each structure clarifies and what it may hide.</li><li>Choose one structure.</li><li>Ask Copilot to modify only that slide.</li><li>Re-run the evidence audit for the changed slide.</li></ol>
+        <div class="prompt-block"><div class="prompt-head"><span>Visual options without editing</span><button class="copy-button" type="button">Copy</button></div><pre><code>For the selected risk slide, propose three alternative visual structures:
+1. risk heat map;
+2. decision table;
+3. risk-evidence-mitigation matrix.
+
+For each option explain what becomes clearer and what information may be lost.
+Do not modify the slide until I choose an option.</code></pre></div>
+      </section>
+
+      <section id="exercise-7">
+        <h2>Exercise 7: Generate and verify speaker notes</h2>
+        <ol><li>In PowerPoint, open the <strong>View</strong> tab.</li><li>Open the <strong>Notes</strong> dropdown.</li><li>Select <strong>Generate speaker notes for current slide</strong> or <strong>Generate speaker notes for all slides</strong>.</li><li>Review the generated notes. Keep useful material and discard unsupported or repetitive text.</li><li>Add a <strong>[Sources]</strong> block to every slide.</li><li>Confirm that no old launch date remains in the notes.</li></ol>
+        <div class="prompt-block"><div class="prompt-head"><span>Final source check</span><button class="copy-button" type="button">Copy</button></div><pre><code>Check every slide and speaker note against sources NS-01 to NS-04.
+Return Pass, Correct or Not confirmed for each slide.
+Confirm that the old date no longer appears, the new date appears only where relevant and no unrelated content changed.</code></pre></div>
+      </section>
+
+      <section id="exercise-8">
+        <h2>Exercise 8: Final presentation controls</h2>
+        <ol><li>Open <strong>Review &gt; Check Accessibility</strong>.</li><li>Correct missing alt text, reading order, low contrast and unclear link text.</li><li>Confirm the corporate template and slide layouts remain intact.</li><li>Confirm the deck has eight slides or fewer.</li><li>Confirm that Conditional Go remains a proposal.</li><li>Confirm that the final decision remains with the Steering Committee.</li></ol>
+      </section>
+
+      <section id="success">
+        <h2>Success criteria</h2>
+        <ul class="check-list interactive-checklist"><li><label><input type="checkbox"> the deck contains eight slides or fewer;</label></li><li><label><input type="checkbox"> every number and date is traceable to a source;</label></li><li><label><input type="checkbox"> facts, forecasts, proposals and missing evidence are separated;</label></li><li><label><input type="checkbox"> the unsupported EUR 35k/week claim is removed or labelled Not confirmed;</label></li><li><label><input type="checkbox"> missing owners remain Not confirmed;</label></li><li><label><input type="checkbox"> only the proposed launch-date field changed;</label></li><li><label><input type="checkbox"> speaker notes contain a [Sources] block;</label></li><li><label><input type="checkbox"> accessibility review is complete;</label></li><li><label><input type="checkbox"> no slide implies that the committee already approved the recommendation.</label></li></ul>
+      </section>
+
+      <section id="limitations">
+        <h2>Limitations and troubleshooting</h2>
+        <div class="table-wrap"><table><thead><tr><th>Problem</th><th>Control</th></tr></thead><tbody>
+          <tr><td>Copilot silently selects one conflicting value.</td><td>Return both sources, dates and authority; require human resolution.</td></tr>
+          <tr><td>Rewrite affects an entire textbox.</td><td>Use an impact check first; approve exact locations or edit the value manually.</td></tr>
+          <tr><td>A polished slide makes uncertain evidence look authoritative.</td><td>Keep proposal, forecast and Not confirmed labels visible.</td></tr>
+          <tr><td>Corporate branding is not preserved.</td><td>Start from the supplied template and verify layouts after creation.</td></tr>
+          <tr><td>A chart contains a wrong number.</td><td>Compare chart labels and source data with the Readiness Tracker.</td></tr>
+          <tr><td>Speaker notes repeat or invent context.</td><td>Review every note and add the exact [Sources] block manually.</td></tr>
+          <tr><td>Create from file is unavailable.</td><td>Create the eight slides manually from the Verified Decision Brief and run the same audit.</td></tr>
+          <tr><td>PowerPoint Agent is unavailable.</td><td>Use standard Copilot in PowerPoint; the lab outcome is unchanged.</td></tr>
+        </tbody></table></div>
+      </section>
+
+      <section id="resources">
+        <h2>Microsoft documentation</h2>
+        <ul>
+          <li><a href="https://support.microsoft.com/en-us/office/prepare-your-presentation-with-copilot-for-microsoft-365-7f06429e-c0c2-4819-8119-b519ad599796">Prepare your presentation with Copilot for Microsoft 365</a></li>
+          <li><a href="https://support.microsoft.com/en-us/office/frequently-asked-questions-about-copilot-in-powerpoint-3e229188-9086-4f4c-9f9f-824cd25ae84f">Frequently asked questions about Copilot in PowerPoint</a></li>
+          <li><a href="https://support.microsoft.com/en-US/PowerPoint/copilot/add-speaker-notes-to-your-presentations-using-copilot">Add speaker notes using Copilot</a></li>
+          <li><a href="https://support.microsoft.com/en-us/office/365-copilot-app/get-started-with-word-excel-and-powerpoint-agents-in-microsoft-365-copilot">Get started with Word, Excel and PowerPoint Agents</a></li>
+          <li><a href="https://support.microsoft.com/en-us/office/add-topics-to-your-existing-powerpoint-presentation-with-copilot">Add topics to an existing PowerPoint presentation with Copilot</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <aside class="toc" aria-label="On this page"><p>On this page</p><nav>
+      <a href="#downloads">Downloads</a><a href="#case">Case</a><a href="#objectives">Objectives</a><a href="#prerequisites">Prerequisites</a><a href="#exercise-1">1. Contract</a><a href="#exercise-2">2. Evidence</a><a href="#exercise-3">3. Create</a><a href="#exercise-4">4. Audit</a><a href="#exercise-5">5. One field</a><a href="#exercise-6">6. Improve</a><a href="#exercise-7">7. Notes</a><a href="#exercise-8">8. Controls</a><a href="#success">Success</a><a href="#limitations">Limitations</a><a href="#resources">Documentation</a>
+    </nav></aside>
+  </div>
+</body>
+</html>
