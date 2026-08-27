@@ -59,29 +59,39 @@ button, input { font: inherit; }
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.72rem;
   color: #1f1f1f;
-  font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
 }
 .brand:hover { color: #1f1f1f; }
-.brand-logo-link {
+.site-title {
+  font-size: 1.05rem;
+  white-space: nowrap;
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  gap: 1.4rem;
+}
+.datech-corner-logo {
+  display: inline-flex;
+  align-items: center;
   min-height: 56px;
-  padding-block: 0.25rem;
+  text-decoration: none;
 }
 .brand-logo-crop {
   position: relative;
   display: block;
-  width: 150px;
-  height: 38px;
+  width: 92px;
+  height: 26px;
   overflow: hidden;
 }
 .brand-logo-crop img {
   position: absolute;
-  top: -34px;
-  left: -28px;
-  width: 212px;
+  top: -21px;
+  left: -17px;
+  width: 130px;
   max-width: none;
   height: auto;
 }
@@ -299,9 +309,12 @@ code { color: #172b3a; font-family: Consolas, "Cascadia Code", "Courier New", mo
 }
 
 @media (max-width: 640px) {
-  .nav-shell { align-items: flex-start; flex-direction: column; gap: 0; padding-top: 0.8rem; }
-  .site-header nav { min-height: 46px; gap: 1.2rem; }
-  .brand { min-height: 38px; }
+  .nav-shell { align-items: center; flex-direction: row; gap: 0.65rem; padding-top: 0; }
+  .header-actions { gap: 0.65rem; }
+  .site-header nav { min-height: 64px; gap: 0.7rem; }
+  .site-title { font-size: 0.9rem; }
+  .brand-logo-crop { width: 72px; height: 22px; }
+  .brand-logo-crop img { top: -16px; left: -14px; width: 102px; }
   .lab-hero { padding: 1.85rem 0 1.7rem; }
   .home-hero { padding: 2.5rem 0; }
   .page-shell { padding-top: 2rem; }
