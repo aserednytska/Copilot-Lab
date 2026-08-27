@@ -35,7 +35,7 @@
       <p>Review separate Copilot conversations, preserve their authority and promote only verified, reusable knowledge into a controlled shared record.</p>
       <div class="hero-meta" aria-label="Lab details summary">
         <span><strong>Level</strong> 200</span>
-        <span><strong>Duration</strong> 40–50 min</span>
+        <span><strong>Duration</strong> 40–50 min + 10–15 min optional</span>
         <span><strong>Format</strong> Guided hands-on lab</span>
       </div>
     </div>
@@ -52,7 +52,7 @@
         <div class="table-wrap">
           <table>
             <thead><tr><th>Level</th><th>Persona</th><th>Duration</th><th>Purpose</th></tr></thead>
-            <tbody><tr><td>200</td><td>Consultant, business analyst, project manager, PMO</td><td>40–50 minutes</td><td>Turn useful personal chat work into a verified, permission-controlled SharePoint knowledge backlog.</td></tr></tbody>
+            <tbody><tr><td>200</td><td>Consultant, business analyst, project manager, PMO</td><td>40–50 minutes, plus 10–15 minutes for the optional Notebook path</td><td>Turn useful personal chat work into a verified, permission-controlled SharePoint knowledge backlog.</td></tr></tbody>
           </table>
         </div>
       </section>
@@ -100,6 +100,8 @@
           <li>extract one evidence-grounded backlog candidate from one conversation;</li>
           <li>apply a human promotion gate before adding shared knowledge;</li>
           <li>preserve superseded records to show decision evolution;</li>
+          <li>move selected Copilot chats into a curated Copilot Notebook;</li>
+          <li>compare Notebook synthesis with the controlled SharePoint backlog;</li>
           <li>query the SharePoint Word backlog by Backlog ID and status.</li>
         </ul>
       </section>
@@ -121,7 +123,8 @@
           <li>Permission to upload a Word document to the workshop SharePoint library.</li>
           <li>Permission to open and edit that Word document.</li>
           <li>The four participant downloads above.</li>
-          <li>Approximately 50 minutes.</li>
+          <li>For the optional Notebook path: access to Copilot Notebooks and a SharePoint or OneDrive service plan.</li>
+          <li>Approximately 50 minutes, plus 10–15 minutes if you complete the optional Notebook path.</li>
         </ul>
         <div class="callout warning">
           <div class="callout-label">Capability check</div>
@@ -276,16 +279,98 @@ Do not use Superseded, Rejected or unrelated records as the current position.</c
       </section>
 
       <section id="exercise-8">
-        <h2>Exercise 8: Compare working chat with controlled knowledge</h2>
+        <h2>Exercise 8 (optional): Move selected chats to a Copilot Notebook</h2>
+        <p>Use this path when you want an ongoing AI workspace that combines several related chats and project files. In this case, create one curated Project Atlas notebook, include only the four relevant Project Atlas conversations and deliberately exclude the unrelated finance-tool conversation.</p>
+
+        <h3>Part A: Create the destination notebook</h3>
+        <ol>
+          <li>Go to <a href="https://m365.cloud.microsoft">Microsoft Copilot</a> and sign in with your work or school account.</li>
+          <li>In the left navigation, select <strong>Notebooks</strong>, then <strong>All notebooks</strong>.</li>
+          <li>Select <strong>New notebook</strong>.</li>
+          <li>Name it <strong>Project Atlas – Working History</strong>.</li>
+          <li>Under <strong>Add content to References</strong>, search for and select <strong>Copilot Conversation Knowledge Backlog.docx</strong>.</li>
+          <li>Select <strong>Create</strong>.</li>
+        </ol>
+        <div class="callout note">
+          <div class="callout-label">If Notebooks is not visible</div>
+          <p>Open the Microsoft 365 app launcher (the waffle menu) and select <strong>Notebooks</strong>. If it is still unavailable, your licence, SharePoint or OneDrive service plan, rollout stage or organisation policy may not support it. Continue with the SharePoint backlog path in Exercise 7.</p>
+        </div>
+
+        <h3>Part B: Move each selected chat</h3>
+        <ol>
+          <li>Return to <strong>Copilot Chat</strong>.</li>
+          <li>In the left-side <strong>Chats</strong> list, locate the first Project Atlas conversation.</li>
+          <li>Next to the chat title, select <strong>More (…)</strong>.</li>
+          <li>Select <strong>Move to notebook</strong>.</li>
+          <li>Choose <strong>Project Atlas – Working History</strong> as the destination notebook.</li>
+          <li>Repeat the same steps for Seeds 2, 3 and 4.</li>
+          <li><strong>Do not move Seed 5.</strong> It belongs to another project despite the similar name.</li>
+          <li>Open <strong>Notebooks → Project Atlas – Working History</strong> and confirm that the four selected chats and the SharePoint backlog appear as notebook references.</li>
+        </ol>
+        <div class="callout important">
+          <div class="callout-label">What “Move to notebook” means</div>
+          <p>The command adds the conversation to the selected Copilot Notebook as working context. It does not make every statement in that chat approved, and it does not replace the controlled SharePoint backlog or the formal system of record.</p>
+        </div>
+
+        <h3>Part C: Give the notebook a control instruction</h3>
+        <ol>
+          <li>Open the notebook.</li>
+          <li>In the upper-right corner, select <strong>More options (…)</strong>, then <strong>Instructions</strong>.</li>
+          <li>Paste the instruction below and select <strong>Save</strong>.</li>
+        </ol>
+        <div class="prompt-block">
+          <div class="prompt-head"><span>Notebook control instruction</span><button class="copy-button" type="button">Copy</button></div>
+          <pre><code>Treat Copilot Conversation Knowledge Backlog.docx as the authoritative project record.
+
+Use moved Copilot chats only as supporting working history.
+
+For every answer:
+- separate Assumptions, Proposals, Confirmed decisions, Actions and Unresolved questions;
+- treat only backlog records with Status Current and Authority Confirmed as final;
+- cite the Backlog ID for every current conclusion;
+- preserve conflicts and superseded positions;
+- never infer an owner, deadline or approval;
+- flag any source that appears to concern another project.</code></pre>
+        </div>
+
+        <h3>Part D: Work inside the notebook</h3>
+        <div class="prompt-block">
+          <div class="prompt-head"><span>Notebook synthesis test</span><button class="copy-button" type="button">Copy</button></div>
+          <pre><code>Using only the references in this notebook, explain how the Project Atlas UAT position evolved.
+
+Create four sections:
+1. Working assumptions and proposals from the moved chats
+2. Current confirmed position from the SharePoint backlog
+3. Superseded or conflicting information
+4. Unresolved questions
+
+For every current conclusion, cite the Backlog ID.
+Do not treat the moved chats as approval evidence.</code></pre>
+        </div>
+        <p>Check that the notebook uses Seeds 1–4 as history, excludes Seed 5 and still treats the SharePoint backlog as authoritative.</p>
+      </section>
+
+      <section id="exercise-9">
+        <h2>Exercise 9: Compare chat, Notebook and controlled knowledge</h2>
         <ol>
           <li>Ask a general Copilot chat, without referencing the backlog, for the current Project Atlas UAT date.</li>
-          <li>Compare its answer with the file-grounded answer from Exercise 7.</li>
-          <li>Optionally move selected chats into a Copilot Notebook and compare its synthesis.</li>
+          <li>If you completed Exercise 8, ask the same question inside <strong>Project Atlas – Working History</strong>.</li>
+          <li>Compare both answers with the file-grounded answer from Exercise 7.</li>
           <li>Identify which answer is traceable to authority, status and Backlog ID.</li>
         </ol>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Approach</th><th>What it is good for</th><th>Control question</th></tr></thead>
+            <tbody>
+              <tr><td><strong>General Copilot chat</strong></td><td>Fast exploration and drafting.</td><td>Which source and authority support the answer?</td></tr>
+              <tr><td><strong>Curated Copilot Notebook</strong></td><td>Synthesis across selected chats and project files.</td><td>Were the correct sources selected, and which reference is authoritative?</td></tr>
+              <tr><td><strong>SharePoint backlog</strong></td><td>Reviewed shared knowledge with lifecycle fields and Backlog IDs.</td><td>Is the record Current, Confirmed and human-verified?</td></tr>
+            </tbody>
+          </table>
+        </div>
         <div class="callout tip">
           <div class="callout-label">Teaching point</div>
-          <p>The backlog reduces ambiguity because it contains reviewed lifecycle fields. A Notebook can help synthesis, but the SharePoint document remains the agreed shared record for this lab.</p>
+          <p>The Notebook is the optional working environment; the SharePoint backlog is the controlled shared record. Moving a chat makes it available for synthesis, not automatically correct or approved.</p>
         </div>
       </section>
 
@@ -333,7 +418,9 @@ Do not use Superseded, Rejected or unrelated records as the current position.</c
           <li><label><input type="checkbox"> the 10 September steering decision is Current and Confirmed;</label></li>
           <li><label><input type="checkbox"> training ideas remain unapproved rather than becoming actions;</label></li>
           <li><label><input type="checkbox"> the finance-tool conversation is rejected from Project Atlas answers;</label></li>
-          <li><label><input type="checkbox"> the final query cites Backlog IDs and identifies unresolved information.</label></li>
+          <li><label><input type="checkbox"> the final query cites Backlog IDs and identifies unresolved information;</label></li>
+          <li><label><input type="checkbox"> optional: the Notebook contains Seeds 1–4 and the backlog, while Seed 5 remains excluded;</label></li>
+          <li><label><input type="checkbox"> optional: the Notebook answer separates working chat history from the Current and Confirmed backlog position.</label></li>
         </ul>
       </section>
 
@@ -350,6 +437,9 @@ Do not use Superseded, Rejected or unrelated records as the current position.</c
               <tr><td>Copilot can use only content the signed-in user is permitted to access.</td><td>Review SharePoint permissions before the lab.</td></tr>
               <tr><td>Deleting a visible chat and compliance deletion are different processes.</td><td>Apply organisational retention, sensitivity and records-management rules.</td></tr>
               <tr><td>Chat-history personalisation or inferred memory is selective and dynamic.</td><td>Do not use memory as the formal project record; reference the controlled file.</td></tr>
+              <tr><td>Moving a chat to a Notebook does not verify or approve its content.</td><td>Keep the SharePoint backlog authoritative and apply the same human promotion gate.</td></tr>
+              <tr><td>Notebook features may be rolling out gradually or restricted by licence and policy.</td><td>Use the direct SharePoint file-reference path if Notebooks or Move to notebook is unavailable.</td></tr>
+              <tr><td>Sharing a Notebook can also affect access to linked files, while each user’s Notebook chat remains private.</td><td>Review every reference and its permissions before sharing the Notebook.</td></tr>
             </tbody>
           </table>
         </div>
@@ -364,6 +454,7 @@ Do not use Superseded, Rejected or unrelated records as the current position.</c
           <li>Why is human verification necessary before SharePoint promotion?</li>
           <li>What belongs in the formal system of record rather than this knowledge backlog?</li>
           <li>When would you replace the Word backlog with a SharePoint List?</li>
+          <li>When is moving selected chats to a Notebook useful, and why does that not make the Notebook the formal project record?</li>
         </ol>
         <div class="callout success">
           <div class="callout-label">Lab complete</div>
@@ -377,6 +468,9 @@ Do not use Superseded, Rejected or unrelated records as the current position.</c
           <li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/how-microsoft-365-copilot-chat-history-works">How Microsoft 365 Copilot Chat history works</a></li>
           <li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/refer-to-specific-files-and-more-in-microsoft-copilot">Refer to specific files in Microsoft Copilot</a></li>
           <li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/get-started-with-microsoft-365-copilot-notebooks">Get started with Microsoft 365 Copilot Notebooks</a></li>
+          <li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/add-references-to-your-microsoft-365-copilot-notebook">Add references to a Microsoft Copilot Notebook</a></li>
+          <li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/provide-custom-instructions-for-your-microsoft-copilot-notebook">Provide custom instructions for a Copilot Notebook</a></li>
+          <li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/share-a-microsoft-365-copilot-notebook">Share a Microsoft Copilot Notebook</a></li>
           <li><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/copilot-personalization-memory">Copilot personalisation and memory</a></li>
           <li><a href="https://learn.microsoft.com/en-us/purview/retention-policies-copilot">Retention policies for Microsoft 365 Copilot</a></li>
         </ul>
@@ -400,7 +494,8 @@ Do not use Superseded, Rejected or unrelated records as the current position.</c
         <a href="#exercise-5">5. Build backlog</a>
         <a href="#exercise-6">6. Resolve status</a>
         <a href="#exercise-7">7. Query backlog</a>
-        <a href="#exercise-8">8. Compare results</a>
+        <a href="#exercise-8">8. Move chats to Notebook</a>
+        <a href="#exercise-9">9. Compare results</a>
         <a href="#clear-model">CLEAR model</a>
         <a href="#word-or-list">Word or List?</a>
         <a href="#success">Success criteria</a>
