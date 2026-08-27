@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A hands-on lab for reviewing Copilot chat history and promoting verified knowledge into a controlled SharePoint Word backlog.">
+  <title>Lab 3: From Copilot Chats to a SharePoint Knowledge Backlog</title>
+  <link rel="stylesheet" href="../../assets/styles.css">
+  <script src="../../assets/script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand" href="../../index.html" aria-label="Microsoft 365 Copilot Workshop Labs home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span>Microsoft 365 Copilot Workshop Labs</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="../../index.html">Home</a>
+        <a class="active" href="../">All labs</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="breadcrumb-shell" aria-label="Breadcrumb">
+    <a href="../../index.html">Home</a><span aria-hidden="true">/</span><a href="../">All labs</a><span aria-hidden="true">/</span><span>Lab 3</span>
+  </div>
+
+  <section class="lab-hero">
+    <div class="wide-shell">
+      <p class="eyebrow">Microsoft 365 Copilot · Lab 3</p>
+      <h1>From Copilot Chats to a SharePoint Knowledge Backlog</h1>
+      <p>Review separate Copilot conversations, preserve their authority and promote only verified, reusable knowledge into a controlled shared record.</p>
+      <div class="hero-meta" aria-label="Lab details summary">
+        <span><strong>Level</strong> 200</span>
+        <span><strong>Duration</strong> 40–50 min</span>
+        <span><strong>Format</strong> Guided hands-on lab</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="workshop-bar">
+    <div class="wide-shell"><strong>Workshop path:</strong> Copilot Chat, shared knowledge and governance</div>
+  </div>
+
+  <div class="page-shell">
+    <main id="main" class="article">
+      <section id="lab-details">
+        <h2>Lab details</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Level</th><th>Persona</th><th>Duration</th><th>Purpose</th></tr></thead>
+            <tbody><tr><td>200</td><td>Consultant, business analyst, project manager, PMO</td><td>40–50 minutes</td><td>Turn useful personal chat work into a verified, permission-controlled SharePoint knowledge backlog.</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="downloads">
+        <h2>Download the participant files</h2>
+        <p>Download all four files before starting. The seed pack creates the chat history; the Word backlog becomes the shared record.</p>
+        <ul>
+          <li><a href="downloads/Project_Atlas_Chat_History_Seed_Pack.docx" download><strong>Project Atlas Chat History Seed Pack</strong> (.docx)</a> — five separate synthetic conversations.</li>
+          <li><a href="downloads/Copilot_Conversation_Knowledge_Backlog.docx" download><strong>Copilot Conversation Knowledge Backlog</strong> (.docx)</a> — the controlled Word template to upload to SharePoint.</li>
+          <li><a href="downloads/Lab_3_Copilot_Chat_to_SharePoint_Backlog_Prompt_Card.pdf" download><strong>Copilot Prompt Card</strong> (.pdf)</a> — extraction, verification and query prompts.</li>
+          <li><a href="downloads/Lab_3_Backlog_Governance_Quick_Guide.pdf" download><strong>Backlog Governance Quick Guide</strong> (.pdf)</a> — the CLEAR model, promotion gate and lifecycle rules.</li>
+        </ul>
+        <div class="callout note">
+          <div class="callout-label">Synthetic data</div>
+          <p>The case contains no customer, employee or production information. Use only the supplied files during the workshop.</p>
+        </div>
+      </section>
+
+      <section id="core-rule">
+        <h2>The central control rule</h2>
+        <div class="callout important">
+          <div class="callout-label">Promote verified knowledge, not raw transcripts</div>
+          <p>Chat history is a personal working surface. The SharePoint backlog is a reviewed shared record. Copy only concise, reusable information that has passed a human evidence check.</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Information surface</th><th>Best use</th><th>Do not assume</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Copilot chat history</strong></td><td>Return to a prior working conversation and continue it.</td><td>That every useful chat is a governed or durable project record.</td></tr>
+              <tr><td><strong>SharePoint Word backlog</strong></td><td>Store concise, verified project knowledge with authority, status and evidence.</td><td>That it replaces the formal approval or requirements system.</td></tr>
+              <tr><td><strong>Copilot Notebook</strong></td><td>Curate selected sources in an AI workspace for synthesis.</td><td>That its synthesis is automatically the agreed organisational position.</td></tr>
+              <tr><td><strong>Formal system of record</strong></td><td>Hold approved requirements, decisions, controls and official records.</td><td>That a chat or backlog entry can bypass its governance.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="objectives">
+        <h2>Learning objectives</h2>
+        <p>After completing this lab, you will be able to:</p>
+        <ul class="check-list">
+          <li>organise separate Copilot chats so they can be reviewed later;</li>
+          <li>distinguish assumptions, proposals, confirmed decisions, actions and unrelated conversations;</li>
+          <li>extract one evidence-grounded backlog candidate from one conversation;</li>
+          <li>apply a human promotion gate before adding shared knowledge;</li>
+          <li>preserve superseded records to show decision evolution;</li>
+          <li>query the SharePoint Word backlog by Backlog ID and status.</li>
+        </ul>
+      </section>
+
+      <section id="scenario">
+        <h2>Running scenario</h2>
+        <p>Project Atlas is preparing for user acceptance testing. Five Copilot conversations were created at different moments. They contain an early assumption, a revised proposal, a confirmed steering decision, useful but unapproved training ideas and an unrelated project with a similar name.</p>
+        <p>Your task is to create a backlog that preserves the history without allowing a draft, a newer-looking proposal or a false project-name match to become the current approved position.</p>
+        <div class="callout tip">
+          <div class="callout-label">Expected challenge</div>
+          <p>The most recent or most polished conversation is not necessarily authoritative. The valid current answer must be both <strong>Current</strong> and <strong>Confirmed</strong>.</p>
+        </div>
+      </section>
+
+      <section id="prerequisites">
+        <h2>Prerequisites</h2>
+        <ul>
+          <li>A work or school account with access to Microsoft Copilot Chat.</li>
+          <li>Permission to upload a Word document to the workshop SharePoint library.</li>
+          <li>Permission to open and edit that Word document.</li>
+          <li>The four participant downloads above.</li>
+          <li>Approximately 50 minutes.</li>
+        </ul>
+        <div class="callout warning">
+          <div class="callout-label">Capability check</div>
+          <p>Referencing a Word file in Copilot Chat is not the same as editing it. If direct document editing is unavailable, prepare the candidate in Copilot, verify it and paste the approved content into Word manually.</p>
+        </div>
+      </section>
+
+      <section id="exercise-1">
+        <h2>Exercise 1: Create five separate history items</h2>
+        <ol>
+          <li>Open the Chat History Seed Pack.</li>
+          <li>Start a <strong>new Copilot conversation</strong> for Seed 1 and paste the complete seed prompt.</li>
+          <li>Repeat in a new conversation for Seeds 2–5.</li>
+          <li>Do not combine the seeds or correct their differences yet.</li>
+          <li>Confirm that five separate items appear in your Chats list.</li>
+        </ol>
+        <div class="callout note">
+          <div class="callout-label">Why separate chats?</div>
+          <p>The exercise demonstrates that useful project knowledge can be scattered across conversations and that similar titles do not prove the same project or authority.</p>
+        </div>
+      </section>
+
+      <section id="exercise-2">
+        <h2>Exercise 2: Review and classify the chat history</h2>
+        <p>Open each conversation and note its project, date, purpose, information type and evidence authority. Do not ask Copilot to merge all five conversations into one answer.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Review question</th><th>Possible value</th></tr></thead>
+            <tbody>
+              <tr><td>Which exact project is this about?</td><td>Project Atlas or another named project</td></tr>
+              <tr><td>What kind of information is present?</td><td>Assumption, proposal, decision, action, prompt or insight</td></tr>
+              <tr><td>What is its authority?</td><td>Draft, Recommended or Confirmed</td></tr>
+              <tr><td>What should happen to it?</td><td>Current, Superseded, Hold or Rejected</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="exercise-3">
+        <h2>Exercise 3: Extract one backlog candidate</h2>
+        <p>Run this prompt inside one conversation at a time. Keep the original conversation open so you can compare every field.</p>
+        <div class="prompt-block">
+          <div class="prompt-head"><span>Single-conversation extraction</span><button class="copy-button" type="button">Copy</button></div>
+          <pre><code>Review only this Copilot conversation.
+
+Prepare one candidate record for the Copilot Conversation Knowledge Backlog.
+
+Return:
+- Project
+- Chat title
+- Conversation date
+- Purpose
+- Information type: Assumption, Proposal, Decision, Action, Prompt or Insight
+- Extracted outcome
+- Owner
+- Deadline
+- Authority: Draft, Recommended or Confirmed
+- Status
+- Supersedes another record: Yes or No
+- Keywords
+- Exact evidence from this conversation
+- Missing or conflicting information
+
+Do not use information from another conversation. Write Not confirmed when a value is missing. Do not create a decision or action from a suggestion.</code></pre>
+        </div>
+      </section>
+
+      <section id="exercise-4">
+        <h2>Exercise 4: Apply the human verification gate</h2>
+        <p>Compare the candidate with the exact conversation before it can enter SharePoint.</p>
+        <div class="prompt-block">
+          <div class="prompt-head"><span>Backlog exception review</span><button class="copy-button" type="button">Copy</button></div>
+          <pre><code>Compare the proposed backlog record with this original conversation.
+
+Flag:
+1. Any project-name mismatch
+2. Any summary not supported by the conversation
+3. Any proposal labelled as a confirmed decision
+4. Any inferred owner or deadline
+5. Any missing conflict
+6. Any record that should be Rejected, Hold or Superseded
+
+Do not rewrite the record. Return only exceptions and a clarification question for each.</code></pre>
+        </div>
+        <ul>
+          <li><strong>Approve</strong> only when project, date, type, authority, status and evidence are correct.</li>
+          <li><strong>Hold</strong> when required evidence is missing or conflicting.</li>
+          <li><strong>Reject</strong> the wrong project or unsupported, non-reusable information.</li>
+          <li><strong>Supersede</strong> an earlier position when a later confirmed record explicitly replaces it.</li>
+        </ul>
+      </section>
+
+      <section id="exercise-5">
+        <h2>Exercise 5: Build the SharePoint Word backlog</h2>
+        <ol>
+          <li>Upload <strong>Copilot Conversation Knowledge Backlog.docx</strong> to the workshop SharePoint library.</li>
+          <li>Confirm that the intended participants can open it.</li>
+          <li>Use one detailed record for each reviewed conversation.</li>
+          <li>Complete the index only after the detailed record has passed verification.</li>
+          <li>Add the verifier’s name and review date.</li>
+          <li>Do not paste the complete chat transcript.</li>
+        </ol>
+        <div class="callout important">
+          <div class="callout-label">Preserve decision evolution</div>
+          <p>Do not delete the 8 September assumption or 9 September proposal. Mark them Superseded when the confirmed 10 September decision becomes Current.</p>
+        </div>
+      </section>
+
+      <section id="exercise-6">
+        <h2>Exercise 6: Resolve current, superseded and rejected records</h2>
+        <p>Review the five candidate records as one controlled set. The record with the newest conversation date does not automatically win.</p>
+        <div class="prompt-block">
+          <div class="prompt-head"><span>Decision evolution</span><button class="copy-button" type="button">Copy</button></div>
+          <pre><code>Using only the referenced backlog document, create a Project Atlas decision timeline.
+
+For every record include:
+- Backlog ID
+- Conversation date
+- Information type
+- Authority
+- Status
+- Extracted outcome
+- What it supersedes
+
+Preserve assumptions and proposals as history. Clearly identify the one current confirmed position. Flag any sequence that cannot be proven from the document.</code></pre>
+        </div>
+      </section>
+
+      <section id="exercise-7">
+        <h2>Exercise 7: Query the controlled backlog</h2>
+        <ol>
+          <li>Open a new Copilot Chat.</li>
+          <li>Type <strong>/</strong> and select the exact SharePoint file <strong>Copilot Conversation Knowledge Backlog.docx</strong>.</li>
+          <li>Run the current-position prompt.</li>
+          <li>Check that every answer cites a Backlog ID.</li>
+        </ol>
+        <div class="prompt-block">
+          <div class="prompt-head"><span>Current project position</span><button class="copy-button" type="button">Copy</button></div>
+          <pre><code>Using only the referenced Copilot Conversation Knowledge Backlog document:
+
+1. What is the current confirmed UAT start date?
+2. Which previous dates were superseded?
+3. Who owns migrated-user sample validation?
+4. Which access restriction remains active?
+5. Which Project Atlas questions remain unresolved?
+6. Which records were rejected or excluded?
+
+For every answer, cite the Backlog ID.
+Treat only records with Status Current and Authority Confirmed as final.
+Do not use Superseded, Rejected or unrelated records as the current position.</code></pre>
+        </div>
+      </section>
+
+      <section id="exercise-8">
+        <h2>Exercise 8: Compare working chat with controlled knowledge</h2>
+        <ol>
+          <li>Ask a general Copilot chat, without referencing the backlog, for the current Project Atlas UAT date.</li>
+          <li>Compare its answer with the file-grounded answer from Exercise 7.</li>
+          <li>Optionally move selected chats into a Copilot Notebook and compare its synthesis.</li>
+          <li>Identify which answer is traceable to authority, status and Backlog ID.</li>
+        </ol>
+        <div class="callout tip">
+          <div class="callout-label">Teaching point</div>
+          <p>The backlog reduces ambiguity because it contains reviewed lifecycle fields. A Notebook can help synthesis, but the SharePoint document remains the agreed shared record for this lab.</p>
+        </div>
+      </section>
+
+      <section id="clear-model">
+        <h2>The CLEAR operating model</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Step</th><th>Meaning</th><th>Evidence required</th></tr></thead>
+            <tbody>
+              <tr><td><strong>C — Classify</strong></td><td>Recognise temporary, working or evidence-bearing chat.</td><td>Purpose and project are known.</td></tr>
+              <tr><td><strong>L — Label</strong></td><td>Rename useful conversations consistently.</td><td>Project, topic, status and date.</td></tr>
+              <tr><td><strong>E — Evaluate</strong></td><td>Separate assumptions, proposals and decisions.</td><td>Exact supporting conversation text.</td></tr>
+              <tr><td><strong>A — Archive deliberately</strong></td><td>Promote only reusable verified information.</td><td>Human approval and Backlog ID.</td></tr>
+              <tr><td><strong>R — Review or retire</strong></td><td>Keep current, supersede, close or reject.</td><td>Status, authority and review date.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="word-or-list">
+        <h2>Word document or SharePoint List?</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Word in SharePoint</th><th>SharePoint List</th></tr></thead>
+            <tbody>
+              <tr><td>Best for a small or medium reviewed knowledge backlog.</td><td>Best for hundreds of records and multiple contributors.</td></tr>
+              <tr><td>Supports narrative context and source evidence.</td><td>Supports filtering, views and structured status reporting.</td></tr>
+              <tr><td>Simple to demonstrate and reference as one file.</td><td>Better for Power Automate and Power BI integration.</td></tr>
+              <tr><td>Requires discipline to keep the index current.</td><td>Requires list design, columns and governance setup.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout success">
+          <div class="callout-label">Workshop recommendation</div>
+          <p>Use Word for this lab. Move to a SharePoint List when scale, concurrent updates, dashboards or automation become primary requirements.</p>
+        </div>
+      </section>
+
+      <section id="success">
+        <h2>Success criteria</h2>
+        <ul class="check-list interactive-checklist">
+          <li><label><input type="checkbox"> five separate chat-history items were created;</label></li>
+          <li><label><input type="checkbox"> every promoted record contains project, date, type, authority, status and evidence;</label></li>
+          <li><label><input type="checkbox"> the 8 and 9 September positions are preserved as superseded history;</label></li>
+          <li><label><input type="checkbox"> the 10 September steering decision is Current and Confirmed;</label></li>
+          <li><label><input type="checkbox"> training ideas remain unapproved rather than becoming actions;</label></li>
+          <li><label><input type="checkbox"> the finance-tool conversation is rejected from Project Atlas answers;</label></li>
+          <li><label><input type="checkbox"> the final query cites Backlog IDs and identifies unresolved information.</label></li>
+        </ul>
+      </section>
+
+      <section id="limitations">
+        <h2>Limitations and good practice</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Risk or limitation</th><th>Control</th></tr></thead>
+            <tbody>
+              <tr><td>Chat-history interfaces are designed for reopening conversations, not for governed project reporting.</td><td>Promote verified reusable information into the shared backlog.</td></tr>
+              <tr><td>Copilot may favour recent or polished wording over authority.</td><td>Require Authority, Status and Backlog ID in every answer.</td></tr>
+              <tr><td>Similar project names can produce a false match.</td><td>Verify the exact project identity and reject unrelated records.</td></tr>
+              <tr><td>Referencing a file does not guarantee direct editing.</td><td>Separate extraction, human approval and the Word update.</td></tr>
+              <tr><td>Copilot can use only content the signed-in user is permitted to access.</td><td>Review SharePoint permissions before the lab.</td></tr>
+              <tr><td>Deleting a visible chat and compliance deletion are different processes.</td><td>Apply organisational retention, sensitivity and records-management rules.</td></tr>
+              <tr><td>Chat-history personalisation or inferred memory is selective and dynamic.</td><td>Do not use memory as the formal project record; reference the controlled file.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="debrief">
+        <h2>Test your understanding</h2>
+        <ol>
+          <li>Why is the 10 September decision authoritative even if another chat is opened more recently?</li>
+          <li>What value does a Superseded record provide?</li>
+          <li>When should a useful idea remain Hold instead of becoming an action?</li>
+          <li>Why is human verification necessary before SharePoint promotion?</li>
+          <li>What belongs in the formal system of record rather than this knowledge backlog?</li>
+          <li>When would you replace the Word backlog with a SharePoint List?</li>
+        </ol>
+        <div class="callout success">
+          <div class="callout-label">Lab complete</div>
+          <p>You have converted scattered working conversations into a traceable knowledge record without losing authority, conflicts or decision history.</p>
+        </div>
+      </section>
+
+      <section id="resources">
+        <h2>Microsoft documentation</h2>
+        <ul>
+          <li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/how-microsoft-365-copilot-chat-history-works">How Microsoft 365 Copilot Chat history works</a></li>
+          <li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/refer-to-specific-files-and-more-in-microsoft-copilot">Refer to specific files in Microsoft Copilot</a></li>
+          <li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/get-started-with-microsoft-365-copilot-notebooks">Get started with Microsoft 365 Copilot Notebooks</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/copilot-personalization-memory">Copilot personalisation and memory</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/purview/retention-policies-copilot">Retention policies for Microsoft 365 Copilot</a></li>
+        </ul>
+        <p class="source-note">Product availability and interface labels can change. The governance pattern remains: classify, verify, promote deliberately and reference the controlled source.</p>
+      </section>
+    </main>
+
+    <aside class="toc" aria-label="On this page">
+      <p>On this page</p>
+      <nav>
+        <a href="#lab-details">Lab details</a>
+        <a href="#downloads">Downloads</a>
+        <a href="#core-rule">Core rule</a>
+        <a href="#objectives">Learning objectives</a>
+        <a href="#scenario">Running scenario</a>
+        <a href="#prerequisites">Prerequisites</a>
+        <a href="#exercise-1">1. Create chat history</a>
+        <a href="#exercise-2">2. Classify chats</a>
+        <a href="#exercise-3">3. Extract candidate</a>
+        <a href="#exercise-4">4. Verify</a>
+        <a href="#exercise-5">5. Build backlog</a>
+        <a href="#exercise-6">6. Resolve status</a>
+        <a href="#exercise-7">7. Query backlog</a>
+        <a href="#exercise-8">8. Compare results</a>
+        <a href="#clear-model">CLEAR model</a>
+        <a href="#word-or-list">Word or List?</a>
+        <a href="#success">Success criteria</a>
+        <a href="#limitations">Limitations</a>
+        <a href="#debrief">Test understanding</a>
+        <a href="#resources">Documentation</a>
+      </nav>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wide-shell">
+      <a href="../">← All labs</a>
+      <span>Verify AI-generated results before use.</span>
+    </div>
+  </footer>
+</body>
+</html>
