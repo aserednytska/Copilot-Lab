@@ -98,12 +98,13 @@ button, input { font: inherit; }
 }
 .breadcrumb-shell a { color: var(--muted); }
 
-.lab-hero, .home-hero {
+.lab-hero, .home-hero, .catalogue-hero {
   color: var(--white);
   background: var(--navy);
 }
 .lab-hero { padding: 2.4rem 0 2.1rem; }
 .home-hero { padding: 3.4rem 0 3.7rem; }
+.catalogue-hero { padding: 2.5rem 0 2.7rem; }
 .eyebrow {
   margin: 0 0 0.45rem;
   color: #9fd6ff;
@@ -112,7 +113,7 @@ button, input { font: inherit; }
   letter-spacing: 0.09em;
   text-transform: uppercase;
 }
-.lab-hero h1, .home-hero h1 {
+.lab-hero h1, .home-hero h1, .catalogue-hero h1 {
   max-width: 900px;
   margin: 0;
   color: var(--white);
@@ -120,7 +121,7 @@ button, input { font: inherit; }
   line-height: 1.13;
   letter-spacing: -0.025em;
 }
-.lab-hero > .wide-shell > p:not(.eyebrow), .home-hero > .wide-shell > p:not(.eyebrow) {
+.lab-hero > .wide-shell > p:not(.eyebrow), .home-hero > .wide-shell > p:not(.eyebrow), .catalogue-hero > .wide-shell > p:not(.eyebrow) {
   max-width: 780px;
   margin: 0.9rem 0 0;
   color: #e6eef7;
@@ -222,6 +223,14 @@ code { color: #172b3a; font-family: Consolas, "Cascadia Code", "Courier New", mo
 
 .home-content { padding-block: 3rem 5rem; }
 .home-content h2 { margin-bottom: 1.6rem; }
+.section-heading-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 850px;
+}
+.section-heading-row h2 { margin-bottom: 1.6rem; }
 .lab-list-item {
   display: grid;
   grid-template-columns: 64px 1fr;
@@ -235,6 +244,43 @@ code { color: #172b3a; font-family: Consolas, "Cascadia Code", "Courier New", mo
 .lab-meta { margin: 0 0 0.35rem; color: var(--muted); font-size: 0.84rem; }
 .lab-list-item h3 { margin: 0; font-size: 1.4rem; }
 .text-link { font-weight: 650; }
+
+.labs-catalogue { padding-block: 3rem 5rem; }
+.labs-catalogue > h2 { margin-bottom: 1.5rem; }
+.labs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr));
+  gap: 1.25rem;
+}
+.lab-card {
+  display: flex;
+  min-height: 330px;
+  flex-direction: column;
+  padding: 1.45rem;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--blue);
+  background: var(--white);
+  text-decoration: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease, transform 120ms ease;
+}
+.lab-card:hover {
+  color: var(--ink);
+  border-color: #85afd0;
+  box-shadow: 0 5px 16px rgb(0 0 0 / 10%);
+  transform: translateY(-2px);
+}
+.lab-card:focus-visible { outline: 3px solid #75b6e7; outline-offset: 3px; }
+.lab-card-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.lab-card-number { color: var(--blue); font-size: 0.82rem; font-weight: 750; letter-spacing: 0.05em; text-transform: uppercase; }
+.lab-card-level { color: var(--muted); font-size: 0.8rem; }
+.lab-card h3 { margin: 1.15rem 0 0.7rem; font-size: 1.35rem; }
+.lab-card > p { margin: 0 0 1.2rem; color: #4c4c4c; }
+.lab-card-details { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: auto 0 1.25rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.lab-card-details div { min-width: 0; }
+.lab-card-details dt { color: var(--muted); font-size: 0.75rem; }
+.lab-card-details dd { margin: 0.1rem 0 0; color: #303030; font-size: 0.88rem; font-weight: 600; }
+.lab-card-action { color: var(--blue); font-weight: 650; }
 
 .source-note { color: var(--muted); font-size: 0.86rem; }
 .site-footer { padding: 1.35rem 0; color: #525252; border-top: 1px solid var(--line); background: var(--surface); font-size: 0.86rem; }
@@ -253,6 +299,9 @@ code { color: #172b3a; font-family: Consolas, "Cascadia Code", "Courier New", mo
   .home-hero { padding: 2.5rem 0; }
   .page-shell { padding-top: 2rem; }
   .lab-list-item { grid-template-columns: 1fr; }
+  .section-heading-row { align-items: flex-start; flex-direction: column; margin-bottom: 1.4rem; }
+  .section-heading-row h2 { margin-bottom: 0; }
+  .lab-card { min-height: 0; }
   .site-footer .wide-shell { flex-direction: column; }
   th, td { min-width: 145px; }
 }
@@ -260,4 +309,3 @@ code { color: #172b3a; font-family: Consolas, "Cascadia Code", "Courier New", mo
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
-
