@@ -1,0 +1,13 @@
+PromptID,Title,Category,BusinessOutcome,Application,Status,Version,Owner,LastTested,CaseAResult,CaseBResult,PromptTextReference
+BA-01,Client Discovery Plan,Discovery,Prepare a structured discovery plan,Copilot Chat,Starter - not tested,v0.1,Hanna,,Not tested,Not tested,Prompt Text BA-01
+BA-02,Evidence-Based Interview Questions,Discovery,Generate questions tied to scope and evidence gaps,Copilot Chat,Starter - not tested,v0.1,Hanna,,Not tested,Not tested,Prompt Text BA-02
+BA-03,Requirements Evidence Register,Requirements,Extract traceable requirements without converting assumptions,Copilot Chat,Starter - not tested,v0.1,Hanna,,Not tested,Not tested,Prompt Text BA-03
+BA-04,Ambiguity and Conflict Review,Requirements,Find gaps conflicts and missing decisions,Copilot Chat,Starter - not tested,v0.1,Hanna,,Not tested,Not tested,Prompt Text BA-04
+BA-05,Current-State Process and Exceptions,Process,Describe steps handoffs systems and exceptions,Copilot Chat,Starter - not tested,v0.1,Hanna,,Not tested,Not tested,Prompt Text BA-05
+BA-06,User Stories and Acceptance Criteria,Requirements,Draft testable stories from confirmed evidence,Copilot Chat,Starter - not tested,v0.1,Hanna,,Not tested,Not tested,Prompt Text BA-06
+PM-01,Meeting Decisions and Actions,Meetings,Separate decisions actions proposals and unresolved items,Copilot Chat / Teams,Starter - not tested,v0.1,Hanna,,Not tested,Not tested,Prompt Text PM-01
+PM-02,Controlled Change Impact Assessment,Change,Assess one requested change against approved scope,Copilot Chat,Starter - not tested,v0.1,Hanna,,Not tested,Not tested,Prompt Text PM-02
+PM-03,Vendor Proposal Comparison,Governance,Compare vendors using fixed criteria and evidence,Copilot Chat,Starter - not tested,v0.1,Hanna,,Not tested,Not tested,Prompt Text PM-03
+COM-01,Steering and Executive Update,Communication,Create a concise evidence-based status update,Copilot Chat,Starter - not tested,v0.1,Hanna,,Not tested,Not tested,Prompt Text COM-01
+QA-01,UAT Scenario Generator,Testing,Create traceable positive negative and exception scenarios,Copilot Chat,Starter - not tested,v0.1,Hanna,,Not tested,Not tested,Prompt Text QA-01
+QA-02,Deliverable Pre-Flight Review,Quality,Find unsupported claims gaps and audience problems,Copilot Chat,Starter - not tested,v0.1,Hanna,,Not tested,Not tested,Prompt Text QA-02

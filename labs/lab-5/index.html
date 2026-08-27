@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A hands-on Microsoft Copilot lab for building, testing, saving and maintaining a personal consulting and business-analysis prompt library.">
+  <title>Lab 5: Build and Govern Your Personal Copilot Prompt Library</title>
+  <link rel="stylesheet" href="../../assets/styles.css">
+  <script src="../../assets/script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand site-title" href="../" aria-label="Microsoft Copilot Labs">Microsoft Copilot Labs</a>
+      <div class="header-actions">
+        <nav aria-label="Primary navigation"><a class="active" href="../">All labs</a></nav>
+        <a class="datech-corner-logo" href="../" aria-label="DATech — All labs"><span class="brand-logo-crop"><img src="../../assets/datech-logo.jpg" alt="DATech"></span></a>
+      </div>
+    </div>
+  </header>
+
+  <div class="breadcrumb-shell" aria-label="Breadcrumb"><a href="../">All labs</a><span aria-hidden="true">/</span><span>Lab 5</span></div>
+
+  <section class="lab-hero">
+    <div class="wide-shell">
+      <p class="eyebrow">Microsoft 365 Copilot · Lab 5</p>
+      <h1>Build and Govern Your Personal Copilot Prompt Library</h1>
+      <p>Convert one-off prompts into reusable work specifications, prove them on two different cases and save only the approved structure.</p>
+      <div class="hero-meta"><span><strong>Level</strong> 200</span><span><strong>Duration</strong> 55–70 min</span><span><strong>Format</strong> Guided hands-on lab</span></div>
+    </div>
+  </section>
+
+  <div class="workshop-bar"><div class="wide-shell"><strong>Workshop path:</strong> GSCE design, two-case testing, Prompt Lab and version control</div></div>
+
+  <div class="page-shell">
+    <main id="main" class="article">
+      <section id="details">
+        <h2>Lab details</h2>
+        <div class="table-wrap"><table><thead><tr><th>Level</th><th>Persona</th><th>Duration</th><th>Purpose</th></tr></thead><tbody><tr><td>200</td><td>Independent consultant, business analyst, project manager, product owner</td><td>55–70 minutes</td><td>Build a small, tested prompt library that is reusable across clients and controlled through evidence, versioning and human approval.</td></tr></tbody></table></div>
+      </section>
+
+      <section id="downloads">
+        <h2>Download the lab files</h2>
+        <ul>
+          <li><a href="downloads/Lab_5_Project_Meridian_Case_Pack.docx" download><strong>Project Meridian Case Pack</strong> (.docx)</a> — regulated supplier-onboarding evidence.</li>
+          <li><a href="downloads/Lab_5_Project_Harbor_Case_Pack.docx" download><strong>Project Harbor Case Pack</strong> (.docx)</a> — service-desk automation evidence.</li>
+          <li><a href="downloads/Lab_5_Reusable_Prompt_Builder_and_Approval_Record.docx" download><strong>Reusable Prompt Builder and Approval Record</strong> (.docx)</a> — GSCE, test and approval template.</li>
+          <li><a href="downloads/Lab_5_Consultant_and_BA_Prompt_Library.xlsx" download><strong>Consultant and BA Prompt Library</strong> (.xlsx)</a> — 12 prompts, test log, changes, versions, retirement and dashboard.</li>
+          <li><a href="downloads/Lab_5_SharePoint_Prompt_Library_Import_Template.csv" download><strong>SharePoint Import Template</strong> (.csv)</a> — optional starting structure for a SharePoint List.</li>
+          <li><a href="downloads/Lab_5_Prompt_Library_Quick_Card.pdf" download><strong>Prompt Library Quick Card</strong> (.pdf)</a> — GSCE and exact bookmark steps.</li>
+          <li><a href="downloads/Lab_5_Participant_Workbook.pdf" download><strong>Participant Workbook</strong> (.pdf)</a> — complete exercise flow.</li>
+        </ul>
+        <details><summary><strong>Trainer-only file</strong></summary><p><a href="downloads/Lab_5_TRAINER_ONLY_Demo_and_Answer_Key.pdf" download>Trainer Demo and Answer Key (.pdf)</a> contains model findings, failure patterns and the live bookmark demonstration script.</p></details>
+        <div class="callout note"><div class="callout-label">Synthetic data</div><p>Both cases are fictional. Save only reusable placeholders and instructions; do not save customer names, real dates, confidential links or source content inside a reusable prompt.</p></div>
+      </section>
+
+      <section id="architecture">
+        <h2>Use two connected layers</h2>
+        <div class="table-wrap"><table><thead><tr><th>Layer</th><th>Role</th><th>Control</th></tr></thead><tbody>
+          <tr><td><strong>Excel in OneDrive or SharePoint</strong></td><td>Controlled source of truth</td><td>Prompt text, status, version, owner, test results, changes and rollback.</td></tr>
+          <tr><td><strong>Prompt Lab / Prompt Gallery</strong></td><td>Quick-access execution layer</td><td>Save a small number of approved prompts for convenient reuse.</td></tr>
+        </tbody></table></div>
+        <div class="callout important"><div class="callout-label">Central rule</div><p>Save the reusable structure, not the client-specific content. A successfully saved prompt is convenient; it is not automatically tested, approved or safe.</p></div>
+      </section>
+
+      <section id="objectives">
+        <h2>Learning objectives</h2>
+        <ul class="check-list">
+          <li>identify recurring consulting and business-analysis work;</li>
+          <li>convert a one-off prompt into Goal, Source, Context and Expectations;</li>
+          <li>replace client facts with clear placeholders;</li>
+          <li>test the same prompt on two different cases;</li>
+          <li>detect hidden assumptions and chat-context leakage;</li>
+          <li>approve, version, update, retire and roll back prompts;</li>
+          <li>find the hidden Save prompt bookmark and verify the saved item in Prompt Lab.</li>
+        </ul>
+      </section>
+
+      <section id="starter-library">
+        <h2>The 12-prompt starter library</h2>
+        <div class="table-wrap"><table><thead><tr><th>ID</th><th>Prompt</th><th>Work area</th></tr></thead><tbody>
+          <tr><td>BA-01</td><td>Client Discovery Plan</td><td>Discovery</td></tr>
+          <tr><td>BA-02</td><td>Evidence-Based Interview Questions</td><td>Discovery</td></tr>
+          <tr><td>BA-03</td><td>Requirements Evidence Register</td><td>Requirements</td></tr>
+          <tr><td>BA-04</td><td>Ambiguity and Conflict Review</td><td>Requirements</td></tr>
+          <tr><td>BA-05</td><td>Current-State Process and Exceptions</td><td>Process</td></tr>
+          <tr><td>BA-06</td><td>User Stories and Acceptance Criteria</td><td>Requirements</td></tr>
+          <tr><td>PM-01</td><td>Meeting Decisions and Actions</td><td>Meetings</td></tr>
+          <tr><td>PM-02</td><td>Controlled Change Impact Assessment</td><td>Change</td></tr>
+          <tr><td>PM-03</td><td>Vendor Proposal Comparison</td><td>Governance</td></tr>
+          <tr><td>COM-01</td><td>Steering and Executive Update</td><td>Communication</td></tr>
+          <tr><td>QA-01</td><td>UAT Scenario Generator</td><td>Testing</td></tr>
+          <tr><td>QA-02</td><td>Deliverable Pre-Flight Review</td><td>Quality</td></tr>
+        </tbody></table></div>
+      </section>
+
+      <section id="prerequisites">
+        <h2>Prerequisites</h2>
+        <ul><li>Microsoft Copilot Chat with a work or school account.</li><li>The participant downloads above.</li><li>Excel desktop or Excel for the web.</li><li>Approximately 70 minutes.</li></ul>
+        <div class="callout warning"><div class="callout-label">Capability check</div><p>Prompt-saving controls can depend on licence, tenant policy, application and rollout. The controlled Excel library remains usable even when the bookmark or Prompt Lab is not available.</p></div>
+      </section>
+
+      <section id="exercise-1">
+        <h2>Exercise 1: Select recurring work</h2>
+        <p>Choose one task you repeat across clients. Complete section A of the Prompt Builder: trigger, outcome, user, source, decision owner and prohibited assumptions.</p>
+      </section>
+
+      <section id="exercise-2">
+        <h2>Exercise 2: Run the weak baseline</h2>
+        <div class="prompt-block"><div class="prompt-head"><span>Weak one-off prompt</span><button class="copy-button" type="button">Copy</button></div><pre><code>Review these notes and create requirements for Project Meridian.</code></pre></div>
+        <p>Record why it is difficult to reuse: it has a client-specific project, no source boundary, no audience, no evidence contract and no rule for uncertainty.</p>
+      </section>
+
+      <section id="exercise-3">
+        <h2>Exercise 3: Build the reusable GSCE version</h2>
+        <div class="table-wrap"><table><thead><tr><th>Part</th><th>Question</th></tr></thead><tbody><tr><td>Goal</td><td>What should Copilot produce?</td></tr><tr><td>Source</td><td>Which exact content is authoritative?</td></tr><tr><td>Context</td><td>Who uses the output and for which decision?</td></tr><tr><td>Expectations</td><td>Which structure, limits, evidence and uncertainty rules apply?</td></tr></tbody></table></div>
+        <div class="prompt-block"><div class="prompt-head"><span>BA-03 reusable prompt</span><button class="copy-button" type="button">Copy</button></div><pre><code>Goal
+Review [SOURCE] and prepare a requirements-evidence register for [PROJECT].
+
+Context
+The register will be reviewed by [AUDIENCE] to support [PURPOSE OR DECISION].
+
+Source
+Use only [APPROVED SOURCE]. Do not use another project or general knowledge.
+
+Expectations
+For every item include:
+- Requirement ID
+- Requirement statement
+- Requirement type
+- Source evidence
+- Stakeholder
+- Acceptance condition
+- Confidence
+- Open question
+
+Separate confirmed requirements, assumptions and recommendations.
+Do not invent an owner, deadline or decision.
+Write "Not confirmed" when evidence is missing.</code></pre></div>
+      </section>
+
+      <section id="exercise-4">
+        <h2>Exercise 4: Test Project Meridian</h2>
+        <ol><li>Start a new Copilot Chat.</li><li>Reference only the Meridian case pack.</li><li>Complete every placeholder.</li><li>Run BA-03.</li><li>Score the result in the Excel Test Log.</li><li>Record unsupported additions and hidden assumptions.</li></ol>
+      </section>
+
+      <section id="exercise-5">
+        <h2>Exercise 5: Test Project Harbor unchanged</h2>
+        <ol><li>Start another new chat to avoid Meridian context leakage.</li><li>Reference only the Harbor case.</li><li>Reuse the same prompt structure.</li><li>Replace only project, source, audience and purpose placeholders.</li><li>Run and score it.</li></ol>
+        <div class="callout important"><div class="callout-label">Failure signal</div><p>If the Harbor output mentions suppliers, SAP, compliance screening or another Meridian detail, the prompt is overfitted or the conversation context is contaminated.</p></div>
+      </section>
+
+      <section id="exercise-6">
+        <h2>Exercise 6: Approve v1.0</h2>
+        <p>Approve only when both cases pass, unsupported additions equal zero, missing information stays visible, output structure remains stable and no client-specific content remains in the template.</p>
+      </section>
+
+      <section id="exercise-7">
+        <h2>Exercise 7: Record the controlled prompt</h2>
+        <ol><li>Open <strong>Prompt Catalogue</strong>.</li><li>Confirm Prompt ID, category, outcome, application and owner.</li><li>Paste the complete reusable prompt into <strong>Prompt Text</strong>.</li><li>Record both cases in <strong>Test Log</strong>.</li><li>Change status to Approved only after both results pass.</li><li>Record version v1.0 and the last-tested date.</li></ol>
+      </section>
+
+      <section id="bookmark">
+        <h2>Exercise 8: Find the Save prompt bookmark</h2>
+        <div class="callout important"><div class="callout-label">Where exactly is it?</div><p>The bookmark is attached to the prompt message that you sent. It is not attached to the Copilot answer. The icon may remain hidden until you hover over your sent prompt.</p></div>
+
+        <h3>Detailed desktop steps</h3>
+        <ol>
+          <li>Open Microsoft 365 Copilot Chat in the desktop browser or desktop application.</li>
+          <li>Paste and send the complete reusable prompt.</li>
+          <li>Wait until Copilot has successfully finished its response.</li>
+          <li>Move your mouse pointer back up to <strong>your sent prompt message</strong>.</li>
+          <li>Hover over the prompt. Do not hover over the Copilot answer.</li>
+          <li>A small action row should appear beside or immediately beneath your prompt message.</li>
+          <li>Look for an <strong>outline bookmark icon</strong>. When you place the pointer on it, the tooltip should say <strong>Save prompt</strong>.</li>
+          <li>Select the bookmark.</li>
+          <li>If Copilot asks for a title, use the controlled name: <strong>BA-03 - Requirements Evidence Register</strong>.</li>
+          <li>Confirm the save action.</li>
+        </ol>
+
+        <h3>Confirm that the prompt was saved</h3>
+        <ol>
+          <li>Return to the message box at the bottom of Copilot Chat.</li>
+          <li>Select <strong>Prompt Lab</strong> below the message box. Depending on the interface, you may first need to select a prompt pill or <strong>More (...)</strong>.</li>
+          <li>Open <strong>Your prompts</strong> or <strong>Your saved prompts</strong>.</li>
+          <li>Find <strong>BA-03 - Requirements Evidence Register</strong>.</li>
+          <li>Open it and confirm that `[PROJECT]`, `[SOURCE]`, `[AUDIENCE]` and the other placeholders are still present.</li>
+          <li>Confirm that no Meridian or Harbor facts were saved.</li>
+        </ol>
+
+        <h3>If the bookmark does not appear</h3>
+        <ol>
+          <li>Confirm the prompt was sent and the response completed successfully.</li>
+          <li>Hover over your prompt message slowly; the controls can remain hidden otherwise.</li>
+          <li>Widen the Copilot window because compact layouts may collapse actions.</li>
+          <li>Look for <strong>More actions (...)</strong> on the prompt message and check whether Save prompt is inside it.</li>
+          <li>Try Microsoft 365 Copilot on the web if you are using another application.</li>
+          <li>Open Prompt Lab directly and check whether you can create or manage prompts there.</li>
+          <li>If saving is unavailable, keep Excel as the controlled library and copy the prompt when needed.</li>
+        </ol>
+        <div class="callout note"><div class="callout-label">Current Microsoft behaviour</div><p>Microsoft documents the save path as: run the prompt successfully, hover over the prompt to reveal the bookmark, select Save prompt, and access it later from Prompt Lab under your saved prompts.</p></div>
+      </section>
+
+      <section id="exercise-9">
+        <h2>Exercise 9: Share carefully</h2>
+        <p>Before sharing a prompt link or team prompt, remove client names, actual dates, confidential source links, fixed commitments and sensitive examples. A shared link does not make the prompt organisationally approved.</p>
+      </section>
+
+      <section id="exercise-10">
+        <h2>Exercise 10: Maintain and update the library</h2>
+        <ol><li>Create a Prompt Change Request.</li><li>Name the one rule or field being changed.</li><li>Record what must remain unchanged.</li><li>Create the proposed new version.</li><li>Retest Meridian and Harbor.</li><li>Approve, revise, reject or roll back.</li><li>Retain the previous approved version.</li><li>Retire duplicated or unsafe prompts with a reason and replacement.</li></ol>
+      </section>
+
+      <section id="success">
+        <h2>Success criteria</h2>
+        <ul class="check-list interactive-checklist">
+          <li><label><input type="checkbox"> one recurring task has a reusable GSCE prompt;</label></li>
+          <li><label><input type="checkbox"> every placeholder is visible and completed before execution;</label></li>
+          <li><label><input type="checkbox"> Meridian and Harbor both passed;</label></li>
+          <li><label><input type="checkbox"> unsupported additions equal zero;</label></li>
+          <li><label><input type="checkbox"> no client-specific information remains in the saved template;</label></li>
+          <li><label><input type="checkbox"> Excel contains the test and version records;</label></li>
+          <li><label><input type="checkbox"> the prompt appears under Your prompts or the fallback storage path is documented;</label></li>
+          <li><label><input type="checkbox"> a previous version is available for rollback.</label></li>
+        </ul>
+      </section>
+
+      <section id="limitations">
+        <h2>Limitations and good practice</h2>
+        <div class="table-wrap"><table><thead><tr><th>Risk</th><th>Control</th></tr></thead><tbody>
+          <tr><td>A saved prompt still produces variable output.</td><td>Keep source and output controls explicit; verify each result.</td></tr>
+          <tr><td>One-case testing hides assumptions.</td><td>Require two meaningfully different cases.</td></tr>
+          <tr><td>Chat context leaks between projects.</td><td>Use a new chat and exclusive source boundary for each test.</td></tr>
+          <tr><td>Client content remains inside the saved prompt.</td><td>Replace it with placeholders before saving.</td></tr>
+          <tr><td>A newer version performs worse.</td><td>Retest both cases and retain rollback.</td></tr>
+          <tr><td>Prompt Lab or bookmark is unavailable.</td><td>Use the Excel library as source of truth and copy approved prompts manually.</td></tr>
+          <tr><td>Team sharing is mistaken for approval.</td><td>Use status, owner and version fields in the controlled library.</td></tr>
+        </tbody></table></div>
+      </section>
+
+      <section id="resources">
+        <h2>Microsoft documentation</h2>
+        <ul>
+          <li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/save-your-favorite-prompts-to-use-again">Save your favorite prompts to use again</a></li>
+          <li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/get-started-writing-prompts-in-microsoft-365-copilot">Get started writing prompts in Microsoft Copilot</a></li>
+          <li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/edit-a-copilot-prompt-to-make-it-your-own">Edit a Copilot prompt to make it your own</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/copilot-prompt-gallery">Understand Prompt Gallery in Copilot</a></li>
+          <li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/share-your-best-prompts-with-others">Share your best prompts with others</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <aside class="toc" aria-label="On this page"><p>On this page</p><nav>
+      <a href="#downloads">Downloads</a><a href="#architecture">Storage model</a><a href="#starter-library">Starter library</a><a href="#prerequisites">Prerequisites</a><a href="#exercise-1">1. Recurring work</a><a href="#exercise-2">2. Baseline</a><a href="#exercise-3">3. GSCE</a><a href="#exercise-4">4. Meridian</a><a href="#exercise-5">5. Harbor</a><a href="#exercise-6">6. Approve</a><a href="#exercise-7">7. Record</a><a href="#bookmark">8. Find bookmark</a><a href="#exercise-9">9. Share</a><a href="#exercise-10">10. Maintain</a><a href="#success">Success</a><a href="#limitations">Limitations</a><a href="#resources">Documentation</a>
+    </nav></aside>
+  </div>
+</body>
+</html>
