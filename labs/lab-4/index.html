@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A hands-on lab for creating, testing and safely updating a reusable Microsoft 365 Copilot tone-of-voice profile.">
+  <title>Lab 4: Teach Copilot Your Tone of Voice</title>
+  <link rel="stylesheet" href="../../assets/styles.css">
+  <script src="../../assets/script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand site-title" href="../" aria-label="Microsoft Copilot Labs">Microsoft Copilot Labs</a>
+      <div class="header-actions">
+        <nav aria-label="Primary navigation"><a class="active" href="../">All labs</a></nav>
+        <a class="datech-corner-logo" href="../" aria-label="DATech — All labs">
+          <span class="brand-logo-crop"><img src="../../assets/datech-logo.jpg" alt="DATech"></span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="breadcrumb-shell" aria-label="Breadcrumb">
+    <a href="../">All labs</a><span aria-hidden="true">/</span><span>Lab 4</span>
+  </div>
+
+  <section class="lab-hero">
+    <div class="wide-shell">
+      <p class="eyebrow">Microsoft 365 Copilot · Lab 4</p>
+      <h1>Teach Copilot Your Tone of Voice</h1>
+      <p>Create an evidence-based tone profile, test it with fixed facts and update one rule without changing everything else.</p>
+      <div class="hero-meta" aria-label="Lab details summary">
+        <span><strong>Level</strong> 200</span>
+        <span><strong>Duration</strong> 45–60 min</span>
+        <span><strong>Format</strong> Guided hands-on lab</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="workshop-bar"><div class="wide-shell"><strong>Workshop path:</strong> Writing samples, tone control, evaluation and versioning</div></div>
+
+  <div class="page-shell">
+    <main id="main" class="article">
+      <section id="lab-details">
+        <h2>Lab details</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Level</th><th>Persona</th><th>Duration</th><th>Purpose</th></tr></thead>
+            <tbody><tr><td>200</td><td>Consultant, business analyst, project manager, product owner</td><td>45–60 minutes</td><td>Build a reusable voice profile and control later updates with evidence, one-parameter testing and rollback.</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="downloads">
+        <h2>Download the lab files</h2>
+        <p>Download the participant files before starting. The sample pack is the evidence source; the Project Atlas case must remain fixed throughout the comparison.</p>
+        <ul>
+          <li><a href="downloads/Lab_4_Hanna_Tone_of_Voice_Sample_Pack.docx" download><strong>Hanna Tone-of-Voice Sample Pack</strong> (.docx)</a> — approved, redacted consulting examples.</li>
+          <li><a href="downloads/Lab_4_Project_Atlas_Communication_Case.docx" download><strong>Project Atlas Communication Case</strong> (.docx)</a> — fixed facts and audience variants.</li>
+          <li><a href="downloads/Lab_4_Tone_Profile_and_Change_Control_Template.docx" download><strong>Tone Profile and Change-Control Template</strong> (.docx)</a> — human approval and version record.</li>
+          <li><a href="downloads/Lab_4_Tone_Evaluation_and_Version_Scorecard.xlsx" download><strong>Tone Evaluation and Version Scorecard</strong> (.xlsx)</a> — formulas, scoring, rule review and rollback history.</li>
+          <li><a href="downloads/Lab_4_Tone_of_Voice_Prompt_Card.pdf" download><strong>Tone-of-Voice Prompt Card</strong> (.pdf)</a> — reusable analysis, drafting and update prompts.</li>
+          <li><a href="downloads/Lab_4_Participant_Workbook.pdf" download><strong>Participant Workbook</strong> (.pdf)</a> — complete exercise instructions and worksheets.</li>
+        </ul>
+        <details>
+          <summary><strong>Trainer-only file</strong></summary>
+          <p><a href="downloads/Lab_4_TRAINER_ONLY_Demo_and_Answer_Key.pdf" download>Trainer Demo and Answer Key (.pdf)</a> contains the suggested profile, expected findings and model comparisons. Keep it separate from participant files.</p>
+        </details>
+        <div class="callout note"><div class="callout-label">Synthetic and redacted data</div><p>The case is fictional and the writing samples are redacted workshop examples. Do not upload confidential customer or production information.</p></div>
+      </section>
+
+      <section id="central-rule">
+        <h2>The central control rule</h2>
+        <div class="callout important"><div class="callout-label">Change one parameter at a time</div><p>When testing a tone update, keep the source facts, audience, purpose, format, length and all other tone rules unchanged. Otherwise you cannot tell which change caused the different result.</p></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Stable voice</th><th>Adaptive tone</th><th>Never invent</th></tr></thead>
+            <tbody><tr><td>Clear, practical, outcome-led, evidence-aware and collaborative.</td><td>Warmth, detail and terminology may adapt to the audience and situation.</td><td>Facts, decisions, owners, deadlines, risks or confidence that are not supported by the source.</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="objectives">
+        <h2>Learning objectives</h2>
+        <p>After completing this lab, you will be able to:</p>
+        <ul class="check-list">
+          <li>select suitable samples without exposing sensitive information;</li>
+          <li>ask Copilot to identify patterns rather than imitate exact sentences;</li>
+          <li>accept, edit or reject every proposed tone rule;</li>
+          <li>create a concise, reusable tone profile with explicit boundaries;</li>
+          <li>apply the profile in Copilot Chat or a Copilot Notebook;</li>
+          <li>score baseline, v1.0 and v1.1 against the same fixed case;</li>
+          <li>update exactly one rule and retain the prior approved version;</li>
+          <li>adapt tone by audience without changing the underlying facts.</li>
+        </ul>
+      </section>
+
+      <section id="scenario">
+        <h2>Running scenario</h2>
+        <p>You are an independent consultant and business analyst. You repeatedly prepare project updates, requirements, meeting follow-ups and decision material. Copilot can draft faster, but its default output often sounds generic, too formal or unlike you.</p>
+        <p>You will derive a controlled profile from approved samples, apply it to a Project Atlas client update and then process one piece of feedback: the message opening and closing should feel slightly warmer for an existing client.</p>
+        <div class="callout tip"><div class="callout-label">What remains fixed</div><p>The Project Atlas facts, audience, purpose, length, directness, structure, owner and deadline remain unchanged. Only opening and closing warmth may change from v1.0 to v1.1.</p></div>
+      </section>
+
+      <section id="prerequisites">
+        <h2>Prerequisites</h2>
+        <ul>
+          <li>A work or school account with Microsoft Copilot Chat.</li>
+          <li>The six participant downloads above.</li>
+          <li>Optional: access to Copilot Notebooks.</li>
+          <li>Optional: permission to save custom instructions or saved prompts in your tenant.</li>
+          <li>Approximately 60 minutes.</li>
+        </ul>
+        <div class="callout warning"><div class="callout-label">Interface availability</div><p>Custom instructions, saved prompts and Notebooks can depend on licence, tenant policy and rollout. The lab includes a copy-and-paste profile path that works when those features are unavailable.</p></div>
+      </section>
+
+      <section id="exercise-1">
+        <h2>Exercise 1: Produce the baseline</h2>
+        <ol>
+          <li>Open the Project Atlas Communication Case.</li>
+          <li>Start a new Copilot Chat without referencing any writing samples or tone profile.</li>
+          <li>Run the baseline prompt below.</li>
+          <li>Paste the result into the Participant Workbook and score it in the Excel <strong>Output Scores</strong> sheet.</li>
+        </ol>
+        <div class="prompt-block"><div class="prompt-head"><span>Baseline draft</span><button class="copy-button" type="button">Copy</button></div><pre><code>Using only the Project Atlas case facts, draft a client update of 140–180 words.
+
+Audience: existing client project sponsor.
+Purpose: explain the current UAT position, the open restriction and the next action.
+
+Do not invent facts, owners, dates or decisions.</code></pre></div>
+      </section>
+
+      <section id="exercise-2">
+        <h2>Exercise 2: Find candidate patterns</h2>
+        <ol>
+          <li>Open the Hanna Tone-of-Voice Sample Pack.</li>
+          <li>Attach or reference only that file in a new Copilot Chat.</li>
+          <li>Run the pattern-analysis prompt.</li>
+          <li>Copy each candidate into the Excel <strong>Rule Review</strong> sheet.</li>
+        </ol>
+        <div class="prompt-block"><div class="prompt-head"><span>Evidence-based pattern analysis</span><button class="copy-button" type="button">Copy</button></div><pre><code>Analyse only the attached approved writing samples.
+
+Identify recurring patterns in:
+- message opening and ordering;
+- level of context;
+- sentence length and directness;
+- use of bullets and headings;
+- treatment of facts, recommendations and uncertainty;
+- technical language;
+- calls to action and closings.
+
+For every proposed rule, cite at least two sample IDs when possible.
+Label the evidence Consistent or Uncertain.
+Separate stable voice patterns from audience-dependent tone choices.
+Do not copy distinctive phrases or infer personality traits that the samples do not prove.</code></pre></div>
+      </section>
+
+      <section id="exercise-3">
+        <h2>Exercise 3: Apply human validation</h2>
+        <p>Copilot proposes patterns; you decide whether each is a real rule. In the <strong>Rule Review</strong> sheet, choose Accept, Edit, Reject or Insufficient evidence.</p>
+        <div class="table-wrap"><table><thead><tr><th>Decision</th><th>Use when</th></tr></thead><tbody>
+          <tr><td><strong>Accept</strong></td><td>The pattern is supported across samples and should guide future drafts.</td></tr>
+          <tr><td><strong>Edit</strong></td><td>The pattern is useful but too absolute, vague or audience-specific.</td></tr>
+          <tr><td><strong>Reject</strong></td><td>The proposal is case-specific, contradictory or unlike your intended voice.</td></tr>
+          <tr><td><strong>Insufficient evidence</strong></td><td>The available samples do not support a confident rule.</td></tr>
+        </tbody></table></div>
+        <div class="callout note"><div class="callout-label">Common false rule</div><p>“Always use bullets” is too absolute. Use bullets when they improve scanning or separate several actions; a one-sentence update may not need them.</p></div>
+      </section>
+
+      <section id="exercise-4">
+        <h2>Exercise 4: Build tone profile v1.0</h2>
+        <p>Copy only approved or edited rules into the Tone Profile and Change-Control Template. Then ask Copilot to compress them into a reusable instruction.</p>
+        <div class="prompt-block"><div class="prompt-head"><span>Create the controlled profile</span><button class="copy-button" type="button">Copy</button></div><pre><code>Using only the human-approved rules below, create Tone Profile v1.0.
+
+Structure it as:
+1. Stable voice
+2. Default writing rules
+3. Audience adaptations
+4. Words or patterns to avoid
+5. Factual and governance boundaries
+6. Final self-check
+
+Keep the complete instruction under 1,500 characters where possible.
+Do not add a rule that was not approved.
+Do not tell Copilot to copy sample phrases exactly.
+
+[PASTE APPROVED RULES]</code></pre></div>
+        <p>Store the complete approved instruction in the Word template and in the Excel <strong>Tone Versions</strong> sheet as <strong>v1.0</strong>.</p>
+      </section>
+
+      <section id="exercise-5">
+        <h2>Exercise 5: Apply v1.0 in Copilot</h2>
+        <h3>Option A: Use the profile in a prompt</h3>
+        <ol>
+          <li>Open a new Copilot Chat and attach the Project Atlas case.</li>
+          <li>Paste the complete v1.0 profile above the drafting request.</li>
+          <li>Generate the same 140–180 word client update.</li>
+          <li>Score it in the Excel workbook without changing the case or audience.</li>
+        </ol>
+        <h3>Option B: Save custom instructions</h3>
+        <ol>
+          <li>In Microsoft 365 Copilot, select <strong>Settings and more (…)</strong>.</li>
+          <li>Open <strong>Chat settings</strong>, then <strong>Personalization</strong>.</li>
+          <li>Open <strong>Custom instructions</strong> and select <strong>Edit instructions</strong>.</li>
+          <li>Paste the approved v1.0 instruction and select <strong>Save</strong>.</li>
+          <li>Start a new chat and run the fixed Project Atlas task.</li>
+        </ol>
+        <h3>Option C: Use a Copilot Notebook</h3>
+        <ol>
+          <li>Create or open a Copilot Notebook for the tone experiment.</li>
+          <li>Add the sample pack, Project Atlas case and approved Tone Profile document as references.</li>
+          <li>Select <strong>More options (…)</strong> in the Notebook.</li>
+          <li>Select <strong>Instructions</strong>.</li>
+          <li>Paste the approved v1.0 profile and select <strong>Save</strong>.</li>
+          <li>Ask the Notebook to draft the fixed Project Atlas client update.</li>
+        </ol>
+        <div class="callout important"><div class="callout-label">Do not combine paths during the test</div><p>Use one active source of tone instruction for each comparison. Duplicate or conflicting instructions make the result difficult to interpret.</p></div>
+      </section>
+
+      <section id="exercise-6">
+        <h2>Exercise 6: Score v1.0 against the baseline</h2>
+        <p>In the Excel <strong>Output Scores</strong> sheet, score both drafts from 1 to 5 for factual fidelity, outcome first, warmth, directness, clarity, audience fit and minimal editing. Record unsupported additions separately.</p>
+        <ul>
+          <li>Approve only if factual fidelity remains strong and unsupported additions equal zero.</li>
+          <li>A more pleasant draft is not automatically better.</li>
+          <li>If v1.0 changes facts or weakens clarity, revise the profile before continuing.</li>
+        </ul>
+      </section>
+
+      <section id="exercise-7">
+        <h2>Exercise 7: Define one requested update</h2>
+        <p>The stakeholder feedback is:</p>
+        <blockquote>“The content is clear, but the opening and closing still feel slightly formal for an existing client.”</blockquote>
+        <p>Complete change request <strong>TCR-001</strong> in the Excel workbook. The proposed change is limited to opening and closing warmth.</p>
+        <div class="table-wrap"><table><thead><tr><th>Change</th><th>Must remain unchanged</th></tr></thead><tbody><tr><td>For existing clients, use a short natural update at the opening and a brief collaborative invitation at the close when appropriate.</td><td>Facts, audience, purpose, length, directness, structure, owner, deadline and all other profile rules.</td></tr></tbody></table></div>
+      </section>
+
+      <section id="exercise-8">
+        <h2>Exercise 8: Run the one-parameter test</h2>
+        <div class="prompt-block"><div class="prompt-head"><span>Controlled rewrite</span><button class="copy-button" type="button">Copy</button></div><pre><code>Rewrite the v1.0 Project Atlas client update using one approved change only:
+
+For an existing client, make the opening slightly more natural and the closing slightly more collaborative.
+
+Keep unchanged:
+- every fact, owner, date and restriction;
+- the existing-client audience;
+- purpose and 140–180 word length;
+- directness, clarity, structure and all other v1.0 rules.
+
+Return:
+1. Revised draft
+2. Exact sentences changed
+3. Confirmation that no other parameter changed
+4. Any unintended difference you detected</code></pre></div>
+        <p>Record exact before-and-after sentences in the Excel <strong>Before After</strong> sheet. If another parameter changed, reject the result and rerun the test.</p>
+      </section>
+
+      <section id="exercise-9">
+        <h2>Exercise 9: Approve and install v1.1</h2>
+        <ol>
+          <li>Score the revised output in <strong>Output Scores</strong>.</li>
+          <li>Confirm warmth improved and the other dimensions remained stable or improved.</li>
+          <li>Confirm unsupported additions equal zero.</li>
+          <li>Approve TCR-001 or mark it Revise, Reject or Roll back.</li>
+          <li>If approved, copy the complete profile and change only the relevant rule.</li>
+          <li>Save the complete result as <strong>v1.1</strong>. Do not overwrite v1.0.</li>
+          <li>Update the active prompt, Custom Instructions or Notebook Instructions with the complete approved v1.1 text.</li>
+        </ol>
+        <div class="callout warning"><div class="callout-label">Replace the complete instruction</div><p>Do not paste only “be warmer” as an extra instruction. Replace the complete active profile with approved v1.1 so the governing rules remain clear and non-contradictory.</p></div>
+      </section>
+
+      <section id="exercise-10">
+        <h2>Exercise 10: Test audience adaptation</h2>
+        <p>Using v1.1 and the same facts, create three versions: existing client, technical lead and executive sponsor. Then compare them.</p>
+        <div class="prompt-block"><div class="prompt-head"><span>Audience comparison</span><button class="copy-button" type="button">Copy</button></div><pre><code>Using the approved Tone Profile v1.1 and only the Project Atlas case facts, create three short updates for:
+1. Existing client project sponsor
+2. Technical lead
+3. Executive sponsor
+
+Keep the facts and decision status identical.
+Adapt only the level of detail, terminology and emphasis required by each audience.
+
+After the drafts, list:
+- what remained part of the stable voice;
+- what changed as audience-dependent tone;
+- any fact that could not be preserved consistently.</code></pre></div>
+        <div class="callout tip"><div class="callout-label">Teaching point</div><p>Your voice can remain stable while tone adapts. A technical audience may need more detail; an executive may need the decision and impact first.</p></div>
+      </section>
+
+      <section id="success">
+        <h2>Success criteria</h2>
+        <ul class="check-list interactive-checklist">
+          <li><label><input type="checkbox"> the baseline was created without a tone profile;</label></li>
+          <li><label><input type="checkbox"> every candidate tone rule has sample evidence and a human decision;</label></li>
+          <li><label><input type="checkbox"> the complete approved v1.0 profile is stored;</label></li>
+          <li><label><input type="checkbox"> v1.0 was tested against the fixed Project Atlas case;</label></li>
+          <li><label><input type="checkbox"> TCR-001 changes only opening and closing warmth;</label></li>
+          <li><label><input type="checkbox"> exact before-and-after sentences are recorded;</label></li>
+          <li><label><input type="checkbox"> v1.1 contains no unsupported facts and passes the scorecard controls;</label></li>
+          <li><label><input type="checkbox"> v1.0 remains available as the rollback target;</label></li>
+          <li><label><input type="checkbox"> the audience test preserves the same facts across all three drafts.</label></li>
+        </ul>
+      </section>
+
+      <section id="limitations">
+        <h2>Limitations and good practice</h2>
+        <div class="table-wrap"><table><thead><tr><th>Risk or limitation</th><th>Control</th></tr></thead><tbody>
+          <tr><td>Too few or too-similar samples create a false rule.</td><td>Use several approved examples from different communication tasks.</td></tr>
+          <tr><td>Copilot may overfit to distinctive phrases.</td><td>Ask for patterns, not imitation, and reject copied wording.</td></tr>
+          <tr><td>A tone profile can conflict with the current task.</td><td>State audience, purpose and format in the task prompt; keep the profile concise.</td></tr>
+          <tr><td>Custom instructions may affect unrelated chats.</td><td>Use a Notebook or paste the profile per task when the context should stay isolated.</td></tr>
+          <tr><td>Several simultaneous changes make comparison invalid.</td><td>Change one parameter and keep the fixed case unchanged.</td></tr>
+          <tr><td>A warmer version may become longer or less direct.</td><td>Score every output on multiple dimensions, not warmth alone.</td></tr>
+          <tr><td>AI can still invent or distort facts.</td><td>Compare the final draft with the source and reject unsupported additions.</td></tr>
+          <tr><td>Sample content can contain sensitive information.</td><td>Use approved, redacted examples and follow organisational data rules.</td></tr>
+        </tbody></table></div>
+      </section>
+
+      <section id="debrief">
+        <h2>Test your understanding</h2>
+        <ol>
+          <li>Why should Copilot propose rules but a human approve them?</li>
+          <li>What makes a tone rule too absolute?</li>
+          <li>Why must the Project Atlas facts and audience remain fixed during the v1.0–v1.1 comparison?</li>
+          <li>What evidence would make you reject a warmer output?</li>
+          <li>When is a Notebook better than account-wide custom instructions?</li>
+          <li>How would you roll back after an unsuccessful tone update?</li>
+        </ol>
+        <div class="callout success"><div class="callout-label">Lab complete</div><p>You have created an evidence-based profile, installed it through the available Copilot path, evaluated it and updated one rule with traceable version control.</p></div>
+      </section>
+
+      <section id="resources">
+        <h2>Microsoft documentation</h2>
+        <ul>
+          <li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/customize-how-microsoft-365-copilot-responds-to-you">Customize how Microsoft 365 Copilot responds to you</a></li>
+          <li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/provide-custom-instructions-for-your-microsoft-copilot-notebook">Provide custom instructions for your Microsoft Copilot Notebook</a></li>
+          <li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/evaluate-copilot-output-for-clarity-accuracy-tone-and-coverage">Evaluate Copilot output for clarity, accuracy, tone and coverage</a></li>
+          <li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/save-your-favorite-prompts-to-use-again">Save your favorite prompts to use again</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <aside class="toc" aria-label="On this page">
+      <p>On this page</p>
+      <nav>
+        <a href="#downloads">Downloads</a>
+        <a href="#central-rule">Central rule</a>
+        <a href="#objectives">Objectives</a>
+        <a href="#scenario">Scenario</a>
+        <a href="#prerequisites">Prerequisites</a>
+        <a href="#exercise-1">1. Baseline</a>
+        <a href="#exercise-2">2. Find patterns</a>
+        <a href="#exercise-3">3. Validate rules</a>
+        <a href="#exercise-4">4. Build v1.0</a>
+        <a href="#exercise-5">5. Apply v1.0</a>
+        <a href="#exercise-6">6. Score v1.0</a>
+        <a href="#exercise-7">7. Define update</a>
+        <a href="#exercise-8">8. One-parameter test</a>
+        <a href="#exercise-9">9. Install v1.1</a>
+        <a href="#exercise-10">10. Audience test</a>
+        <a href="#success">Success criteria</a>
+        <a href="#limitations">Limitations</a>
+        <a href="#resources">Documentation</a>
+      </nav>
+    </aside>
+  </div>
+</body>
+</html>
