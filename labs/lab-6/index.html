@@ -82,7 +82,7 @@
       <section id="prerequisites">
         <h2>Prerequisites</h2>
         <ul><li>PowerPoint for Microsoft 365 and an eligible Microsoft 365 Copilot licence.</li><li>Permission to use Copilot with the supplied files.</li><li>All participant downloads above.</li><li>Excel desktop or Excel for the web for the source-to-slide audit.</li></ul>
-        <div class="callout warning"><div class="callout-label">Capability check</div><p>Copilot controls, file-based creation, Designer and the PowerPoint Agent can vary by licence, tenant policy, application and rollout. A manual fallback is included.</p></div>
+        <div class="callout warning"><div class="callout-label">Capability check</div><p>Copilot controls, file-based creation, Designer and the PowerPoint Agent can vary by licence, tenant policy, application and rollout. Excel Edit mode and PowerPoint Copilot are required for the no-manual-transfer workflow.</p></div>
       </section>
 
       <section id="exercise-1">
@@ -99,7 +99,7 @@ First propose the slide structure and evidence required for each slide.</code></
 
       <section id="exercise-2">
         <h2>Exercise 2: Build the evidence and contradiction register</h2>
-        <ol><li>Review the Project Brief, Readiness Tracker, Meeting Notes and Change Notice.</li><li>Record each important claim in the Source-to-Slide Verification workbook.</li><li>Classify it as confirmed fact, forecast, proposal, contradiction, unsupported or not confirmed.</li><li>Do not resolve a conflict merely because one value looks newer or more convenient.</li></ol>
+        <ol><li>Open Source-to-Slide Verification.xlsx in Excel and select Copilot <strong>Edit</strong> mode.</li><li>Reference the Project Brief, Readiness Tracker, Meeting Notes and Change Notice.</li><li>Run the direct-edit prompt below and review the planned target ranges.</li><li>Apply only when Copilot keeps conflicts separate and does not resolve them by preference.</li></ol>
         <div class="prompt-block"><div class="prompt-head"><span>Evidence-register prompt</span><button class="copy-button" type="button">Copy</button></div><pre><code>Review the attached Project Northstar files. Create an evidence register with:
 - claim or metric;
 - value;
@@ -110,7 +110,11 @@ First propose the slide structure and evidence required for each slide.</code></
 - missing information;
 - confidence.
 
-Create a separate contradiction register. Do not select one conflicting value yourself.</code></pre></div>
+Create a separate contradiction register. Do not select one conflicting value yourself.
+
+Write the verified rows directly into Evidence Register and Contradictions in the open workbook.
+Do not edit any other sheet, formula, validation or formatting.
+Show the target ranges and row counts, wait for confirmation, then apply.</code></pre></div>
         <div class="callout important"><div class="callout-label">Authority rule</div><p>The approved Change Notice overrides only the field it explicitly names: the proposed pilot launch date. It does not approve a decision or change any other field.</p></div>
       </section>
 
@@ -132,7 +136,7 @@ Do not add facts from general knowledge or make the final committee decision.</c
 
       <section id="exercise-4">
         <h2>Exercise 4: Audit every claim before editing</h2>
-        <ol><li>Open the <strong>Slide Audit</strong> sheet in Source-to-Slide Verification.xlsx.</li><li>Check every visible number, date, status, recommendation and owner.</li><li>Check speaker notes as well as slide text.</li><li>Record Pass, Correct or Not confirmed and the exact correction.</li></ol>
+        <ol><li>Open the draft deck and the verification workbook.</li><li>In Excel Edit mode, reference the draft presentation.</li><li>Ask Copilot to write every visible number, date, status, recommendation and owner directly into <strong>Slide Traceability</strong>.</li><li>Review slide text and speaker notes, then apply only rows supported by the deck.</li></ol>
         <div class="prompt-block"><div class="prompt-head"><span>Evidence-audit prompt</span><button class="copy-button" type="button">Copy</button></div><pre><code>Audit this presentation against the approved source brief.
 For every claim, number, date or recommendation, list:
 - slide number;
@@ -142,7 +146,9 @@ For every claim, number, date or recommendation, list:
 - required correction.
 
 Flag invented numbers, unsupported benefits, assumed decisions and missing conditions.
-Do not modify the presentation.</code></pre></div>
+Write the audit rows directly into Slide Traceability in the open workbook.
+Do not modify the presentation or any other workbook sheet.
+Show the target range and row count, wait for confirmation, then apply.</code></pre></div>
       </section>
 
       <section id="exercise-5">
@@ -154,13 +160,19 @@ Do not modify the presentation.</code></pre></div>
 Identify every affected slide and speaker-note location.
 Return exact current text, proposed replacement and reason.
 Do not modify anything and do not suggest changes to scope, budget, owners, thresholds, risks or recommendation.</code></pre></div>
-        <ol><li>Copy every proposed location into the Controlled Change Log.</li><li>Compare it with the presentation and Change Notice.</li><li>Reject any unrelated wording, layout or content change.</li><li>Approve only the exact locations where the launch date is relevant.</li></ol>
+        <ol><li>Open the verification workbook in Excel Edit mode and reference the draft deck and Change Notice.</li><li>Ask Copilot to write every proposed location directly into <strong>Change Impact</strong>.</li><li>Review exact current text, replacement, reason and authority.</li><li>Reject unrelated wording, layout or content changes; approve only locations where the launch date is relevant.</li></ol>
+        <div class="prompt-block"><div class="prompt-head"><span>Write the impact assessment directly into Excel</span><button class="copy-button" type="button">Copy</button></div><pre><code>You are editing Lab_6_Source_to_Slide_Verification.xlsx in Excel Edit mode.
+
+Using the referenced draft presentation and Change Notice CN-NS-014, write every proposed launch-date replacement into Change Impact.
+Create one row per location with slide, location, exact current text, exact replacement, reason, authority and Review Status = Pending.
+Do not modify the deck, another workbook sheet, formulas, validation or formatting.
+Show the target range and row count, wait for confirmation, then apply.</code></pre></div>
         <h3>Step 2: Apply only the approved replacements</h3>
         <div class="prompt-block"><div class="prompt-head"><span>Controlled application prompt</span><button class="copy-button" type="button">Copy</button></div><pre><code>Apply only the approved launch-date replacements in the locations I confirm.
 Replace 15 September 2026 with 29 September 2026.
 Do not rewrite surrounding sentences, change layouts, change other dates, add explanations or reformat the presentation.
 Return a before-and-after change log.</code></pre></div>
-        <div class="callout warning"><div class="callout-label">Safer fallback</div><p>If Copilot proposes a broad rewrite, cancel it and replace the verified date manually. A one-value manual edit is safer than an uncontrolled textbox rewrite.</p></div>
+        <div class="callout warning"><div class="callout-label">If the edit is too broad</div><p>Cancel it. Select the exact textbox or slide and ask Copilot again to replace only the approved value. If it still cannot scope the edit, do not apply the change.</p></div>
       </section>
 
       <section id="exercise-6">
@@ -177,7 +189,10 @@ Do not modify the slide until I choose an option.</code></pre></div>
 
       <section id="exercise-7">
         <h2>Exercise 7: Generate and verify speaker notes</h2>
-        <ol><li>In PowerPoint, open the <strong>View</strong> tab.</li><li>Open the <strong>Notes</strong> dropdown.</li><li>Select <strong>Generate speaker notes for current slide</strong> or <strong>Generate speaker notes for all slides</strong>.</li><li>Review the generated notes. Keep useful material and discard unsupported or repetitive text.</li><li>Add a <strong>[Sources]</strong> block to every slide.</li><li>Confirm that no old launch date remains in the notes.</li></ol>
+        <ol><li>In PowerPoint, open the <strong>View</strong> tab.</li><li>Open the <strong>Notes</strong> dropdown.</li><li>Select <strong>Generate speaker notes for current slide</strong> or <strong>Generate speaker notes for all slides</strong>.</li><li>Review the generated notes. Keep useful material and discard unsupported or repetitive text.</li><li>Run the source-block prompt below so Copilot adds the blocks directly.</li><li>Confirm that no old launch date remains in the notes.</li></ol>
+        <div class="prompt-block"><div class="prompt-head"><span>Add source blocks directly in PowerPoint</span><button class="copy-button" type="button">Copy</button></div><pre><code>Add a [Sources] block to the speaker notes of every slide using only NS-01 to NS-04.
+Do not change slide content, layout or existing verified notes.
+Show the proposed slide-to-source mapping first. Wait for confirmation, then apply.</code></pre></div>
         <div class="prompt-block"><div class="prompt-head"><span>Final source check</span><button class="copy-button" type="button">Copy</button></div><pre><code>Check every slide and speaker note against sources NS-01 to NS-04.
 Return Pass, Correct or Not confirmed for each slide.
 Confirm that the old date no longer appears, the new date appears only where relevant and no unrelated content changed.</code></pre></div>
@@ -197,12 +212,12 @@ Confirm that the old date no longer appears, the new date appears only where rel
         <h2>Limitations and troubleshooting</h2>
         <div class="table-wrap"><table><thead><tr><th>Problem</th><th>Control</th></tr></thead><tbody>
           <tr><td>Copilot silently selects one conflicting value.</td><td>Return both sources, dates and authority; require human resolution.</td></tr>
-          <tr><td>Rewrite affects an entire textbox.</td><td>Use an impact check first; approve exact locations or edit the value manually.</td></tr>
+          <tr><td>Rewrite affects an entire textbox.</td><td>Cancel, select the exact location and rerun a one-value Copilot edit. Do not apply a broad rewrite.</td></tr>
           <tr><td>A polished slide makes uncertain evidence look authoritative.</td><td>Keep proposal, forecast and Not confirmed labels visible.</td></tr>
           <tr><td>Corporate branding is not preserved.</td><td>Start from the supplied template and verify layouts after creation.</td></tr>
           <tr><td>A chart contains a wrong number.</td><td>Compare chart labels and source data with the Readiness Tracker.</td></tr>
-          <tr><td>Speaker notes repeat or invent context.</td><td>Review every note and add the exact [Sources] block manually.</td></tr>
-          <tr><td>Create from file is unavailable.</td><td>Create the eight slides manually from the Verified Decision Brief and run the same audit.</td></tr>
+          <tr><td>Speaker notes repeat or invent context.</td><td>Ask Copilot to remove unsupported notes and add the exact verified [Sources] blocks; review before applying.</td></tr>
+          <tr><td>Create from file is unavailable.</td><td>Use the PowerPoint Agent route. If neither creation route exists, pause this Copilot lab instead of rebuilding it by manual transfer.</td></tr>
           <tr><td>PowerPoint Agent is unavailable.</td><td>Use standard Copilot in PowerPoint; the lab outcome is unchanged.</td></tr>
         </tbody></table></div>
       </section>

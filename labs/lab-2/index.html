@@ -12,20 +12,19 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="nav-shell">
-      <a class="brand site-title" href="../" aria-label="Microsoft Copilot Labs">Microsoft Copilot Labs</a>
-      <div class="header-actions">
-        <nav aria-label="Primary navigation">
-          <a class="active" href="../">All labs</a>
-        </nav>
-        <a class="datech-corner-logo" href="../" aria-label="DATech — All labs">
-          <span class="brand-logo-crop"><img src="../../assets/datech-logo.jpg" alt="DATech"></span>
-        </a>
-      </div>
+      <a class="brand" href="../../index.html" aria-label="Microsoft 365 Copilot Workshop Labs home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span>Microsoft 365 Copilot Workshop Labs</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="../../index.html">Home</a>
+        <a class="active" href="../">All labs</a>
+      </nav>
     </div>
   </header>
 
   <div class="breadcrumb-shell" aria-label="Breadcrumb">
-    <a href="../">All labs</a><span aria-hidden="true">/</span><span>Lab 2</span>
+    <a href="../../index.html">Home</a><span aria-hidden="true">/</span><a href="../">All labs</a><span aria-hidden="true">/</span><span>Lab 2</span>
   </div>
 
   <section class="lab-hero">
@@ -123,7 +122,7 @@
         </ul>
         <div class="callout warning">
           <div class="callout-label">Capability check</div>
-          <p>Copilot Chat can compare referenced files and prepare the field-level delta. Direct workbook editing depends on the Excel Copilot experience, licence and tenant settings available to you. If edit mode is unavailable, apply the approved changes manually in Excel, one field at a time.</p>
+          <p>This lab requires <strong>Copilot in Excel Edit mode</strong> for workbook changes. If Edit mode is missing in desktop Excel, open the workbook in Excel for the web and try again. Do not transfer Copilot results into the workbook manually.</p>
         </div>
       </section>
 
@@ -191,12 +190,26 @@ Return: Change ID, Action ID, Classification, Field to change, Current value, Pr
       <section id="exercise-3">
         <h2>Exercise 3: Populate the review queues</h2>
         <ol>
-          <li>Copy each proposed existing-action change into <strong>Field Change Queue</strong>.</li>
-          <li>Use one row per field. If a proposed row contains two changed fields, split it before review.</li>
-          <li>Copy each candidate new action into <strong>New Action Queue</strong>.</li>
-          <li>For every row, record exact evidence and any missing or conflicting information.</li>
-          <li>Do not edit the Action Register yet.</li>
+          <li>Open the supplied workbook in Excel and open Copilot.</li>
+          <li>Select <strong>Edit</strong> mode. Reference the meeting-notes document.</li>
+          <li>Run the direct-edit prompt below. Review the proposed target sheets and row count.</li>
+          <li>Confirm the plan only when every existing-action candidate changes exactly one field.</li>
+          <li>Apply the change, then verify the populated queues. Do not edit the Action Register yet.</li>
         </ol>
+        <div class="prompt-block">
+          <div class="prompt-head"><span>Write candidates directly into Excel</span><button class="copy-button" type="button">Copy</button></div>
+          <pre><code>You are editing Project_Atlas_Field_Level_Action_Register.xlsx in Excel Edit mode.
+
+Using only the referenced Project_Atlas_UAT_Readiness_Meeting_Notes.docx and the current Action Register:
+1. Write one row per UPDATE_FIELD candidate into Field Change Queue.
+2. Write each ADD_ACTION candidate into New Action Queue.
+3. Preserve the exact Action ID and current Excel value.
+4. Fill exact evidence and any missing or conflicting information.
+5. Leave Human Decision as Pending for human review.
+6. Do not edit Action Register, formulas, validation, formatting or any other sheet.
+
+Before editing, show the target sheets, target ranges and planned row count. Wait for my confirmation, then apply.</code></pre>
+        </div>
         <div class="prompt-block">
           <div class="prompt-head"><span>Exception review</span><button class="copy-button" type="button">Copy</button></div>
           <pre><code>Review the proposed queues before any workbook edit.
@@ -229,7 +242,7 @@ Do not edit the workbook. Return only the exceptions and one clarification quest
 
       <section id="exercise-5">
         <h2>Exercise 5: Update the Action Register</h2>
-        <p>Use Excel edit mode if it is available. Otherwise, make the edits manually. In either path, first display the plan and confirm it before any cell changes.</p>
+        <p>Use Copilot in Excel <strong>Edit</strong> mode. First display the exact plan and confirm it before any cell changes. If Edit mode is unavailable, open the file in Excel for the web; do not use a manual transfer fallback.</p>
         <div class="prompt-block">
           <div class="prompt-head"><span>Plan, then edit</span><button class="copy-button" type="button">Copy</button></div>
           <pre><code>Use the approved Field Change Queue and New Action Queue to update the Action Register.
@@ -300,7 +313,7 @@ Do not make further edits.</code></pre>
             <tbody>
               <tr><td>Copilot may summarise a whole row instead of returning a delta.</td><td>Require one output row per changed field and compare the current value first.</td></tr>
               <tr><td>Copilot may infer a missing deadline, owner or priority.</td><td>Use HOLD and ask a clarification question; never replace the current value with an inference.</td></tr>
-              <tr><td>Direct editing capability varies by Excel experience, licence and tenant.</td><td>Separate extraction from approval. Apply approved fields manually when edit mode is unavailable.</td></tr>
+              <tr><td>Excel Edit mode is not visible.</td><td>Open the workbook in Excel for the web, reopen Copilot and select Edit. If the tenant does not provide Edit mode, pause the lab rather than copying results manually.</td></tr>
               <tr><td>Meeting wording can sound like agreement without creating a commitment.</td><td>Require explicit task, owner and required values for ADD_ACTION.</td></tr>
               <tr><td>Shared workbooks may change during review.</td><td>Re-check the current Excel value immediately before applying each approved field change.</td></tr>
               <tr><td>A correct final register can still hide an unsafe process.</td><td>Keep the queues, before snapshot and changed-cell audit as evidence.</td></tr>
@@ -362,6 +375,7 @@ Do not make further edits.</code></pre>
   <footer class="site-footer">
     <div class="wide-shell">
       <a href="../">← All labs</a>
+      <span>Verify AI-generated results before use.</span>
     </div>
   </footer>
 </body>

@@ -122,7 +122,7 @@
           <li>Open the Project Atlas Communication Case.</li>
           <li>Start a new Copilot Chat without referencing any writing samples or tone profile.</li>
           <li>Run the baseline prompt below.</li>
-          <li>Paste the result into the Participant Workbook and score it in the Excel <strong>Output Scores</strong> sheet.</li>
+          <li>Open the Excel scorecard in Edit mode and ask Copilot to write the baseline draft and scores directly into <strong>Output Scores</strong>. Review the target row before applying.</li>
         </ol>
         <div class="prompt-block"><div class="prompt-head"><span>Baseline draft</span><button class="copy-button" type="button">Copy</button></div><pre><code>Using only the Project Atlas case facts, draft a client update of 140–180 words.
 
@@ -138,7 +138,7 @@ Do not invent facts, owners, dates or decisions.</code></pre></div>
           <li>Open the Hanna Tone-of-Voice Sample Pack.</li>
           <li>Attach or reference only that file in a new Copilot Chat.</li>
           <li>Run the pattern-analysis prompt.</li>
-          <li>Copy each candidate into the Excel <strong>Rule Review</strong> sheet.</li>
+          <li>Open the Excel scorecard in Edit mode and run the direct-edit prompt below.</li>
         </ol>
         <div class="prompt-block"><div class="prompt-head"><span>Evidence-based pattern analysis</span><button class="copy-button" type="button">Copy</button></div><pre><code>Analyse only the attached approved writing samples.
 
@@ -155,6 +155,15 @@ For every proposed rule, cite at least two sample IDs when possible.
 Label the evidence Consistent or Uncertain.
 Separate stable voice patterns from audience-dependent tone choices.
 Do not copy distinctive phrases or infer personality traits that the samples do not prove.</code></pre></div>
+        <div class="prompt-block"><div class="prompt-head"><span>Write candidates directly into Rule Review</span><button class="copy-button" type="button">Copy</button></div><pre><code>You are editing Lab_4_Tone_Evaluation_and_Version_Scorecard.xlsx in Excel Edit mode.
+
+Analyse only the referenced Lab_4_Hanna_Tone_of_Voice_Sample_Pack.docx.
+Write each proposed rule as one new row in Rule Review.
+Populate Rule ID, proposed rule, sample evidence, stable or audience-dependent, confidence and rationale.
+Leave Human Decision blank or Pending for human review.
+Do not edit any other sheet, formula, validation or formatting.
+
+Show the target range and planned row count. Wait for confirmation, then apply.</code></pre></div>
       </section>
 
       <section id="exercise-3">
@@ -171,7 +180,7 @@ Do not copy distinctive phrases or infer personality traits that the samples do 
 
       <section id="exercise-4">
         <h2>Exercise 4: Build tone profile v1.0</h2>
-        <p>Copy only approved or edited rules into the Tone Profile and Change-Control Template. Then ask Copilot to compress them into a reusable instruction.</p>
+        <p>Open the Tone Profile and Change-Control Template in Word and use <strong>Edit with Copilot</strong> to build the profile directly from the accepted or edited rows in the Excel Rule Review sheet.</p>
         <div class="prompt-block"><div class="prompt-head"><span>Create the controlled profile</span><button class="copy-button" type="button">Copy</button></div><pre><code>Using only the human-approved rules below, create Tone Profile v1.0.
 
 Structure it as:
@@ -186,8 +195,9 @@ Keep the complete instruction under 1,500 characters where possible.
 Do not add a rule that was not approved.
 Do not tell Copilot to copy sample phrases exactly.
 
-[PASTE APPROVED RULES]</code></pre></div>
-        <p>Store the complete approved instruction in the Word template and in the Excel <strong>Tone Versions</strong> sheet as <strong>v1.0</strong>.</p>
+Use only rows in the referenced Excel Rule Review sheet where Human Decision is Accept or Edit.
+Preview the changes and wait for confirmation before keeping them.</code></pre></div>
+        <p>After confirming the Word preview, open the scorecard in Excel Edit mode and ask Copilot to record the complete approved instruction or controlled document reference in <strong>Tone Versions</strong> as <strong>v1.0</strong>.</p>
       </section>
 
       <section id="exercise-5">
@@ -221,7 +231,7 @@ Do not tell Copilot to copy sample phrases exactly.
 
       <section id="exercise-6">
         <h2>Exercise 6: Score v1.0 against the baseline</h2>
-        <p>In the Excel <strong>Output Scores</strong> sheet, score both drafts from 1 to 5 for factual fidelity, outcome first, warmth, directness, clarity, audience fit and minimal editing. Record unsupported additions separately.</p>
+        <p>Open the scorecard in Excel Edit mode and ask Copilot to write both drafts, the 1-to-5 criterion scores and unsupported-addition count directly into <strong>Output Scores</strong>. Review the two target rows before applying.</p>
         <ul>
           <li>Approve only if factual fidelity remains strong and unsupported additions equal zero.</li>
           <li>A more pleasant draft is not automatically better.</li>
@@ -254,17 +264,17 @@ Return:
 2. Exact sentences changed
 3. Confirmation that no other parameter changed
 4. Any unintended difference you detected</code></pre></div>
-        <p>Record exact before-and-after sentences in the Excel <strong>Before After</strong> sheet. If another parameter changed, reject the result and rerun the test.</p>
+        <p>Ask Copilot in Excel Edit mode to write the exact before-and-after sentences directly into <strong>Before After</strong> and identify every changed parameter. If another parameter changed, reject the result and rerun the test.</p>
       </section>
 
       <section id="exercise-9">
         <h2>Exercise 9: Approve and install v1.1</h2>
         <ol>
-          <li>Score the revised output in <strong>Output Scores</strong>.</li>
+          <li>Ask Copilot in Excel Edit mode to add the revised output and scores to <strong>Output Scores</strong>.</li>
           <li>Confirm warmth improved and the other dimensions remained stable or improved.</li>
           <li>Confirm unsupported additions equal zero.</li>
           <li>Approve TCR-001 or mark it Revise, Reject or Roll back.</li>
-          <li>If approved, copy the complete profile and change only the relevant rule.</li>
+          <li>If approved, ask Edit with Copilot in Word to create v1.1 by changing only the relevant rule in the complete profile.</li>
           <li>Save the complete result as <strong>v1.1</strong>. Do not overwrite v1.0.</li>
           <li>Update the active prompt, Custom Instructions or Notebook Instructions with the complete approved v1.1 text.</li>
         </ol>

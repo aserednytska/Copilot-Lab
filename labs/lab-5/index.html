@@ -158,7 +158,18 @@ Write "Not confirmed" when evidence is missing.</code></pre></div>
 
       <section id="exercise-7">
         <h2>Exercise 7: Record the controlled prompt</h2>
-        <ol><li>Open <strong>Prompt Catalogue</strong>.</li><li>Confirm Prompt ID, category, outcome, application and owner.</li><li>Paste the complete reusable prompt into <strong>Prompt Text</strong>.</li><li>Record both cases in <strong>Test Log</strong>.</li><li>Change status to Approved only after both results pass.</li><li>Record version v1.0 and the last-tested date.</li></ol>
+        <ol><li>Open the prompt-library workbook in Excel.</li><li>Open Copilot and select <strong>Edit</strong> mode.</li><li>Run the direct-edit prompt below.</li><li>Review the proposed rows and confirm that only BA-03 will change.</li><li>Apply the change only after both test results pass.</li></ol>
+        <div class="prompt-block"><div class="prompt-head"><span>Write the approved prompt directly into Excel</span><button class="copy-button" type="button">Copy</button></div><pre><code>You are editing Lab_5_Consultant_and_BA_Prompt_Library.xlsx in Excel Edit mode.
+
+Update BA-03 only:
+- Prompt Catalogue: metadata, status, version, owner and last-tested date
+- Prompt Text: the complete reusable prompt with placeholders
+- Test Log: Meridian and Harbor results, scores, evidence and unsupported additions
+- Version History: v1.0, change request PCR-001 and rollback to v0.1
+
+Set status to Approved only if both cases pass and unsupported additions equal zero.
+Do not modify another prompt, formula, validation or formatting.
+Show every target sheet, row and cell before editing. Wait for confirmation, then apply.</code></pre></div>
       </section>
 
       <section id="bookmark">
@@ -197,7 +208,7 @@ Write "Not confirmed" when evidence is missing.</code></pre></div>
           <li>Look for <strong>More actions (...)</strong> on the prompt message and check whether Save prompt is inside it.</li>
           <li>Try Microsoft 365 Copilot on the web if you are using another application.</li>
           <li>Open Prompt Lab directly and check whether you can create or manage prompts there.</li>
-          <li>If saving is unavailable, keep Excel as the controlled library and copy the prompt when needed.</li>
+          <li>If saving is unavailable, keep Excel as the controlled library and reference the workbook from Copilot; do not maintain a second manually copied prompt.</li>
         </ol>
         <div class="callout note"><div class="callout-label">Current Microsoft behaviour</div><p>Microsoft documents the save path as: run the prompt successfully, hover over the prompt to reveal the bookmark, select Save prompt, and access it later from Prompt Lab under your saved prompts.</p></div>
       </section>
@@ -234,7 +245,7 @@ Write "Not confirmed" when evidence is missing.</code></pre></div>
           <tr><td>Chat context leaks between projects.</td><td>Use a new chat and exclusive source boundary for each test.</td></tr>
           <tr><td>Client content remains inside the saved prompt.</td><td>Replace it with placeholders before saving.</td></tr>
           <tr><td>A newer version performs worse.</td><td>Retest both cases and retain rollback.</td></tr>
-          <tr><td>Prompt Lab or bookmark is unavailable.</td><td>Use the Excel library as source of truth and copy approved prompts manually.</td></tr>
+          <tr><td>Prompt Lab or bookmark is unavailable.</td><td>Use the Excel library as the source of truth and reference the approved prompt row/file from Copilot.</td></tr>
           <tr><td>Team sharing is mistaken for approval.</td><td>Use status, owner and version fields in the controlled library.</td></tr>
         </tbody></table></div>
       </section>
