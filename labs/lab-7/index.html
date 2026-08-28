@@ -7,7 +7,6 @@
   <title>Lab 7: Build a Live SharePoint Dashboard with Copilot</title>
   <link rel="stylesheet" href="../../assets/styles.css">
   <script src="../../assets/script.js" defer></script>
-  <script src="dashboard.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -240,29 +239,11 @@ Do not treat a visually prominent chart as proof that the source data is correct
 
       <section id="dashboard-example">
         <h2>Example: how the finished dashboard can look</h2>
-        <p>This interactive example uses the same Project Aurora data. It demonstrates one possible result from Copilot, including the one-field test. It is not connected to your SharePoint tenant and does not replace validation.</p>
-        <div class="dashboard-example" data-aurora-dashboard>
-          <div class="dash-title-row"><div><p class="dash-eyebrow">Project Aurora</p><h3>IT Portfolio Health</h3><p>Source: IT Project Delivery Register | As of 28 August 2026</p></div><button class="dash-action" type="button" data-simulate>Simulate IT-017 change</button></div>
-          <p class="dash-status" data-simulation-status>Example baseline: IT-017 is Amber.</p>
-          <div class="dash-filters" aria-label="Dashboard filters">
-            <label>Search<input type="search" data-filter="search" placeholder="ID, project or manager"></label>
-            <label>Department<select data-filter="department"><option value="">All</option></select></label>
-            <label>Stage<select data-filter="stage"><option value="">All</option></select></label>
-            <label>RAG<select data-filter="rag"><option value="">All</option></select></label>
-            <label>Decision<select data-filter="decision"><option value="">All</option><option>Yes</option><option>No</option></select></label>
-            <button type="button" class="dash-reset" data-reset>Reset filters</button>
-          </div>
-          <div class="dash-kpis" data-kpis></div>
-          <div class="dash-grid">
-            <article class="dash-panel"><h4>RAG distribution</h4><div data-rag-chart></div></article>
-            <article class="dash-panel"><h4>Projects by stage</h4><div data-stage-chart></div></article>
-            <article class="dash-panel dash-panel-wide"><h4>Approved budget versus forecast</h4><div data-budget></div><p class="dash-panel-note">Financial totals contain known invalid and conflicting source data.</p></article>
-          </div>
-          <div class="dash-warning" data-quality></div>
-          <div class="dash-table-head"><h4>Portfolio exceptions</h4><span data-result-count></span></div>
-          <div class="dash-table-wrap"><table><thead><tr><th>ID</th><th>Project / warning</th><th>RAG</th><th>Manager</th><th>Variance</th><th>Forecast date</th><th>Critical</th><th>Decision</th></tr></thead><tbody data-exceptions></tbody></table></div>
-          <p class="dash-disclaimer">Example only. Links point to this section and do not open real SharePoint items.</p>
-        </div>
+        <p>This static image uses the same Project Aurora training data and shows one possible result from Copilot. It contains no active filters, buttons or links and is not connected to your SharePoint tenant.</p>
+        <figure class="dashboard-image">
+          <img src="dashboard-example.png" alt="Static Project Aurora dashboard example showing portfolio KPIs, RAG distribution, project stages, budget comparison, a data-quality warning and portfolio exceptions." width="1600" height="1050" loading="lazy">
+          <figcaption>Illustrative finished dashboard. Validate the dashboard created in your tenant against the supplied control workbook.</figcaption>
+        </figure>
       </section>
     </main>
 
