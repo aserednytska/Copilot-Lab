@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A hands-on Microsoft Copilot lab for creating and validating a live interactive SharePoint dashboard from a project portfolio list.">
+  <title>Lab 7: Build a Live SharePoint Dashboard with Copilot</title>
+  <link rel="stylesheet" href="../../assets/styles.css">
+  <script src="../../assets/script.js" defer></script>
+  <script src="dashboard.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand site-title" href="../" aria-label="Microsoft Copilot Labs">Microsoft Copilot Labs</a>
+      <div class="header-actions">
+        <nav aria-label="Primary navigation"><a class="active" href="../">All labs</a></nav>
+        <a class="datech-corner-logo" href="../" aria-label="DATech - All labs"><span class="brand-logo-crop"><img src="../../assets/datech-logo.jpg" alt="DATech"></span></a>
+      </div>
+    </div>
+  </header>
+
+  <div class="breadcrumb-shell" aria-label="Breadcrumb"><a href="../">All labs</a><span aria-hidden="true">/</span><span>Lab 7</span></div>
+
+  <section class="lab-hero">
+    <div class="wide-shell">
+      <p class="eyebrow">Microsoft 365 Copilot - Lab 7</p>
+      <h1>Build a Live SharePoint Dashboard with Copilot</h1>
+      <p>Turn a SharePoint project register into an interactive HTML dashboard, keep it connected to the source, expose data-quality risks and prove the connection with a one-field controlled test.</p>
+      <div class="hero-meta"><span><strong>Level</strong> 300</span><span><strong>Duration</strong> 60-75 min</span><span><strong>Format</strong> Guided hands-on lab</span></div>
+    </div>
+  </section>
+
+  <div class="workshop-bar"><div class="wide-shell"><strong>Workshop path:</strong> import, inspect, propose, create, refine, validate, change one field and challenge the conclusion</div></div>
+
+  <div class="page-shell">
+    <main id="main" class="article">
+      <section id="details">
+        <h2>Lab details</h2>
+        <div class="table-wrap"><table><thead><tr><th>Level</th><th>Persona</th><th>Duration</th><th>Purpose</th></tr></thead><tbody><tr><td>300</td><td>Consultant, business analyst, project manager, PMO or product owner</td><td>60-75 minutes</td><td>Create a live portfolio dashboard while keeping source quality, permissions, uncertainty and management responsibility visible.</td></tr></tbody></table></div>
+        <div class="callout note"><div class="callout-label">Based on the reference video</div><p>This case follows the workflow demonstrated in <a href="https://www.youtube.com/watch?v=AYqTGLgzgV4">Build LIVE SharePoint Dashboards with Copilot</a>: a SharePoint List becomes an interactive HTML report that remains connected to the underlying list.</p></div>
+      </section>
+
+      <section id="downloads">
+        <h2>Download the complete lab pack</h2>
+        <h3>Participant data and controls</h3>
+        <ul>
+          <li><a href="downloads/Lab_7_Project_Aurora_SharePoint_Import_Data.xlsx" download><strong>Project Aurora SharePoint Import Data</strong> (.xlsx)</a> - import-ready table with 30 synthetic projects.</li>
+          <li><a href="downloads/Lab_7_Project_Aurora_SharePoint_Import_Data.csv" download><strong>Project Aurora SharePoint Import Data</strong> (.csv)</a> - alternative import format.</li>
+          <li><a href="downloads/Lab_7_Dashboard_Validation_Controls.xlsx" download><strong>Dashboard Validation Controls</strong> (.xlsx)</a> - formula-driven control totals, quality findings and one-field test.</li>
+        </ul>
+        <h3>Participant guidance</h3>
+        <ul>
+          <li><a href="downloads/Lab_7_SharePoint_List_Setup_Guide.pdf" download><strong>SharePoint List Setup Guide</strong> (.pdf)</a> - exact import steps and column-type checks.</li>
+          <li><a href="downloads/Lab_7_Copilot_Dashboard_Prompt_Card.pdf" download><strong>Copilot Dashboard Prompt Card</strong> (.pdf)</a> - reusable prompts for the entire workflow.</li>
+          <li><a href="downloads/Lab_7_Participant_Workbook.pdf" download><strong>Participant Workbook</strong> (.pdf)</a> - exercises, expected controls and troubleshooting.</li>
+        </ul>
+        <details><summary><strong>Trainer-only file</strong></summary><ul><li><a href="downloads/Lab_7_TRAINER_ONLY_Demo_and_Answer_Key.pdf" download>Trainer Demo and Answer Key (.pdf)</a></li></ul></details>
+        <div class="callout note"><div class="callout-label">Synthetic workshop data</div><p>Project Aurora is fictional. The source deliberately contains missing, invalid and conflicting values. Do not use customer, employee or production information.</p></div>
+      </section>
+
+      <section id="case">
+        <h2>Case: Project Aurora</h2>
+        <p>The IT PMO maintains a SharePoint project register. Management wants one live dashboard showing portfolio health, financial and schedule exceptions, decision requirements and data freshness.</p>
+        <p>The challenge is not only to create a polished report. Participants must prove that it is connected to the correct source and does not hide the problems inside that source.</p>
+        <div class="table-wrap"><table><thead><tr><th>Source problem</th><th>Example</th><th>Required dashboard treatment</th></tr></thead><tbody>
+          <tr><td>Missing ownership</td><td>IT-009 and IT-012</td><td>Display Not confirmed; do not infer the owner.</td></tr>
+          <tr><td>Conflicting status</td><td>IT-015 is Green and 45 days late</td><td>Show both fields; do not overwrite RAG.</td></tr>
+          <tr><td>Invalid financial value</td><td>IT-018 forecast cost is negative</td><td>Keep a visible warning and qualify portfolio totals.</td></tr>
+          <tr><td>Incorrect calculation</td><td>IT-003 and IT-029 variance fields</td><td>Show the mismatch; do not silently repair it.</td></tr>
+          <tr><td>Stale information</td><td>IT-021 and IT-030</td><td>Include a freshness warning.</td></tr>
+          <tr><td>Missing category</td><td>IT-030 RAG is blank</td><td>Count it as Not confirmed rather than excluding it.</td></tr>
+        </tbody></table></div>
+      </section>
+
+      <section id="objectives">
+        <h2>Learning objectives</h2>
+        <ul class="check-list"><li>create a SharePoint list from a structured Excel table;</li><li>inspect source quality before visualisation;</li><li>propose and approve a dashboard contract;</li><li>generate an interactive HTML report connected to a SharePoint List;</li><li>refine the report without editing its source;</li><li>reconcile dashboard totals with formula-driven controls;</li><li>change one source field and verify the exact expected impact;</li><li>reject or qualify an attractive but unsafe management conclusion.</li></ul>
+      </section>
+
+      <section id="prerequisites">
+        <h2>Prerequisites</h2>
+        <ul><li>Permission to create a Microsoft List on an approved SharePoint site.</li><li>An active Microsoft Copilot licence.</li><li>Copilot in SharePoint available for the tenant and site.</li><li>The participant downloads above.</li></ul>
+        <div class="callout warning"><div class="callout-label">Preview availability</div><p>Copilot in SharePoint is currently a preview capability. Microsoft says it rolls out to licensed users and can be controlled by administrators for the tenant or selected sites. If it is missing, use the trainer demonstration path instead of rebuilding the report manually.</p></div>
+      </section>
+
+      <section id="exercise-1">
+        <h2>Exercise 1: Create the SharePoint source list</h2>
+        <ol><li>Open the target SharePoint site.</li><li>Select <strong>New &gt; List</strong>.</li><li>Select <strong>From Excel</strong>.</li><li>Upload <strong>Lab_7_Project_Aurora_SharePoint_Import_Data.xlsx</strong>.</li><li>Select <strong>ProjectRegisterTable</strong>.</li><li>Name the list <strong>IT Project Delivery Register</strong>.</li><li>Review the detected column types.</li><li>Select <strong>Create</strong>.</li><li>Confirm that the list contains Project IDs IT-001 to IT-030.</li></ol>
+        <div class="callout important"><div class="callout-label">Keep the test data unchanged</div><p>Do not clean, correct or complete the deliberate source problems before creating the dashboard.</p></div>
+      </section>
+
+      <section id="exercise-2">
+        <h2>Exercise 2: Inspect before creating</h2>
+        <ol><li>Open Copilot from the SharePoint experience.</li><li>Run the inspection prompt.</li><li>Compare Copilot's findings with <strong>Data Quality Review</strong> in the validation workbook.</li><li>Reject any proposed automatic correction.</li></ol>
+        <div class="prompt-block"><div class="prompt-head"><span>Inspect the list</span><button class="copy-button" type="button">Copy</button></div><pre><code>Review the SharePoint list IT Project Delivery Register.
+
+Before creating anything, report:
+1. the fields and likely data types;
+2. fields containing blank values;
+3. records containing logically conflicting information;
+4. values that may create misleading dashboard results;
+5. fields that should be treated as categories, dates, currency or numbers.
+
+Do not modify the list.
+Do not correct or infer missing information.
+Reference the Project ID for every issue.</code></pre></div>
+      </section>
+
+      <section id="exercise-3">
+        <h2>Exercise 3: Propose the dashboard contract</h2>
+        <p>Ask Copilot to describe the report before it creates anything. The human approves the structure, calculations and missing-data rules.</p>
+        <div class="prompt-block"><div class="prompt-head"><span>Propose before creating</span><button class="copy-button" type="button">Copy</button></div><pre><code>Using only the SharePoint list IT Project Delivery Register, propose an interactive project portfolio dashboard.
+
+Include:
+- KPI cards for active projects, Red projects, projects over budget, projects forecast late, stale updates and decisions required;
+- filters for Department, Project Manager, Stage, RAG Status and Decision Required;
+- charts for RAG distribution, projects by stage, approved budget versus forecast cost and schedule variance;
+- a searchable exception table;
+- links to the related SharePoint list items.
+
+Rules:
+- do not invent or correct missing values;
+- display missing values as Not confirmed;
+- do not infer RAG from dates or budget;
+- keep conflicts visible;
+- show the source-list name and data date;
+- show the proposed structure and wait for confirmation.</code></pre></div>
+      </section>
+
+      <section id="exercise-4">
+        <h2>Exercise 4: Create the connected interactive report</h2>
+        <ol><li>Review the proposed components and KPI definitions.</li><li>Confirm that a visible data-quality warning is included.</li><li>Approve the plan.</li><li>Ask Copilot to create the interactive HTML report.</li><li>Open the result and test its filters, search, sorting and source links.</li></ol>
+        <div class="prompt-block"><div class="prompt-head"><span>Create the report</span><button class="copy-button" type="button">Copy</button></div><pre><code>Create the approved interactive HTML dashboard from IT Project Delivery Register.
+
+Keep the report connected to the underlying SharePoint list.
+Do not modify list items.
+Include the approved KPIs, filters, charts, searchable exception table, source links and visible data-quality warning.
+
+Use Not confirmed for missing values.
+Do not resolve source conflicts.</code></pre></div>
+        <div class="callout note"><div class="callout-label">What connected means</div><p>The report is based on the SharePoint List instead of a copied static snapshot. Refresh or reopen it after a controlled list change to verify that the report uses current source data.</p></div>
+      </section>
+
+      <section id="exercise-5">
+        <h2>Exercise 5: Refine the report without changing the source</h2>
+        <div class="prompt-block"><div class="prompt-head"><span>Dashboard-only refinement</span><button class="copy-button" type="button">Copy</button></div><pre><code>Update only the dashboard presentation.
+
+Add:
+- a combined Red and Amber exception filter;
+- a warning for records not updated within 14 days;
+- sorting by Open Critical Issues, then Schedule Variance Days;
+- a Decision Required section;
+- a data-quality count for records with missing or conflicting information.
+
+Keep the SharePoint list and every source field unchanged.
+Show the proposed dashboard changes and wait for confirmation.</code></pre></div>
+        <p>After Copilot applies the approved refinement, reopen IT-003, IT-018 and IT-029 from the exception table. Confirm that their financial warnings remain visible.</p>
+      </section>
+
+      <section id="exercise-6">
+        <h2>Exercise 6: Validate the dashboard</h2>
+        <ol><li>Open <strong>Lab_7_Dashboard_Validation_Controls.xlsx</strong>.</li><li>Open the <strong>Control Totals</strong> sheet.</li><li>Run the audit prompt below.</li><li>Compare each value with the formula-driven expected value.</li><li>Investigate any difference before editing the source or report.</li></ol>
+        <div class="prompt-block"><div class="prompt-head"><span>Audit the totals</span><button class="copy-button" type="button">Copy</button></div><pre><code>Compare the dashboard with the connected SharePoint list.
+
+Return the source definition and current value for every KPI.
+Identify records excluded because of blank, invalid or conflicting data.
+Do not correct the list.
+
+Flag any KPI or chart that could lead to a misleading management conclusion.</code></pre></div>
+        <div class="table-wrap"><table><thead><tr><th>Measure</th><th>Expected before test</th></tr></thead><tbody><tr><td>Total / active</td><td>30 / 27</td></tr><tr><td>Red / Amber / Green / blank</td><td>3 / 13 / 13 / 1</td></tr><tr><td>Over budget / late / stale</td><td>16 / 16 / 2</td></tr><tr><td>Decision required</td><td>15</td></tr><tr><td>Records with quality flags</td><td>10</td></tr><tr><td>Approved budget</td><td>EUR 6,925,000</td></tr></tbody></table></div>
+      </section>
+
+      <section id="exercise-7">
+        <h2>Exercise 7: Run the one-field controlled test</h2>
+        <p>Authorised source change: <strong>IT-017 RAG Status changes from Amber to Red.</strong> No other field may change.</p>
+        <h3>Step 1: Predict the impact</h3>
+        <div class="prompt-block"><div class="prompt-head"><span>Impact check before editing</span><button class="copy-button" type="button">Copy</button></div><pre><code>Controlled test: change only IT-017 RAG Status from Amber to Red.
+
+Before any change, identify exactly which dashboard KPI, chart and table row should change.
+Return before value, expected after value and expected delta.
+
+List every KPI and source field that must remain unchanged.
+Do not modify anything yet.</code></pre></div>
+        <h3>Step 2: Apply only the approved source-field change</h3>
+        <div class="prompt-block"><div class="prompt-head"><span>One-field direct-edit prompt</span><button class="copy-button" type="button">Copy</button></div><pre><code>Update only the RAG Status field of SharePoint list item IT-017 from Amber to Red.
+
+Do not edit another field, item, list setting or dashboard definition.
+Show the exact target item and field, wait for confirmation, then apply.
+Return the before-and-after value and confirm the item ID.</code></pre></div>
+        <div class="callout warning"><div class="callout-label">If direct list editing is unavailable</div><p>Open IT-017 in the SharePoint List and change that single field. This is a controlled source update, not a manual transfer of Copilot output.</p></div>
+        <h3>Step 3: Refresh and verify</h3>
+        <div class="table-wrap"><table><thead><tr><th>Measure</th><th>Before</th><th>Expected after</th><th>Delta</th></tr></thead><tbody><tr><td>Red projects</td><td>3</td><td>4</td><td>+1</td></tr><tr><td>Amber projects</td><td>13</td><td>12</td><td>-1</td></tr><tr><td>Green projects</td><td>13</td><td>13</td><td>0</td></tr><tr><td>Total projects</td><td>30</td><td>30</td><td>0</td></tr><tr><td>Over budget</td><td>16</td><td>16</td><td>0</td></tr><tr><td>Forecast late</td><td>16</td><td>16</td><td>0</td></tr><tr><td>Decision required</td><td>15</td><td>15</td><td>0</td></tr><tr><td>Approved budget</td><td>EUR 6,925,000</td><td>EUR 6,925,000</td><td>0</td></tr></tbody></table></div>
+      </section>
+
+      <section id="exercise-8">
+        <h2>Exercise 8: Challenge the management story</h2>
+        <div class="prompt-block"><div class="prompt-head"><span>Safe management conclusions</span><button class="copy-button" type="button">Copy</button></div><pre><code>Analyse the dashboard and provide three management conclusions.
+
+For every conclusion:
+- identify the supporting SharePoint records;
+- separate a confirmed fact from an interpretation;
+- identify missing or contradictory data;
+- state whether management can safely act on it;
+- name the human role that owns the final decision.
+
+Do not treat a visually prominent chart as proof that the source data is correct.</code></pre></div>
+        <div class="callout important"><div class="callout-label">Required human correction</div><p>Reject or qualify any conclusion that the portfolio is under budget. The aggregate includes an invalid negative forecast cost and two incorrect reported variances.</p></div>
+      </section>
+
+      <section id="success">
+        <h2>Success criteria</h2>
+        <ul class="check-list interactive-checklist"><li><label><input type="checkbox"> the SharePoint list contains 30 source records;</label></li><li><label><input type="checkbox"> the report is connected to IT Project Delivery Register;</label></li><li><label><input type="checkbox"> filters, search, sorting and source links work;</label></li><li><label><input type="checkbox"> missing and conflicting values remain visible;</label></li><li><label><input type="checkbox"> dashboard KPIs reconcile with the validation workbook;</label></li><li><label><input type="checkbox"> only IT-017 RAG Status changed in the controlled test;</label></li><li><label><input type="checkbox"> Red changed from 3 to 4 and Amber from 13 to 12;</label></li><li><label><input type="checkbox"> no unrelated KPI changed;</label></li><li><label><input type="checkbox"> at least one unsafe management conclusion was rejected or qualified.</label></li></ul>
+      </section>
+
+      <section id="limitations">
+        <h2>Limitations and troubleshooting</h2>
+        <div class="table-wrap"><table><thead><tr><th>Problem</th><th>Control</th></tr></thead><tbody>
+          <tr><td>Copilot in SharePoint is missing.</td><td>The preview may not have reached the tenant or site, or an administrator may have excluded it. Use the trainer demonstration path.</td></tr>
+          <tr><td>Interactive report creation is unavailable.</td><td>Do not manually build substitute HTML. Observe the demonstration and complete the source and validation exercises.</td></tr>
+          <tr><td>Wrong totals appear.</td><td>Check field types, filters, blank handling and invalid values before changing anything.</td></tr>
+          <tr><td>The dashboard appears static.</td><td>Reopen or refresh it and confirm that it was created from the list rather than a copied snapshot.</td></tr>
+          <tr><td>List-item links do not open.</td><td>Confirm the links and the viewer's SharePoint permissions.</td></tr>
+          <tr><td>A large list performs poorly.</td><td>Use indexed columns and filtered views. SharePoint list-view thresholds can affect queries.</td></tr>
+          <tr><td>Advanced modelling is required.</td><td>Use Power BI for governed semantic models, advanced calculations and enterprise BI lifecycle needs.</td></tr>
+        </tbody></table></div>
+      </section>
+
+      <section id="resources">
+        <h2>Microsoft documentation</h2>
+        <ul>
+          <li><a href="https://learn.microsoft.com/en-us/sharepoint/copilot-in-sharepoint-get-started">Get started with Copilot in SharePoint preview</a></li>
+          <li><a href="https://techcommunity.microsoft.com/blog/spblog/whats-new-in-copilot-in-sharepoint-august-2026/4535421">What's New in Copilot in SharePoint: August 2026</a></li>
+          <li><a href="https://support.microsoft.com/en-us/sharepoint/lists/data-and-lists/create-a-list">Create a SharePoint list</a></li>
+          <li><a href="https://support.microsoft.com/en-us/sharepoint/lists/data-and-lists/create-a-list-based-on-a-spreadsheet">Create a list based on a spreadsheet</a></li>
+          <li><a href="https://support.microsoft.com/en-us/sharepoint/lists/data-and-lists/list-view-threshold-for-large-lists-and-libraries">List View Threshold for large lists and libraries</a></li>
+        </ul>
+      </section>
+
+      <section id="dashboard-example">
+        <h2>Example: how the finished dashboard can look</h2>
+        <p>This interactive example uses the same Project Aurora data. It demonstrates one possible result from Copilot, including the one-field test. It is not connected to your SharePoint tenant and does not replace validation.</p>
+        <div class="dashboard-example" data-aurora-dashboard>
+          <div class="dash-title-row"><div><p class="dash-eyebrow">Project Aurora</p><h3>IT Portfolio Health</h3><p>Source: IT Project Delivery Register | As of 28 August 2026</p></div><button class="dash-action" type="button" data-simulate>Simulate IT-017 change</button></div>
+          <p class="dash-status" data-simulation-status>Example baseline: IT-017 is Amber.</p>
+          <div class="dash-filters" aria-label="Dashboard filters">
+            <label>Search<input type="search" data-filter="search" placeholder="ID, project or manager"></label>
+            <label>Department<select data-filter="department"><option value="">All</option></select></label>
+            <label>Stage<select data-filter="stage"><option value="">All</option></select></label>
+            <label>RAG<select data-filter="rag"><option value="">All</option></select></label>
+            <label>Decision<select data-filter="decision"><option value="">All</option><option>Yes</option><option>No</option></select></label>
+            <button type="button" class="dash-reset" data-reset>Reset filters</button>
+          </div>
+          <div class="dash-kpis" data-kpis></div>
+          <div class="dash-grid">
+            <article class="dash-panel"><h4>RAG distribution</h4><div data-rag-chart></div></article>
+            <article class="dash-panel"><h4>Projects by stage</h4><div data-stage-chart></div></article>
+            <article class="dash-panel dash-panel-wide"><h4>Approved budget versus forecast</h4><div data-budget></div><p class="dash-panel-note">Financial totals contain known invalid and conflicting source data.</p></article>
+          </div>
+          <div class="dash-warning" data-quality></div>
+          <div class="dash-table-head"><h4>Portfolio exceptions</h4><span data-result-count></span></div>
+          <div class="dash-table-wrap"><table><thead><tr><th>ID</th><th>Project / warning</th><th>RAG</th><th>Manager</th><th>Variance</th><th>Forecast date</th><th>Critical</th><th>Decision</th></tr></thead><tbody data-exceptions></tbody></table></div>
+          <p class="dash-disclaimer">Example only. Links point to this section and do not open real SharePoint items.</p>
+        </div>
+      </section>
+    </main>
+
+    <aside class="toc" aria-label="On this page"><p>On this page</p><nav>
+      <a href="#downloads">Downloads</a><a href="#case">Case</a><a href="#objectives">Objectives</a><a href="#prerequisites">Prerequisites</a><a href="#exercise-1">1. Create list</a><a href="#exercise-2">2. Inspect</a><a href="#exercise-3">3. Propose</a><a href="#exercise-4">4. Create report</a><a href="#exercise-5">5. Refine</a><a href="#exercise-6">6. Validate</a><a href="#exercise-7">7. One field</a><a href="#exercise-8">8. Conclusions</a><a href="#success">Success</a><a href="#limitations">Limitations</a><a href="#resources">Documentation</a><a href="#dashboard-example">Dashboard example</a>
+    </nav></aside>
+  </div>
+</body>
+</html>
