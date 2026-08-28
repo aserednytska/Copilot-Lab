@@ -331,6 +331,76 @@ Keep unresolved items and parking-lot topics in separate sections.</code></pre>
         </div>
       </section>
 
+
+      <section id="prompt-card">
+        <h2>Copilot prompt card</h2>
+        <p>Use this four-prompt sequence during a real meeting. Copy only the prompt needed at the current checkpoint. The same control logic applies whether you use private Copilot chat or Facilitator.</p>
+
+        <h3>1. Anchor the meeting to the agreed agenda</h3>
+        <div class="prompt-block">
+          <div class="prompt-head"><span>Agenda anchor</span><button class="copy-button" type="button">Copy</button></div>
+          <pre><code>Use the meeting invitation and the agreed agenda as the authoritative plan.
+
+Create a live tracker with:
+- current agenda item;
+- completed, remaining and deferred items;
+- confirmed decisions;
+- proposed decisions not yet confirmed;
+- actions with owner and due date;
+- open questions;
+- off-agenda topics for a parking lot.
+
+Do not treat discussion as completion. Mark missing information as “Not confirmed”.</code></pre>
+        </div>
+
+        <h3>2. Check progress and discussion drift</h3>
+        <div class="prompt-block">
+          <div class="prompt-head"><span>Agenda checkpoint</span><button class="copy-button" type="button">Copy</button></div>
+          <pre><code>Compare the discussion so far with the agreed agenda.
+
+Tell me:
+1. Which agenda item are we discussing now?
+2. Which items are completed, remaining or skipped?
+3. Are we ahead of or behind the planned time?
+4. Which recent topic belongs in the parking lot?
+5. What one facilitation question should I ask next?
+
+Use only information available in this meeting. Mark uncertainty as “Not confirmed”.</code></pre>
+        </div>
+
+        <h3>3. Protect decisions from assumptions</h3>
+        <div class="prompt-block">
+          <div class="prompt-head"><span>Decision check</span><button class="copy-button" type="button">Copy</button></div>
+          <pre><code>Review the current agenda item and separate:
+1. Confirmed decisions
+2. Proposed ideas
+3. Actions with confirmed owner and due date
+4. Actions missing an owner or due date
+5. Open questions and conflicting statements
+
+Do not convert agreement-like language into a decision. Preserve disagreement and identify the clarification question the chair should ask.</code></pre>
+        </div>
+
+        <h3>4. Close with a verified record</h3>
+        <div class="prompt-block">
+          <div class="prompt-head"><span>Meeting close</span><button class="copy-button" type="button">Copy</button></div>
+          <pre><code>Prepare a decision-ready meeting close with:
+- confirmed decisions;
+- actions with owner, due date and status;
+- deferred agenda items;
+- parking-lot topics;
+- unresolved questions;
+- agenda items not covered.
+
+Label anything not explicitly confirmed as “Not confirmed”. Ask me to verify the result with participants before it is shared or copied into the official action register.</code></pre>
+        </div>
+
+        <div class="callout important">
+          <div class="callout-label">Verification rule</div>
+          <p>Copilot prepares a proposed record. Participants confirm the decisions, owners and dates before the record becomes authoritative.</p>
+        </div>
+      </section>
+
       <section id="success">
         <h2>Success criteria</h2>
         <p>Your completed meeting record should contain:</p>
@@ -425,6 +495,7 @@ Keep unresolved items and parking-lot topics in separate sections.</code></pre>
         <a href="#option-a">2A. Standard Copilot</a>
         <a href="#option-b">2B. Facilitator</a>
         <a href="#exercise-3">3. Close and verify</a>
+        <a href="#prompt-card">Copilot prompt card</a>
         <a href="#success">Success criteria</a>
         <a href="#limitations">Limitations</a>
         <a href="#troubleshooting">Troubleshooting</a>
