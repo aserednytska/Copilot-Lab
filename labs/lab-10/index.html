@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Use Researcher, Analyst, Office agents and optional Cowork to turn mixed Project Nova evidence into a controlled, human-approved rollout decision.">
+  <title>Lab 10: Frontier Agents Decision Sprint</title>
+  <link rel="stylesheet" href="../../assets/styles.css">
+  <script src="../../assets/script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="nav-shell"><a class="brand site-title" href="../">Microsoft Copilot Labs</a><div class="header-actions"><nav aria-label="Primary navigation"><a class="active" href="../">All labs</a></nav><a class="datech-corner-logo" href="../" aria-label="DATech — All labs"><span class="brand-logo-crop"><img src="../../assets/datech-logo.jpg" alt="DATech"></span></a></div></div></header>
+  <div class="breadcrumb-shell" aria-label="Breadcrumb"><a href="../">All labs</a><span aria-hidden="true">/</span><span>Lab 10</span></div>
+  <section class="lab-hero"><div class="wide-shell"><p class="eyebrow">Microsoft 365 Copilot — Lab 10</p><h1>Frontier Agents Decision Sprint</h1><p>Use Researcher, Analyst, Word and PowerPoint agents, plus optional Cowork, to turn one business question into a traceable Project Nova decision—without assuming that an agent chain is automatically trustworthy.</p><div class="hero-meta"><span><strong>Level</strong> 300</span><span><strong>Duration</strong> 70–90 min</span><span><strong>Format</strong> Guided agent chain</span></div></div></section>
+  <div class="workshop-bar"><div class="wide-shell"><strong>Decision question:</strong> begin a controlled 3-application pilot, expand to all 5 applications, or remain in discovery?</div></div>
+
+  <div class="page-shell">
+    <main id="main" class="article">
+      <section id="details"><h2>Lab details</h2><div class="table-wrap"><table><thead><tr><th>Case</th><th>Capabilities</th><th>Core control</th><th>Expected result</th></tr></thead><tbody><tr><td>Project Nova Phase 2</td><td>Researcher, Analyst, Word Agent, PowerPoint Agent and optional Cowork</td><td>TRUST at every handoff</td><td>Cited report, verified analysis, approved handoff, editable decision paper and steering deck</td></tr></tbody></table></div><div class="callout important"><div class="callout-label">Frontier is not one agent</div><p>Frontier is Microsoft’s early-access space for new Microsoft 365 AI capabilities. Visibility can differ by licence, administrator settings and rollout. This lab therefore provides three equivalent paths.</p></div></section>
+
+      <section id="downloads"><h2>Download the complete Lab 10 pack</h2><h3>Participant source pack</h3><ul>
+        <li><a href="downloads/Lab_10_Project_Nova_Phase_2_Decision_Brief.docx" download><strong>Project Nova Phase 2 Decision Brief</strong> (.docx)</a></li>
+        <li><a href="downloads/Lab_10_Project_Nova_Three_Rollout_Options_Source_Pack.docx" download><strong>Three Rollout Options Source Pack</strong> (.docx)</a></li>
+        <li><a href="downloads/Lab_10_Project_Nova_Access_Request_Dataset.xlsx" download><strong>Access Request Dataset</strong> (.xlsx)</a></li>
+        <li><a href="downloads/Lab_10_Dataset_Definitions_and_KPI_Rules.pdf" download><strong>Dataset Definitions and KPI Rules</strong> (.pdf)</a></li>
+      </ul><h3>Method and participant materials</h3><ul>
+        <li><a href="downloads/Lab_10_Participant_Workbook.pdf" download><strong>Participant Workbook</strong> (.pdf)</a></li>
+        <li><a href="downloads/Lab_10_Frontier_Capability_Matrix.pdf" download><strong>Frontier Capability Matrix</strong> (.pdf)</a></li>
+        <li><a href="downloads/Lab_10_TRUST_Agent_Handoff_Template.docx" download><strong>TRUST Agent Handoff Template</strong> (.docx)</a></li>
+        <li><a href="downloads/Lab_10_Frontier_Agent_Prompt_Card.pdf" download><strong>Frontier Agent Prompt Card</strong> (.pdf)</a></li>
+        <li><a href="downloads/Lab_10_Agent_Comparison_and_Evaluation.xlsx" download><strong>Agent Comparison and Evaluation</strong> (.xlsx)</a></li>
+      </ul><h3>Expected outputs</h3><ul>
+        <li><a href="downloads/Lab_10_Expected_Researcher_Report.pdf" download><strong>Expected Researcher Report</strong> (.pdf)</a></li>
+        <li><a href="downloads/Lab_10_Expected_Analyst_Findings_and_Charts.xlsx" download><strong>Expected Analyst Findings and Charts</strong> (.xlsx)</a></li>
+        <li><a href="downloads/Lab_10_Example_Project_Nova_Decision_Paper.docx" download><strong>Example Decision Paper</strong> (.docx)</a></li>
+        <li><a href="downloads/Lab_10_Example_Project_Nova_Steering_Presentation.pptx" download><strong>Example Steering Presentation</strong> (.pptx)</a></li>
+      </ul><details><summary><strong>Trainer-only file</strong></summary><ul><li><a href="downloads/Lab_10_TRAINER_ONLY_Demo_and_Answer_Key.pdf" download>Trainer Demo and Answer Key (.pdf)</a></li></ul></details><div class="callout note"><div class="callout-label">Synthetic public workshop data</div><p>Every organisation, request, system and decision in the pack is fictional. Do not replace it with confidential customer, employee or production information during the workshop.</p></div></section>
+
+      <section id="case"><h2>Case: Project Nova Phase 2</h2><p>Project Nova is exploring a more consistent way to process access requests across five enterprise applications. The steering committee must now choose the next phase.</p><div class="table-wrap"><table><thead><tr><th>Application group</th><th>Technical position</th><th>Observed request volume</th><th>Decision implication</th></tr></thead><tbody><tr><td>ServiceNow, HR Core and GitHub Enterprise</td><td>Approved integration paths and test environments</td><td>46 of 120 requests — <strong>38.3%</strong></td><td>A controlled subset pilot is technically feasible.</td></tr><tr><td>FinanceHub and Power BI Workspace</td><td>API/security and tenant-consent/design constraints remain open</td><td>74 of 120 requests — <strong>61.7%</strong></td><td>Most observed volume remains outside the ready scope.</td></tr></tbody></table></div><div class="callout tip"><div class="callout-label">Both agents may be correct</div><p>Researcher may conclude that a three-app pilot is technically feasible. Analyst may conclude that the same pilot covers only 38.3% of workload. These statements answer different questions. A human decides whether limited coverage is acceptable.</p></div></section>
+
+      <section id="objectives"><h2>Learning objectives</h2><ul class="check-list"><li>choose the right agent for research, analysis, document creation and action;</li><li>use current Project Nova sources without letting external context override internal constraints;</li><li>profile data quality before calculating KPIs;</li><li>reconcile different but valid agent conclusions;</li><li>apply Trace, Rank, Uncertainty, Sign-off and Transfer to every handoff;</li><li>create or update files directly when the supported agent can do so;</li><li>stop Cowork at the approval boundary;</li><li>keep the final decision with authorised humans.</li></ul></section>
+
+      <section id="paths"><h2>Choose the available path</h2><div class="table-wrap"><table><thead><tr><th>Path</th><th>Use when</th><th>How to complete the lab</th></tr></thead><tbody><tr><td><strong>A — Full Frontier</strong></td><td>Researcher, Analyst and Office agents are available.</td><td>Complete the full sequence in Microsoft Copilot.</td></tr><tr><td><strong>B — Partial availability</strong></td><td>Only some named capabilities are visible.</td><td>Use available agents and complete missing steps with Copilot in the relevant Office app.</td></tr><tr><td><strong>C — No Frontier</strong></td><td>Frontier-labelled capabilities are unavailable.</td><td>Use standard Copilot Chat with attached sources plus Copilot in Excel, Word and PowerPoint.</td></tr></tbody></table></div><h3>Where to check</h3><ol><li>Open <a href="https://m365.cloud.microsoft/" target="_blank" rel="noreferrer">Microsoft Copilot</a> with your organisational account.</li><li>In the left navigation, look under <strong>Agents</strong>. If necessary, open <strong>All Agents</strong> or <strong>Agent Store</strong>.</li><li>Look for Researcher, Analyst, Word, Excel, PowerPoint or Cowork. Frontier capabilities may be marked <strong>(Frontier)</strong>.</li><li>Record visibility, ability to open, and ability to attach the required source in the Capability Check sheet.</li><li>Choose Path A, B or C. Do not spend lab time trying to bypass a tenant restriction.</li></ol><div class="callout warning"><div class="callout-label">Office-agent requirement</div><p>Microsoft currently documents Word, Excel and PowerPoint agents in the Tools menu and All Agents area when the tenant has enabled the required AI model. If they are absent, use the in-app Copilot fallback.</p></div></section>
+
+      <section id="trust"><h2>TRUST controls every handoff</h2><div class="table-wrap"><table><thead><tr><th>Gate</th><th>Question before transfer</th><th>Release evidence</th></tr></thead><tbody><tr><td><strong>T — Trace</strong></td><td>Can every material claim be linked to a precise source or calculation?</td><td>Source, section/sheet, date and claim map.</td></tr><tr><td><strong>R — Rank</strong></td><td>Are approved, operational, draft, external and unverified sources distinguished?</td><td>Authority hierarchy and conflict rule.</td></tr><tr><td><strong>U — Uncertainty</strong></td><td>Are assumptions, missing values, contradictions and definition problems explicit?</td><td>Confirmed, Calculated, Proposed and Not confirmed labels.</td></tr><tr><td><strong>S — Sign-off</strong></td><td>Which authorised human has approved this interpretation for reuse?</td><td>Reviewer, decision owner, date and approval status.</td></tr><tr><td><strong>T — Transfer</strong></td><td>What exactly may the next agent reuse or act on?</td><td>Approved payload, prohibited decisions and stop conditions.</td></tr></tbody></table></div><div class="callout important"><div class="callout-label">No uncontrolled chaining</div><p>Do not paste an unreviewed Researcher report directly into Word Agent, or an unreviewed Analyst chart directly into PowerPoint Agent. Complete and release the TRUST handoff first.</p></div></section>
+
+      <section id="exercise-1"><h2>Exercise 1: Prepare the evidence</h2><ol><li>Download all participant source files.</li><li>Save them to an approved OneDrive or SharePoint workshop folder.</li><li>Open the Decision Brief and identify the authoritative decision question, constraints, status vocabulary and human decision owners.</li><li>Open the Options Source Pack and note the three application-ready claim and the two unresolved integration constraints.</li><li>Open the dataset and KPI Rules. Do not calculate KPIs until the quality issues have been profiled.</li><li>Record the selected availability path in the Agent Comparison and Evaluation workbook.</li></ol></section>
+
+      <section id="exercise-2"><h2>Exercise 2: Investigate with Researcher</h2><ol><li>In Microsoft Copilot, open <strong>Researcher</strong> under Agents.</li><li>Attach or reference the Decision Brief and Three Rollout Options Source Pack.</li><li>Paste the prompt below.</li><li>Answer any clarification questions without adding unsupported facts.</li><li>When the report is complete, inspect every material citation and record any external evidence separately from the internal source pack.</li></ol><div class="prompt-block"><div class="prompt-head"><span>Researcher — compare the rollout options</span><button class="copy-button" type="button">Copy</button></div><pre><code>Investigate the three Project Nova Phase 2 rollout options using the supplied Decision Brief and Three Rollout Options Source Pack as the authoritative internal sources.
+
+You may add current external context, but label it separately and do not override named internal constraints.
+
+For every material claim:
+- cite the precise source;
+- distinguish Confirmed, Calculated, Proposed and Not confirmed;
+- rank internal approved evidence above draft or external context;
+- preserve conflicts and missing information;
+- state the human decision required.
+
+Do not select or approve the final option.</code></pre></div><div class="prompt-block"><div class="prompt-head"><span>Challenge the apparent conclusion</span><button class="copy-button" type="button">Copy</button></div><pre><code>Challenge the claim that a technically feasible three-application pilot is sufficient.
+
+Show:
+1. which evidence supports technical feasibility;
+2. which evidence limits business coverage;
+3. what cannot be concluded from the sources;
+4. which question requires a human decision.</code></pre></div><div class="callout note"><div class="callout-label">Path C fallback</div><p>Use standard Copilot Chat, attach only the two approved Word sources, switch off web grounding when available, and require the same output structure.</p></div></section>
+
+      <section id="exercise-3"><h2>Exercise 3: Analyse with Analyst</h2><ol><li>Open <strong>Analyst</strong> under Agents.</li><li>Select the <strong>+</strong> icon and <strong>Attach content</strong>.</li><li>Attach the Access Request Dataset and KPI Rules.</li><li>Paste the profiling prompt.</li><li>Verify that Analyst finds the duplicate ID, negative duration, missing completion, classification mismatch, mixed completion definition and missing cost.</li><li>Ask Analyst to create editable tables and charts, or use Copilot in Excel to write them directly into the workbook.</li></ol><div class="prompt-block"><div class="prompt-head"><span>Analyst — profile before calculating</span><button class="copy-button" type="button">Copy</button></div><pre><code>Profile this workbook before calculating any KPI.
+
+Identify:
+- duplicate IDs;
+- negative or invalid values;
+- missing values;
+- classification conflicts;
+- inconsistent completion definitions.
+
+Then calculate request volume by application and the share covered by applications marked Integration Ready = Yes.
+
+For every result, show the denominator, exclusions, formula or rule, evidence status and limitation. Treat the one-business-day threshold as Proposed, not Approved. Create editable tables and charts in the workbook.</code></pre></div><div class="callout tip"><div class="callout-label">Expected control figure</div><p>The ready-app calculation is <strong>46 ÷ 120 = 38.3%</strong>. FinanceHub and Power BI account for <strong>74 ÷ 120 = 61.7%</strong>. Request volume does not prove the same share of business value or risk.</p></div></section>
+
+      <section id="exercise-4"><h2>Exercise 4: Reconcile the agents</h2><div class="table-wrap"><table><thead><tr><th>Researcher result</th><th>Analyst result</th><th>Correct reconciliation</th></tr></thead><tbody><tr><td>Three integrations are technically ready.</td><td>They cover only 38.3% of observed requests.</td><td>A subset pilot is feasible, but its representativeness and value remain a human judgement.</td></tr><tr><td>A controlled pilot can produce learning.</td><td>Two completion definitions and data defects limit formal KPI claims.</td><td>Start only with approved measures, exclusions and exit criteria.</td></tr></tbody></table></div><div class="prompt-block"><div class="prompt-head"><span>Create the reconciliation</span><button class="copy-button" type="button">Copy</button></div><pre><code>Compare the Researcher report with the Analyst findings.
+
+Create four sections:
+1. findings that agree;
+2. findings that answer different questions but can both be true;
+3. genuine conflicts or missing evidence;
+4. decisions and conditions that require a human owner.
+
+Do not choose the rollout option. Preserve the 38.3% denominator and every Proposed or Not confirmed label.</code></pre></div></section>
+
+      <section id="exercise-5"><h2>Exercise 5: Release a TRUST handoff</h2><ol><li>Open the TRUST Agent Handoff Template.</li><li>Trace each material claim to the source pack, dataset or verified calculation.</li><li>Rank the internal approved sources above external context.</li><li>Record the mixed completion definition, data defects and representativeness limitation under Uncertainty.</li><li>Name the Steering Committee, Process Owner, Security Owner and Programme Lead decisions under Sign-off.</li><li>Define the exact facts and calculations that Word Agent may reuse under Transfer.</li><li>Score the handoff in the Evaluation workbook. Release only if the total is at least 8, Uncertainty and Sign-off both score 2, and no critical issue remains.</li></ol></section>
+
+      <section id="exercise-6"><h2>Exercise 6: Create the decision paper</h2><ol><li>Open Word Agent from the Tools menu or All Agents. If it is absent, open the approved blank Word document and use Copilot in Word.</li><li>Attach only the released TRUST handoff and named sources.</li><li>Ask the agent to create the document directly. Do not manually retype the report.</li><li>Open the generated Word file and compare every figure and status with the handoff.</li><li>Correct only the affected statement if a figure or status is wrong.</li></ol><div class="prompt-block"><div class="prompt-head"><span>Word Agent — controlled decision paper</span><button class="copy-button" type="button">Copy</button></div><pre><code>Using only the approved TRUST handoff, create a two-to-three-page Project Nova Phase 2 decision paper.
+
+Include the decision question, evidence summary, reconciled Researcher and Analyst findings, three options, conditions, evidence limitations, decisions and owners, and a source map.
+
+Preserve citations and the Confirmed, Calculated, Proposed and Not confirmed labels. Do not invent a recommendation or record an approval that is absent.</code></pre></div></section>
+
+      <section id="exercise-7"><h2>Exercise 7: Create the steering presentation</h2><ol><li>Review and human-approve the decision paper for transfer.</li><li>Open PowerPoint Agent from Tools or All Agents. If unavailable, use Copilot in PowerPoint.</li><li>Attach the approved decision paper and source map.</li><li>Ask the agent to create a six-slide editable presentation.</li><li>Verify 46 of 120, 38.3%, 74 of 120 and 61.7% against Excel.</li><li>Confirm that the final slide asks humans to decide and does not claim approval.</li></ol><div class="prompt-block"><div class="prompt-head"><span>PowerPoint Agent — steering deck</span><button class="copy-button" type="button">Copy</button></div><pre><code>Using the approved Project Nova decision paper and source map, create a six-slide steering presentation:
+1. decision question;
+2. evidence and current position;
+3. Researcher view;
+4. Analyst view with editable chart;
+5. three options and conditions;
+6. decisions required and owners.
+
+Keep all figures editable and traceable. Do not change any number, evidence status, constraint or decision owner.</code></pre></div></section>
+
+      <section id="exercise-8"><h2>Exercise 8: Optional Cowork follow-up</h2><p>Cowork can act across Microsoft 365, so use it only after the action list has been approved. Microsoft documents that Cowork pauses for approval before important actions; this lab intentionally stops at that boundary.</p><ol><li>Open Cowork in Microsoft Copilot if it is available.</li><li>Attach the approved action list, not the raw agent reports.</li><li>Paste the prompt below.</li><li>Watch the proposed steps.</li><li>When Cowork presents a consequential action or approval button, stop. Do not send, post, schedule or change a system in this workshop.</li><li>Record the action, evidence, owner, risk and approval boundary in the Evaluation workbook.</li></ol><div class="prompt-block"><div class="prompt-head"><span>Cowork — prepare, then stop</span><button class="copy-button" type="button">Copy</button></div><pre><code>Using only the approved Project Nova decisions and actions, prepare a follow-up plan with:
+- action;
+- owner;
+- due date;
+- source decision;
+- approval status;
+- next supported step.
+
+Do not send messages, schedule meetings, change files or systems, create commitments, or execute consequential actions. Stop and show me the approval boundary.</code></pre></div></section>
+
+      <section id="exercise-9"><h2>Exercise 9: Final verification</h2><ul class="interactive-checklist check-list"><li><label><input type="checkbox"> Every material claim is traceable to a source or calculation.</label></li><li><label><input type="checkbox"> Internal approved constraints outrank external context.</label></li><li><label><input type="checkbox"> 46 of 120 and 38.3% are used consistently.</label></li><li><label><input type="checkbox"> FinanceHub and Power BI constraints remain visible.</label></li><li><label><input type="checkbox"> The one-business-day target remains Proposed unless explicitly approved.</label></li><li><label><input type="checkbox"> Dataset exclusions and two completion definitions are disclosed.</label></li><li><label><input type="checkbox"> Each handoff has a human reviewer and release decision.</label></li><li><label><input type="checkbox"> Cowork stopped before consequential action.</label></li></ul></section>
+
+      <section id="limitations"><h2>Limitations and troubleshooting</h2><div class="table-wrap"><table><thead><tr><th>Issue</th><th>What it means</th><th>Fallback</th></tr></thead><tbody><tr><td>Frontier or agent is not visible</td><td>Licence, tenant policy or rollout differs.</td><td>Use Path B or C; do not bypass administration.</td></tr><tr><td>Researcher cites external evidence that conflicts with the pack</td><td>Source authority has not been ranked.</td><td>Keep the internal constraint and label external context separately.</td></tr><tr><td>Analyst skips profiling</td><td>The result may use invalid denominators.</td><td>Repeat the profile-first prompt and inspect exclusions.</td></tr><tr><td>Office agent changes a status or number</td><td>The handoff or verification failed.</td><td>Correct only the affected element and rerun TRUST.</td></tr><tr><td>Cowork offers to send or schedule</td><td>A consequential action is ready for approval.</td><td>Select Cancel and record the boundary.</td></tr></tbody></table></div></section>
+
+      <section id="references"><h2>Official Microsoft references</h2><ul><li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/what-is-frontier" target="_blank" rel="noreferrer">What is Frontier?</a></li><li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/get-started-with-researcher-in-microsoft-365-copilot" target="_blank" rel="noreferrer">Get started with Researcher</a></li><li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/get-started-with-analyst-in-microsoft-365-copilot" target="_blank" rel="noreferrer">Get started with Analyst</a></li><li><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/wordexcelppt-agents" target="_blank" rel="noreferrer">Word, Excel and PowerPoint agents</a></li><li><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/" target="_blank" rel="noreferrer">Copilot Cowork overview</a></li><li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/get-started-using-researcher-with-computer-use-in-microsoft-365-copilot-frontier" target="_blank" rel="noreferrer">Researcher with Computer Use (Frontier)</a></li></ul></section>
+    </main>
+    <aside class="toc"><p>On this page</p><nav aria-label="On this page"><a href="#details">Lab details</a><a href="#downloads">Downloads</a><a href="#case">Case</a><a href="#paths">Choose a path</a><a href="#trust">TRUST</a><a href="#exercise-1">Prepare evidence</a><a href="#exercise-2">Researcher</a><a href="#exercise-3">Analyst</a><a href="#exercise-4">Reconcile</a><a href="#exercise-5">Handoff</a><a href="#exercise-6">Decision paper</a><a href="#exercise-7">Presentation</a><a href="#exercise-8">Cowork</a><a href="#exercise-9">Verification</a><a href="#limitations">Limitations</a><a href="#references">References</a></nav></aside>
+  </div>
+</body>
+</html>
