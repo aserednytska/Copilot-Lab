@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Test how reliably Microsoft 365 Copilot extracts business fields from images and scanned documents, apply IMAGE controls and release only human-approved values to Excel.">
+  <title>Lab 11: From Scanned Evidence to a Verified Business Record</title>
+  <link rel="stylesheet" href="../../assets/styles.css">
+  <script src="../../assets/script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand site-title" href="../" aria-label="Microsoft Copilot Labs">Microsoft Copilot Labs</a>
+      <div class="header-actions">
+        <nav aria-label="Primary navigation"><a class="active" href="../">All labs</a></nav>
+        <a class="datech-corner-logo" href="../" aria-label="DATech - All labs"><span class="brand-logo-crop"><img src="../../assets/datech-logo.jpg" alt="DATech"></span></a>
+      </div>
+    </div>
+  </header>
+
+  <div class="breadcrumb-shell" aria-label="Breadcrumb"><a href="../">All labs</a><span aria-hidden="true">/</span><span>Lab 11</span></div>
+
+  <section class="lab-hero">
+    <div class="wide-shell">
+      <p class="eyebrow">Microsoft 365 Copilot - Lab 11</p>
+      <h1>From Scanned Evidence to a Verified Business Record</h1>
+      <p>Extract business fields from clean, degraded and visually complex Project Nova evidence, apply the IMAGE framework and release only human-approved values to a controlled Excel record.</p>
+      <div class="hero-meta"><span><strong>Level</strong> 300</span><span><strong>Duration</strong> 60-75 min</span><span><strong>Format</strong> Guided validation lab</span></div>
+    </div>
+  </section>
+
+  <div class="workshop-bar"><div class="wide-shell"><strong>Core lesson:</strong> a supported image format is not the same as an accurate, authoritative or approved business value</div></div>
+
+  <div class="page-shell">
+    <main id="main" class="article">
+      <section id="details">
+        <h2>Lab details</h2>
+        <div class="table-wrap"><table><thead><tr><th>Case</th><th>Applications</th><th>Evidence</th><th>Core control</th></tr></thead><tbody><tr><td>Project Nova access request</td><td>Microsoft 365 Copilot Chat, Excel and optional SharePoint OCR</td><td>Clean PDF, image scan, low-resolution scan, rotated photo, cropped page, checkbox form, handwriting, hybrid PDF and photographed table</td><td>Copilot extracts and proposes. IMAGE validates. A human approves. Copilot in Excel applies only the released field-level values.</td></tr></tbody></table></div>
+        <div class="callout important"><div class="callout-label">Supported does not mean verified</div><p>Copilot can analyse common image formats, but image quality, page completeness, visual layout and source authority still determine whether an extracted value is safe to use.</p></div>
+      </section>
+
+      <section id="downloads">
+        <h2>Download the complete Lab 11 pack</h2>
+        <h3>Participant materials</h3>
+        <ul>
+          <li><a href="downloads/Lab_11_Participant_Workbook.pdf" download><strong>Participant Workbook</strong> (.pdf)</a></li>
+          <li><a href="downloads/Lab_11_IMAGE_Verification_Checklist.pdf" download><strong>IMAGE Verification Checklist</strong> (.pdf)</a></li>
+          <li><a href="downloads/Lab_11_Image_Extraction_Prompt_Card.pdf" download><strong>Image Extraction Prompt Card</strong> (.pdf)</a></li>
+          <li><a href="downloads/Lab_11_Image_Extraction_Validation_Register.xlsx" download><strong>Image Extraction Validation Register</strong> (.xlsx)</a></li>
+        </ul>
+        <h3>Project Nova evidence pack</h3>
+        <ul>
+          <li><a href="downloads/Lab_11_Project_Nova_Image_and_Scan_Evidence_Pack.zip" download><strong>Download all evidence files</strong> (.zip)</a></li>
+          <li><a href="evidence/01_Project_Nova_Control_Text.pdf" download>01 - Clean text-based control PDF</a></li>
+          <li><a href="evidence/02_Project_Nova_Clear_Scan.png" download>02 - Clear image scan</a></li>
+          <li><a href="evidence/03_Project_Nova_Low_Resolution_Scan.jpg" download>03 - Low-resolution compressed scan</a></li>
+          <li><a href="evidence/04_Project_Nova_Rotated_Phone_Photo.jpg" download>04 - Rotated phone photograph</a></li>
+          <li><a href="evidence/05_Project_Nova_Cropped_Page.png" download>05 - Cropped page</a></li>
+          <li><a href="evidence/06_Project_Nova_Checkbox_Form.png" download>06 - Checkbox approval form</a></li>
+          <li><a href="evidence/07_Project_Nova_Handwritten_Correction.png" download>07 - Printed evidence with handwritten correction</a></li>
+          <li><a href="evidence/08_Project_Nova_Hybrid_Scan.pdf" download>08 - Hybrid PDF with stamp and signature</a></li>
+          <li><a href="evidence/09_Project_Nova_Table_Photo.jpg" download>09 - Photographed multi-row table</a></li>
+          <li><a href="evidence/10_Project_Nova_Improved_Replacement.png" download>10 - Improved replacement for the one-input-change test</a></li>
+        </ul>
+        <details><summary><strong>Trainer-only files</strong></summary><ul>
+          <li><a href="downloads/Lab_11_Expected_Extraction_Results.xlsx" download>Expected Extraction Results and Scorecard (.xlsx)</a></li>
+          <li><a href="downloads/Lab_11_TRAINER_ONLY_Demo_and_Answer_Key.pdf" download>Trainer Demo and Answer Key (.pdf)</a></li>
+        </ul></details>
+        <div class="callout note"><div class="callout-label">Synthetic public workshop data</div><p>Every person, approval, request and business value in this pack is fictional. Do not replace the files with confidential customer, employee or production evidence during the workshop.</p></div>
+      </section>
+
+      <section id="case">
+        <h2>Case: one request, ten visual representations</h2>
+        <p>Project Nova contains an approved access request for FinanceHub. The same core information appears in several formats of different quality. Some pages are clean. Others are blurred, rotated, cropped or visually complex.</p>
+        <p>Your task is to extract the requested fields without silently repairing, guessing or combining evidence. You must distinguish what Copilot can read from what the organisation can trust.</p>
+        <div class="table-wrap"><table><thead><tr><th>Risk</th><th>Example</th><th>Required behaviour</th></tr></thead><tbody>
+          <tr><td>Character substitution</td><td>AR-2048 may look like AR-2O48; CC-4710 may be confused with similar digits.</td><td>Compare character by character and mark uncertainty.</td></tr>
+          <tr><td>Missing content</td><td>The cropped page does not show approver, status or approval controls.</td><td>Return Not confirmed. Never fill from memory.</td></tr>
+          <tr><td>Visual interpretation</td><td>Checkboxes use different marks; a stamp and signature appear in the hybrid PDF.</td><td>Describe the visible mark and require human confirmation.</td></tr>
+          <tr><td>Authority conflict</td><td>A handwritten note proposes a later end date.</td><td>Keep the printed approved date until the authorised approver confirms the change.</td></tr>
+          <tr><td>Row association</td><td>A photographed table contains nearby requests and similar cost centres.</td><td>Keep every extracted value linked to the correct Request ID row.</td></tr>
+        </tbody></table></div>
+      </section>
+
+      <section id="objectives">
+        <h2>Learning objectives</h2>
+        <ul class="check-list">
+          <li>test image and scanned-document analysis without assuming accuracy;</li>
+          <li>identify quality, crop, orientation, handwriting, checkbox and table-association risks;</li>
+          <li>require page or visual-region evidence for every extracted field;</li>
+          <li>use Not confirmed instead of guessing;</li>
+          <li>separate printed facts, handwritten proposals, stamps and signatures;</li>
+          <li>update the validation workbook directly or through a structured file import;</li>
+          <li>release only human-approved fields to the controlled business record;</li>
+          <li>prove that a one-source replacement changes only the expected results.</li>
+        </ul>
+      </section>
+
+      <section id="image-framework">
+        <h2>The IMAGE framework</h2>
+        <p>IMAGE validates the extraction. TRUST then controls whether the verified value may be transferred into an official record.</p>
+        <div class="table-wrap"><table><thead><tr><th>Gate</th><th>Question</th><th>Required evidence</th></tr></thead><tbody>
+          <tr><td><strong>I - Image quality</strong></td><td>Is the page clear, complete, correctly rotated and readable?</td><td>Resolution, contrast, rotation, crop and page-completeness note.</td></tr>
+          <tr><td><strong>M - Missing content</strong></td><td>Is anything cropped, obscured, blurred or absent?</td><td>Not confirmed status for every affected field.</td></tr>
+          <tr><td><strong>A - Accuracy</strong></td><td>Does the extracted value exactly match the visible evidence?</td><td>Character-level comparison for IDs, dates, amounts and controls.</td></tr>
+          <tr><td><strong>G - Ground truth</strong></td><td>Can the value be verified against an authoritative source?</td><td>Named source, page or region, version and authority.</td></tr>
+          <tr><td><strong>E - Escalation</strong></td><td>Can the field safely enter the business record?</td><td>Named human reviewer, approval state and stop condition.</td></tr>
+        </tbody></table></div>
+        <div class="callout warning"><div class="callout-label">Do not confuse matching text with approval</div><p>An exact match can still be Proposed, Superseded or outside the source owner's authority. Accuracy and authority are separate controls.</p></div>
+      </section>
+
+      <section id="capability">
+        <h2>Prerequisites and capability check</h2>
+        <ol>
+          <li>Sign in to Microsoft 365 Copilot with your organisational account.</li>
+          <li>Confirm that you can attach a PNG, JPG or PDF in Copilot Chat.</li>
+          <li>Download the Validation Register and save it to the approved OneDrive or SharePoint workshop folder.</li>
+          <li>Check whether your selected Copilot experience can create or edit a file.</li>
+          <li>Record the available path in the Participant Workbook before starting.</li>
+        </ol>
+        <div class="table-wrap"><table><thead><tr><th>Path</th><th>Use when</th><th>Transfer method</th></tr></thead><tbody>
+          <tr><td>A - Direct workbook update</td><td>Copilot can use the image and edit the attached workbook.</td><td>Write only into the AI Extraction columns.</td></tr>
+          <tr><td>B - Structured file creation</td><td>Copilot can create a downloadable CSV/XLSX but cannot edit the register.</td><td>Create a file with the exact headers, then use Excel Data &gt; From Text/CSV.</td></tr>
+          <tr><td>C - On-screen comparison</td><td>The experience returns chat text only.</td><td>Do not manually copy rows. Compare on screen or move to an approved file-creation experience.</td></tr>
+        </tbody></table></div>
+      </section>
+
+      <section id="exercise-1">
+        <h2>Exercise 1: Establish the authoritative control</h2>
+        <ol>
+          <li>Open <strong>01_Project_Nova_Control_Text.pdf</strong> yourself.</li>
+          <li>Record its filename, version and status as the authoritative printed comparison.</li>
+          <li>Open the Validation Register and review the Read Me sheet.</li>
+          <li>Do not open the trainer answer key during the first pass.</li>
+        </ol>
+        <div class="callout note"><div class="callout-label">Blind first pass</div><p>If you want a stronger test, keep the Workshop Comparison Value column out of view until Copilot has completed the extraction.</p></div>
+      </section>
+
+      <section id="exercise-2">
+        <h2>Exercise 2: Test the clean scan</h2>
+        <ol>
+          <li>Attach <strong>02_Project_Nova_Clear_Scan.png</strong> to Copilot Chat.</li>
+          <li>Attach or reference the Validation Register when your experience supports file editing.</li>
+          <li>Paste the extraction prompt below.</li>
+          <li>Verify the Request ID, dates, cost centre, amount and checkbox values character by character.</li>
+          <li>Do not release any field yet.</li>
+        </ol>
+        <div class="prompt-block"><div class="prompt-head"><span>Extract one source without guessing</span><button class="copy-button" type="button">Copy</button></div><pre><code>Analyse the attached Project Nova image or scanned document. Do not infer an unreadable, cropped or ambiguous value.
+
+Return one row per requested field with these columns:
+Source file | Page/visual region | Field | Extracted value | Visual evidence | Confidence (High/Medium/Low) | Image quality issue | Evidence status | Verification required
+
+Requested fields:
+Request ID; Requester; Business unit; Access type; Environment; Effective date; End date; Cost centre; Licence cost; Approver; Status; Manager approval; Security approval; MFA required; Privileged access.
+
+Use Not confirmed when a value is missing, cropped, blurred, handwritten, ambiguous or only inferred. Preserve leading zeros, punctuation, currency, decimals and date format exactly. Explain how each checkbox selection was visually indicated. Separate printed facts from handwriting, stamps and signatures. Do not treat a stamp or signature as proof of identity or approval scope.</code></pre></div>
+      </section>
+
+      <section id="exercise-3">
+        <h2>Exercise 3: Stress-test image quality</h2>
+        <ol>
+          <li>Run the same prompt against the low-resolution scan, rotated phone photo and cropped page.</li>
+          <li>Do not rotate, enhance or explain the files before the first extraction.</li>
+          <li>Record every omission, substitution, unsupported inference and confidence change.</li>
+          <li>If Copilot returns a plausible value that is not visible, classify it as <strong>Unsupported</strong>, not Correct.</li>
+        </ol>
+        <div class="callout important"><div class="callout-label">The cropped-page test</div><p>Approver, status and approval controls are absent. The correct result is Not confirmed even though those values exist in another file.</p></div>
+      </section>
+
+      <section id="exercise-4">
+        <h2>Exercise 4: Test visual meaning and authority</h2>
+        <ol>
+          <li>Test the checkbox form. Require Copilot to explain the visual mark used for every selection.</li>
+          <li>Test the handwritten-correction image. Keep the printed end date separate from the handwritten proposal.</li>
+          <li>Test the photographed table. Require every value to stay within the AR-2048 row.</li>
+          <li>Test the hybrid PDF. Do not let a stamp or signature become automatic proof of the signer or approval scope.</li>
+        </ol>
+        <div class="prompt-block"><div class="prompt-head"><span>Challenge the apparent approval</span><button class="copy-button" type="button">Copy</button></div><pre><code>Separate the printed facts, checkbox selections, handwritten content, stamp and signature in this source.
+
+For each element, state:
+1. what is visibly present;
+2. what text or state you extracted;
+3. whether the element is readable;
+4. whether it proves authority or approval;
+5. the evidence status;
+6. the human verification still required.
+
+Do not identify a signer from handwriting or assume that a stamp approves every field.</code></pre></div>
+      </section>
+
+      <section id="exercise-5">
+        <h2>Exercise 5: Write results without manual copying</h2>
+        <h3>Path A - Direct workbook update</h3>
+        <ol>
+          <li>Attach the source and Validation Register to the file-editing Copilot experience.</li>
+          <li>Ask Copilot to update only columns E-G and J in Extraction Review.</li>
+          <li>Open the edited workbook and inspect the exact cells Copilot changed.</li>
+        </ol>
+        <div class="prompt-block"><div class="prompt-head"><span>Direct workbook update</span><button class="copy-button" type="button">Copy</button></div><pre><code>Write this extraction directly into the matching source and field rows of Lab_11_Image_Extraction_Validation_Register.xlsx.
+
+Update only:
+- AI Extracted Value;
+- Confidence;
+- Image Quality Issue;
+- Evidence Status.
+
+Do not change Workshop Comparison Value, Match Status formulas, IMAGE Decision, Reviewer, Review Notes, Release Eligible, Verified Business Record or Audit Log.</code></pre></div>
+        <h3>Path B - Structured file import</h3>
+        <div class="prompt-block"><div class="prompt-head"><span>Create a structured import file</span><button class="copy-button" type="button">Copy</button></div><pre><code>Create a downloadable CSV or XLSX named Lab_11_AI_Extraction_Result using exactly these headers:
+Source File, Page or Region, Field, Extracted Value, Visual Evidence, Confidence, Image Quality Issue, Evidence Status, Verification Required.
+
+Do not place narrative before or after the table. Do not guess missing values.</code></pre></div>
+        <ol>
+          <li>Download the generated file.</li>
+          <li>In Excel, open the Validation Register.</li>
+          <li>Select <strong>Data</strong> &gt; <strong>From Text/CSV</strong>.</li>
+          <li>Select the generated file, verify the headers and choose <strong>Load To</strong>.</li>
+          <li>Load to a new sheet and use Copilot in Excel to merge matching source-field rows into the permitted columns.</li>
+        </ol>
+      </section>
+
+      <section id="exercise-6">
+        <h2>Exercise 6: Verify and release approved fields</h2>
+        <ol>
+          <li>Apply every IMAGE gate to each material extraction.</li>
+          <li>Set IMAGE Decision to <strong>Human approved</strong>, <strong>Hold</strong> or <strong>Reject</strong>.</li>
+          <li>Filter Release Eligible to Yes.</li>
+          <li>Ask Copilot in Excel to update only matching fields in Verified Business Record.</li>
+          <li>Require one Audit Log row per changed field.</li>
+          <li>Confirm that the handwritten end date remains Proposed and is not released.</li>
+        </ol>
+        <div class="prompt-block"><div class="prompt-head"><span>Release only approved fields</span><button class="copy-button" type="button">Copy</button></div><pre><code>Using only Extraction Review rows where Release Eligible = Yes, update the matching field in Verified Business Record.
+
+Change only Approved Value, Evidence Status, Source File, Human Reviewer and Approval Date for the named field. Preserve every unrelated value and formula.
+
+Append one Audit Log row with field, previous value, new value, source file, source region, IMAGE decision and approver. Do not release any Not confirmed, Proposed, Unsupported, Conflict, Hold or Reject value.</code></pre></div>
+      </section>
+
+      <section id="exercise-7">
+        <h2>Exercise 7: Run the one-input-change test</h2>
+        <ol>
+          <li>Keep the original S03 extraction and review history.</li>
+          <li>Replace only the low-resolution source with <strong>10_Project_Nova_Improved_Replacement.png</strong>.</li>
+          <li>Run the same extraction prompt without changing another parameter.</li>
+          <li>Compare S03 and S10. Request ID, cost centre, amount and date confidence may improve.</li>
+          <li>Confirm that results from every other source and every prior approval remain unchanged.</li>
+        </ol>
+        <div class="prompt-block"><div class="prompt-head"><span>Controlled replacement comparison</span><button class="copy-button" type="button">Copy</button></div><pre><code>Compare only the prior low-resolution extraction with 10_Project_Nova_Improved_Replacement.png.
+
+Report only changed extracted values, confidence or quality issues. Preserve the original S03 result and audit history. Do not modify any result, decision or approval linked to another source.</code></pre></div>
+      </section>
+
+      <section id="ocr">
+        <h2>Optional enterprise path: SharePoint OCR</h2>
+        <p>When an administrator has enabled SharePoint OCR, upload a copy of the evidence to the approved test site and compare the extracted text with the one-off Copilot result.</p>
+        <ol>
+          <li>Confirm with the site administrator that OCR is enabled for the intended SharePoint site.</li>
+          <li>Upload a new copy after enablement. Existing files are not retroactively processed automatically.</li>
+          <li>For supported image files, inspect the extracted-text metadata when available.</li>
+          <li>For PDF or TIFF evidence, test search indexing and record that extracted text may not appear in the same metadata column.</li>
+          <li>Apply IMAGE before any OCR result enters a controlled record.</li>
+        </ol>
+        <div class="callout note"><div class="callout-label">OCR is a service capability, not an approval workflow</div><p>It can improve search and text extraction, but it does not decide source authority, business meaning or whether a handwritten change is approved.</p></div>
+      </section>
+
+      <section id="verification">
+        <h2>Final verification</h2>
+        <ul class="interactive-checklist check-list">
+          <li><label><input type="checkbox"> Every extraction names its source and visual region.</label></li>
+          <li><label><input type="checkbox"> IDs, dates, cost centre and amount were checked character by character.</label></li>
+          <li><label><input type="checkbox"> Cropped or unreadable fields are Not confirmed.</label></li>
+          <li><label><input type="checkbox"> Checkbox selections include a visual explanation.</label></li>
+          <li><label><input type="checkbox"> Handwriting, stamp and signature are separated from approved printed facts.</label></li>
+          <li><label><input type="checkbox"> No participant manually copied extraction rows between applications.</label></li>
+          <li><label><input type="checkbox"> Only human-approved fields entered the Verified Business Record.</label></li>
+          <li><label><input type="checkbox"> The one-source replacement changed only the expected results.</label></li>
+          <li><label><input type="checkbox"> The original extraction and complete audit history were preserved.</label></li>
+        </ul>
+      </section>
+
+      <section id="limitations">
+        <h2>Limitations and troubleshooting</h2>
+        <div class="table-wrap"><table><thead><tr><th>Issue</th><th>What it means</th><th>Required response</th></tr></thead><tbody>
+          <tr><td>Image attachment is unavailable</td><td>Licence, tenant configuration or rollout differs.</td><td>Use the trainer demonstration or an approved Microsoft 365 experience that supports the file.</td></tr>
+          <tr><td>Copilot omits an unreadable field</td><td>Omission may be safer than guessing but still needs recording.</td><td>Write Not confirmed and describe the quality issue.</td></tr>
+          <tr><td>Copilot returns a value missing from the crop</td><td>The answer is inferred or blended from another source.</td><td>Classify Unsupported and hold the transfer.</td></tr>
+          <tr><td>Direct workbook editing is unavailable</td><td>The selected experience cannot perform the intended file action.</td><td>Create a structured downloadable file and import it. Do not manually copy rows.</td></tr>
+          <tr><td>OCR result differs from Copilot Chat</td><td>The services may use different processing and source context.</td><td>Compare both with the authoritative visual evidence and preserve the conflict.</td></tr>
+          <tr><td>A signature appears readable</td><td>Text recognition is not identity verification.</td><td>Require an authorised human to confirm signer and scope.</td></tr>
+        </tbody></table></div>
+      </section>
+
+      <section id="references">
+        <h2>Official Microsoft references</h2>
+        <ul>
+          <li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/file-formats-supported-by-microsoft-365-copilot" target="_blank" rel="noreferrer">File formats supported by Microsoft 365 Copilot</a></li>
+          <li><a href="https://support.microsoft.com/en-us/microsoft-copilot/file-upload-in-microsoft-copilot" target="_blank" rel="noreferrer">File upload in Microsoft Copilot</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/microsoft-365/documentprocessing/ocr-overview?view=o365-worldwide" target="_blank" rel="noreferrer">Optical character recognition in SharePoint</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/microsoft-365/documentprocessing/structured-freeform-requirements?view=o365-worldwide" target="_blank" rel="noreferrer">Structured and freeform document processing requirements and limitations</a></li>
+          <li><a href="https://support.microsoft.com/en-us/onenote/onenote-help-and-learning/copy-text-from-pictures-and-file-printouts-using-ocr-in-onenote" target="_blank" rel="noreferrer">Copy text from pictures using OCR in OneNote</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <aside class="toc">
+      <p>On this page</p>
+      <nav aria-label="On this page">
+        <a href="#details">Lab details</a>
+        <a href="#downloads">Downloads</a>
+        <a href="#case">Case</a>
+        <a href="#objectives">Objectives</a>
+        <a href="#image-framework">IMAGE</a>
+        <a href="#capability">Capability check</a>
+        <a href="#exercise-1">Control source</a>
+        <a href="#exercise-2">Clean scan</a>
+        <a href="#exercise-3">Quality stress-test</a>
+        <a href="#exercise-4">Visual meaning</a>
+        <a href="#exercise-5">Direct file update</a>
+        <a href="#exercise-6">Verify and release</a>
+        <a href="#exercise-7">One-change test</a>
+        <a href="#ocr">SharePoint OCR</a>
+        <a href="#verification">Verification</a>
+        <a href="#limitations">Limitations</a>
+        <a href="#references">References</a>
+      </nav>
+    </aside>
+  </div>
+</body>
+</html>
