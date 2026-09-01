@@ -23,6 +23,7 @@ Each lab contains a realistic business case, expected outcome, step-by-step inst
 | [Lab 9](https://aserednytska.github.io/Copilot-Lab/labs/lab-9/) | Build a Trustworthy Requirements Discovery Agent | 300 | Copilot Agents + Teams + Excel |
 | [Lab 10](https://aserednytska.github.io/Copilot-Lab/labs/lab-10/) | Frontier Agents Decision Sprint | 300 | Frontier Agents + Office |
 | [Lab 11](https://aserednytska.github.io/Copilot-Lab/labs/lab-11/) | From Scanned Evidence to a Verified Business Record | 300 | Copilot Chat + Excel |
+| [Lab 12](https://aserednytska.github.io/Copilot-Lab/labs/lab-12/) | Turn a Copilot Response into a Controlled Collaborative Page | 200 | Copilot Chat + Pages + Excel |
 | [Extra Lab](https://aserednytska.github.io/Copilot-Lab/labs/extra-lab-policy-navigator/) | Build and Test an Organisational Policy Navigator | 300 | Copilot Agents + ServiceNow |
 
 ## How to use the labs
